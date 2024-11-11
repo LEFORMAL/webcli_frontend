@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const newPassword = form.newPassword.value;
         const confirmPassword = form.confirmPassword.value;
 
+        console.log('Token:', token);
+        console.log('Email:', email);
+        console.log('Nueva Contraseña:', newPassword);
+
         if (newPassword !== confirmPassword) {
             statusMessage.textContent = 'Las contraseñas no coinciden';
             statusMessage.style.color = 'red';
@@ -18,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('/nueva_password', {
+            const response = await fetch('https://webclibackend-production.up.railway.app/nueva_password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token, email, newPassword })
