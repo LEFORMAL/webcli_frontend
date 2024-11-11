@@ -12,8 +12,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
 
         if (response.ok) {
-            const solicitudes = await response.json();
-            console.log('Solicitudes recibidas:', solicitudes); // Verificar los datos recibidos
+            const data = await response.json();
+            console.log('Respuesta del servidor:', data); // Verificar los datos recibidos
+
+            if (data.newToken) {
+                localStorage.setItem('usuarioToken', data.newToken); // Guardar el nuevo token
+            }
+
+            const solicitudes = data.solicitudes || data;
+            console.log('Solicitudes recibidas:', solicitudes); // Verificar las solicitudes recibidas
 
             const solicitudesContainer = document.getElementById('solicitudesContainer');
 
@@ -22,25 +29,25 @@ document.addEventListener('DOMContentLoaded', async function() {
                 card.className = 'solicitud-card';
                 card.id = `solicitud-${index}`;
                 card.innerHTML = `
-                    <p><strong>ID:</strong> ${solicitud[0]}</p>
-                    <p><strong>Servicio:</strong> ${capitalizeWords(solicitud[1])}</p>
-                    <p><strong>Fecha:</strong> ${new Date(solicitud[2]).toLocaleDateString()}</p>
-                    <p><strong>Dirección:</strong> ${capitalizeWords(solicitud[3])}</p>
-                    <p><strong>Comuna:</strong> ${capitalizeWords(solicitud[4] || '')}</p>
-                    <p><strong>Región:</strong> ${capitalizeWords(solicitud[5] || '')}</p>
-                    <p><strong>RUT Usuario:</strong> ${solicitud[6]}</p>
-                    <p><strong>Nombre:</strong> ${capitalizeWords(solicitud[7])}</p>
-                    <p><strong>RUT/NIT:</strong> ${solicitud[8]}</p>
-                    <p><strong>Teléfono:</strong> ${solicitud[9]}</p>
-                    <p><strong>Email:</strong> ${solicitud[10]}</p>
-                    <p><strong>Cantidad de Productos:</strong> ${solicitud[11]}</p>
-                    <p><strong>Marca del Producto:</strong> ${capitalizeWords(solicitud[12])}</p>
-                    <p><strong>Modelo del Producto:</strong> ${capitalizeWords(solicitud[13])}</p>
-                    <p><strong>Necesita Compra:</strong> ${solicitud[14] === 'Y' ? 'Sí' : 'No'}</p>
-                    <p><strong>Fecha de Realización:</strong> ${new Date(solicitud[15]).toLocaleDateString()}</p>
-                    <p><strong>Medio de Pago:</strong> ${capitalizeWords(solicitud[16])}</p>
-                    <p><strong>Costo Total:</strong> ${solicitud[17]}</p>
-                    <p><strong>Fecha de Creación:</strong> ${new Date(solicitud[18]).toLocaleString()}</p>
+                    <p><strong>ID:</strong> ${solicitud.ID_SOLICITUD}</p>
+                    <p><strong>Servicio:</strong> ${capitalizeWords(solicitud.TIPO_SOLICITUD)}</p>
+                    <p><strong>Fecha:</strong> ${new Date(solicitud.FECHA_SOLICITUD).toLocaleDateString()}</p>
+                    <p><strong>Dirección:</strong> ${capitalizeWords(solicitud.DIRECCION)}</p>
+                    <p><strong>Comuna:</strong> ${capitalizeWords(solicitud.COMUNA || '')}</p>
+                    <p><strong>Región:</strong> ${capitalizeWords(solicitud.REGION || '')}</p>
+                    <p><strong>RUT Usuario:</strong> ${solicitud.RUT_USUARIO}</p>
+                    <p><strong>Nombre:</strong> ${capitalizeWords(solicitud.NOMBRE)}</p>
+                    <p><strong>RUT/NIT:</strong> ${solicitud.RUT_NIT}</p>
+                    <p><strong>Teléfono:</strong> ${solicitud.TELEFONO}</p>
+                    <p><strong>Email:</strong> ${solicitud.EMAIL}</p>
+                    <p><strong>Cantidad de Productos:</strong> ${solicitud.CANTIDAD_PRODUCTOS}</p>
+                    <p><strong>Marca del Producto:</strong> ${capitalizeWords(solicitud.MARCA_PRODUCTO)}</p>
+                    <p><strong>Modelo del Producto:</strong> ${capitalizeWords(solicitud.MODELO_PRODUCTO)}</p>
+                    <p><strong>Necesita Compra:</strong> ${solicitud.NECESITA_COMPRA === 'Y' ? 'Sí' : 'No'}</p>
+                    <p><strong>Fecha de Realización:</strong> ${new Date(solicitud.FECHA_REALIZACION).toLocaleDateString()}</p>
+                    <p><strong>Medio de Pago:</strong> ${capitalizeWords(solicitud.MEDIO_PAGO)}</p>
+                    <p><strong>Costo Total:</strong> ${solicitud.COSTO_TOTAL}</p>
+                    <p><strong>Fecha de Creación:</strong> ${new Date(solicitud.FECHA_CREACION).toLocaleString()}</p>
                 `;
                 solicitudesContainer.appendChild(card);
             });
