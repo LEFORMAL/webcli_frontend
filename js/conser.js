@@ -2,6 +2,9 @@ window.onload = function() {
     // Llenar los selectores de marca y modelo cuando se cargue la página
     llenarSelectores();
 
+    // Llenar el selector de tipos de solicitud
+    llenarTiposSolicitud();
+
     // Establecer la fecha actual en el campo de fecha "fecha-solicitud"
     const fechaHoy = new Date().toISOString().split('T')[0];
     const fechaSolicitudElement = document.getElementById('fecha-solicitud');
@@ -82,6 +85,27 @@ function llenarSelectores() {
             });
         })
         .catch(error => console.error('Error al cargar los productos:', error));
+}
+
+function llenarTiposSolicitud() {
+    const tipoSolicitudSelect = document.getElementById('tipo-solicitud');
+
+    if (!tipoSolicitudSelect) {
+        console.error("No se encontró el elemento de selección de tipo de solicitud en el DOM.");
+        return;
+    }
+
+    fetch('https://webclibackend-production.up.railway.app/api/tipos_solicitud')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo.nombre.toLowerCase();
+                option.textContent = tipo.nombre;
+                tipoSolicitudSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error al cargar los tipos de solicitud:', error));
 }
 
 function calcularCostoTotal() {
