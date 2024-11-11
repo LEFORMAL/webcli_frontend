@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <!-- Sección de Registro -->
+    <section class="register-section" style="padding-bottom: 150px;">
+        <div class="register-container">
+            <div class="register-title">
+                <h1>REGÍSTRATE</h1>
+            </div>
+            <div class="register-form">
+                <h3>Formulario de Registro</h3>
+                <form id="registerForm">
+                    <input type="text" name="rut" placeholder="RUT" required>
+                    <span id="rut-error" class="error-message"></span>
+
+                    <input type="text" name="nombres" placeholder="Nombres" required>
+                    <input type="text" name="apellidos" placeholder="Apellidos" required>
+
+                    <!-- Deshabilitar el selector y establecer el valor por defecto -->
+                    <select name="user_tipo" required disabled>
+                        <option value="cliente" selected>Cliente</option>
+                    </select>
+
+                    <input type="email" name="email" placeholder="Email" required>
+                    <span id="email-error" class="error-message"></span>
+
+                    <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    <input type="text" name="direccion" placeholder="Dirección" required>
+                    <input type="text" name="comuna" placeholder="Comuna" required>
+                    <input type="text" name="region" placeholder="Región" required>
+                    <input type="date" name="fecha_nacimiento" required>
+
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    <input type="password" name="confirmar_contrasena" placeholder="Confirmar Contraseña" required>
+                    <span id="password-error" class="error-message"></span>
+
+                    <button type="submit" class="btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="js/register.js"></script> 
+    <script src="js/scripts.js"></script> 
+</body>
+</html>

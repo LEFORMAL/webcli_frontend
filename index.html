@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SClima - Empresa de Climatización</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Función para detectar si el usuario está en un dispositivo móvil
+        function isMobileDevice() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        // Redirigir a la página de redirección si el usuario está en un dispositivo móvil
+        if (isMobileDevice()) {
+            window.location.href = 'mobile_redirect.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <!-- Sección principal (centroweb) -->
+    <section class="centroweb">
+        <div class="centroweb-content">
+            <h1>Soluciones Integrales de Climatización</h1>
+            <p>Con más de 20 años de experiencia, ofrecemos soluciones eficientes en climatización y mantenimiento.</p>
+            <a href="servicios.html" class="btn-primary">Conoce nuestros servicios</a>
+        </div>
+        <div class="centroweb-image">
+            <img src="assets/fotoaire1.jpg" alt="Servicio garantizado">
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section id="services" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="service-items">
+            <div class="service-item">
+                <h3>Instalación de Aire Acondicionado</h3>
+                <p>Servicio profesional de instalación.</p>
+            </div>
+            <div class="service-item">
+                <h3>Mantenimiento Preventivo</h3>
+                <p>Planes de mantenimiento para extender la vida útil de tus equipos.</p>
+            </div>
+            <div class="service-item">
+                <h3>Asesoría en Energía</h3>
+                <p>Optimización de recursos energéticos para climatización eficiente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

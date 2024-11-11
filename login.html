@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styles.css"> 
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <!-- Sección de Login -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-title">
+                <h1>ACCEDER</h1>
+            </div>
+            <div class="login-form">
+                <h3>Bienvenido de nuevo</h3>
+                <form id="loginForm">
+                    <input type="email" name="email" placeholder="Usuario o Email" required>
+                    <input type="password" name="contrasena" placeholder="Contraseña" required>
+                    
+                    <a href="reset_password.html" class="forgot-password">Olvidé mi contraseña</a>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                    <p id="error-message" style="color: red;"></p> <!-- Mensaje de error -->
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="js/login.js"></script> 
+    <script src="js/scripts.js"></script> 
+</body>
+</html>

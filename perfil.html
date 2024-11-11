@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js"></script>
+    <style>
+        #buttonContainer {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-primary, .btn-secondary {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <section class="login-section">
+        <div class="login-container">
+            <h2 class="login-title">Perfil de Usuario</h2>
+            <form class="login-form" id="perfilForm">
+                <label for="nombres">Nombres:</label>
+                <input type="text" id="nombres" placeholder="Nombres" readonly><br><br>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" placeholder="Apellidos" readonly><br><br>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" placeholder="Teléfono" readonly><br><br>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" placeholder="Dirección" readonly><br><br>
+
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha_nacimiento" placeholder="Fecha de Nacimiento" readonly><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Correo electrónico" readonly><br><br>
+
+                <div id="buttonContainer">
+                    <button id="editToggleBtn" type="button" class="btn-primary">Editar Perfil</button>
+                    <button id="saveChangesBtn" class="btn-primary" style="display: none;">Guardar Cambios</button>
+                    <button id="logoutBtn" class="btn-secondary">Cerrar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/login.js"></script>
+    <script>
+        function cargarDatosPerfil() {
+            const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+            console.log("Datos de usuario cargados desde localStorage:", usuario); // Verificar datos en consola
+
+            if (!usuario) {
+                alert("No hay una sesión activa. Redirigiendo a la página de login.");
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Rellenar campos con los datos del usuario
+            document.getElementById('nombres').value = usuario.nombres || '';
+            document.getElementById('apellidos').value = usuario.apellidos || '';
+            document.getElementById('telefono').value = usuario.telefono || '';
+            document.getElementById('direccion').value = usuario.direccion || '';
+            
+            // Asegurarse de que `fecha_nacimiento` esté bien formateada
+            const fechaNacimiento = usuario.fecha_nacimiento ? usuario.fecha_nacimiento.split('T')[0] : '';
+            document.getElementById('fecha_nacimiento').value = fechaNacimiento;
+            document.getElementById('email').value = usuario.email || '';
+        }
+
+        document.addEventListener('DOMContentLoaded', cargarDatosPerfil);
+
+        // Modo de edición y guardado
+        document.getElementById('editToggleBtn').addEventListener('click', function() {
+            toggleEditMode(true);
+        });
+
+        document.getElementById('saveChangesBtn').addEventListener('click', async function(event) {
+            event.preventDefault();
+            toggleEditMode(false);
+
+            // Capturar valores de los campos
+            const nombres = document.getElementById('nombres').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const telefono = document.getElementById('telefono').value;
+            const direccion = document.getElementById('direccion').value;
+            const fecha_nacimiento = document.getElementById('fecha_nacimiento').value;
+            const email = document.getElementById('email').value;
+
+            // Enviar datos al servidor
+            try {
+                const response = await fetch('http://localhost:3000/actualizarPerfil', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, nombres, apellidos, telefono, direccion, fecha_nacimiento }),
+                });
+
+                if (response.ok) {
+                    const updatedUser = await response.json();
+                    
+                    console.log("Datos actualizados recibidos del servidor:", updatedUser); // Verificar datos actualizados
+
+                    // Actualizar usuario en localStorage
+                    localStorage.setItem('usuario', JSON.stringify(updatedUser.usuario));
+                    alert('Perfil actualizado exitosamente');
+                    cargarDatosPerfil();  // Recargar datos actualizados
+                } else {
+                    alert('Hubo un problema al actualizar el perfil');
+                }
+            } catch (error) {
+                console.error('Error al actualizar el perfil:', error);
+                alert('Ocurrió un error al actualizar el perfil. Inténtelo más tarde.');
+            }
+        });
+
+        function toggleEditMode(editing) {
+            document.getElementById('nombres').readOnly = !editing;
+            document.getElementById('apellidos').readOnly = !editing;
+            document.getElementById('telefono').readOnly = !editing;
+            document.getElementById('direccion').readOnly = !editing;
+            document.getElementById('fecha_nacimiento').readOnly = !editing;
+            document.getElementById('editToggleBtn').style.display = editing ? 'none' : 'inline';
+            document.getElementById('saveChangesBtn').style.display = editing ? 'inline' : 'none';
+        }
+    </script>
+</body>
+</html>

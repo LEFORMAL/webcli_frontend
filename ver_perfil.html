@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <!-- Contenido de perfil de solo lectura -->
+    <section class="profile-section">
+        <div class="profile-container">
+            <h2 class="profile-title">Mi Perfil</h2>
+            <div class="profile-details">
+                <p><strong>Nombres:</strong> <span id="nombres"></span></p>
+                <p><strong>Apellidos:</strong> <span id="apellidos"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+                <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+                <p><strong>Fecha de Nacimiento:</strong> <span id="fecha_nacimiento"></span></p>
+            </div>
+            <!-- Botón para ir a perfil.html -->
+            <button onclick="window.location.href='perfil.html'" class="btn-primary">Editar Perfil</button>
+        </div>
+    </section>
+
+    <!-- Cargar scripts -->
+    <script src="js/scripts.js"></script>
+    <script src="js/ver_perfil.js"></script>
+</body>
+</html>

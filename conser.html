@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Servicio</title>
+    <link rel="stylesheet" href="css/styles.css"> 
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <section class="service-request-section" style="padding-bottom: 150px;">
+        <div class="service-request-container">
+            <div class="service-request-title">
+                <h1>Solicitud de Servicio</h1>
+            </div>
+            <div class="service-request-form">
+                <h3>Rellena el formulario para solicitar un servicio</h3>
+                <form id="solicitudForm">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="rut">RUT/NIT:</label>
+                    <input type="text" id="rut" name="rut" required>
+
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="direccion">Dirección:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+
+                    <label for="cantidad">Cantidad de productos:</label>
+                    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+
+                    <label for="marca">Marca del Aparato:</label>
+                    <select id="marca" name="marca" required>
+                        <option value="" disabled selected>Seleccionar Marca</option>
+                    </select>
+
+                    <label for="modelo">Modelo del Aparato:</label>
+                    <select id="modelo_producto" name="modelo" required>
+                        <option value="" disabled selected>Seleccionar Modelo</option>
+                    </select>
+
+                    <label for="compra">¿Necesita comprar el producto?</label>
+                    <input type="checkbox" id="compra" name="compra">
+
+                    <label for="tipo-solicitud">Tipo de Solicitud:</label>
+                    <select id="tipo-solicitud" name="tipo-solicitud" required>
+                        <option value="" disabled selected>Seleccionar Tipo</option>
+                        <option value="instalacion">Instalación</option>
+                        <option value="remocion">Remoción</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                        <option value="reparacion">Reparación</option>
+                    </select>
+
+                    <label for="fecha-solicitud">Fecha de Solicitud:</label>
+                    <input type="date" id="fecha-solicitud" name="fecha-solicitud" required>
+
+                    <label for="fecha-realizacion">Fecha de Realización:</label>
+                    <input type="date" id="fecha-realizacion" name="fecha-realizacion" required>
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required></textarea>
+
+                    <label for="pago">Medio de Pago:</label>
+                    <select id="pago" name="pago" required>
+                        <option value="" disabled selected>Seleccionar Medio de Pago</option>
+                        <option value="transferencia">Transferencia</option>
+                        <option value="tarjeta">Tarjeta</option>
+                    </select>
+
+                    <div id="costoTotal"></div>
+
+                    <button type="submit" class="btn-primary">Continuar al Pago</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <script src="js/conser.js"></script>
+    <script src="js/scripts.js"></script>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SClima - Empresa de Climatización</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header con logo y navegación -->
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <section class="service-confirm-section">
+        <div class="service-confirm-container">
+            <h1>Confirmar Servicio</h1>
+
+            <div class="service-info">
+                <h3>Equipo Seleccionado</h3>
+                <p><strong>Marca:</strong> <span id="marca-seleccionada"></span></p>
+                <p><strong>Modelo:</strong> <span id="modelo-seleccionado"></span></p>
+                <p><strong>Tipo de Servicio:</strong> <span id="tipo-servicio-seleccionado"></span></p>
+
+                <h3>Valor del Equipo (solo para instalación)</h3>
+                <p id="valor-equipo"></p>
+                <label>
+                    <input type="checkbox" id="ya-lo-tengo"> Ya tengo este equipo
+                </label>
+
+                <h3>Valor del Servicio</h3>
+                <p id="valor-servicio"></p>
+
+                <h3>Total a Pagar</h3>
+                <p id="valor-total"></p>
+
+                <button id="pagar-btn" class="btn-primary">Proceder al Pago</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/scripts.js" defer></script>
+
+    
+</body>
+</html>
