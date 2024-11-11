@@ -28,12 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ token, email, newPassword })
             });
 
+            console.log('Respuesta del servidor:', response);
+
             if (response.ok) {
                 statusMessage.textContent = 'Contraseña actualizada con éxito';
                 statusMessage.style.color = 'green';
                 form.reset();
             } else {
                 const errorText = await response.text();
+                console.error('Error del servidor:', errorText);
                 statusMessage.textContent = `Error: ${errorText}`;
                 statusMessage.style.color = 'red';
             }
