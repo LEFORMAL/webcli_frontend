@@ -46,9 +46,9 @@ function llenarSelectores() {
             const modelosPorMarca = {};
 
             data.forEach(producto => {
-                const marca = producto[0];
-                const modelo = producto[1];
-                const precio = producto[2]; // Valor del producto (precio)
+                const marca = producto.marca_producto;
+                const modelo = producto.modelo_producto;
+                const precio = producto.valor_producto; // Valor del producto (precio)
 
                 marcas.add(marca);
 
