@@ -1,49 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('resetPasswordForm');
-    const statusMessage = document.getElementById('status-message');
+// Ruta para solicitar restablecimiento de contraseña
+app.post('/request-password-reset', async (req, res) => {
+    const { email } = req.body;
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
+    try {
+        const connection = await connectMySQL();
+        const sql = 'SELECT * FROM USUARIOS WHERE email = ?';
+        const [rows] = await connection.execute(sql, [email]);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get('token');
-        const email = urlParams.get('email');
-        const newPassword = form.newPassword.value;
-        const confirmPassword = form.confirmPassword.value;
-
-        console.log('Token:', token);
-        console.log('Email:', email);
-        console.log('Nueva Contraseña:', newPassword);
-
-        if (newPassword !== confirmPassword) {
-            statusMessage.textContent = 'Las contraseñas no coinciden';
-            statusMessage.style.color = 'red';
-            return;
+        if (rows.length === 0) {
+            await connection.end();
+            return res.status(404).send('Usuario no encontrado');
         }
 
-        try {
-            const response = await fetch('https://webclibackend-production.up.railway.app/nueva_password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ token, email, newPassword })
-            });
+        // Generar token de restablecimiento
+        const token = crypto.randomBytes(20).toString('hex');
+        const expiration = new Date(Date.now() + 15 * 60 * 1000); // Expira en 15 minutos
 
-            console.log('Respuesta del servidor:', response);
+        console.log('Token generado:', token);
+        console.log('Fecha de expiración:', expiration);
 
-            if (response.ok) {
-                statusMessage.textContent = 'Contraseña actualizada con éxito';
-                statusMessage.style.color = 'green';
-                form.reset();
-            } else {
-                const errorText = await response.text();
-                console.error('Error del servidor:', errorText);
-                statusMessage.textContent = `Error: ${errorText}`;
-                statusMessage.style.color = 'red';
-            }
-        } catch (error) {
-            console.error('Error al actualizar la contraseña:', error);
-            statusMessage.textContent = 'Error en el servidor. Intente más tarde';
-            statusMessage.style.color = 'red';
-        }
-    });
+        // Guardar token en la base de datos
+        await connection.execute(
+            `UPDATE USUARIOS SET reset_token = ?, reset_token_expiration = ? WHERE email = ?`,
+            [token, expiration, email]
+        );
+
+        // Enviar el enlace de restablecimiento por correo
+        const resetLink = `https://leformal.github.io/webcli_frontend/nueva_password.html?token=${token}&email=${email}`;
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Restablecimiento de Contraseña',
+            text: `Haga clic en el siguiente enlace para restablecer su contraseña: ${resetLink}`
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.status(200).send('Enlace de restablecimiento enviado');
+    } catch (error) {
+        console.error('Error al solicitar restablecimiento de contraseña:', error);
+        res.status(500).send('Error en el servidor');
+    }
 });
