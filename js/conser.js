@@ -95,6 +95,9 @@ function llenarTiposSolicitud() {
         return;
     }
 
+    // Limpiar el selector antes de agregar nuevas opciones
+    tipoSolicitudSelect.innerHTML = '<option value="" disabled selected>Seleccionar Tipo</option>';
+
     fetch('https://webclibackend-production.up.railway.app/api/tipos_solicitud')
         .then(response => response.json())
         .then(data => {
