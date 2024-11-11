@@ -151,7 +151,7 @@ document.getElementById('modelo_producto').addEventListener('change', calcularCo
 document.getElementById('cantidad').addEventListener('input', calcularCostoTotal);
 document.getElementById('compra').addEventListener('change', calcularCostoTotal);
 
-// Función para enviar los datos del formulario al servidor
+/// Función para enviar los datos del formulario al servidor
 function enviarSolicitud(event) {
     event.preventDefault(); // Prevenir el envío normal del formulario
 
@@ -174,15 +174,19 @@ function enviarSolicitud(event) {
         costoTotal: calcularCostoTotal()
     };
 
+    console.log('Datos del formulario:', datosFormulario); // Depuración
+
     if (datosFormulario.medioPago === 'transferencia') {
         // Enviar los datos al servidor para guardar la solicitud y enviar el correo
-        fetch('https://webclibackend-production.up.railway.app/solicitud_transferencia', {
+        fetch('https://webclibackend-production.up.railway.app/api/solicitud_transferencia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosFormulario)
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Respuesta del servidor (transferencia):', data); // Depuración
+
             if (data.message === 'Solicitud creada con éxito') {
                 alert('Solicitud creada con éxito. Revisa tu correo para la información de transferencia.');
                 window.location.href = 'index.html';
@@ -196,13 +200,15 @@ function enviarSolicitud(event) {
         });
     } else {
         // Enviar los datos al servidor para crear la preferencia de pago
-        fetch('https://webclibackend-production.up.railway.app/solicitud', {
+        fetch('https://webclibackend-production.up.railway.app/api/solicitud', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosFormulario)
         })
         .then(response => response.json())
         .then(data => {
+            console.log('Respuesta del servidor (pago):', data); // Depuración
+
             if (data.message === 'Preferencia de pago creada con éxito' && data.init_point) {
                 // Redirigir al enlace de pago
                 window.location.href = data.init_point;
