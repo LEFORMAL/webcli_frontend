@@ -151,7 +151,7 @@ document.getElementById('modelo_producto').addEventListener('change', calcularCo
 document.getElementById('cantidad').addEventListener('input', calcularCostoTotal);
 document.getElementById('compra').addEventListener('change', calcularCostoTotal);
 
-/// Función para enviar los datos del formulario al servidor
+// Función para enviar los datos del formulario al servidor
 function enviarSolicitud(event) {
     event.preventDefault(); // Prevenir el envío normal del formulario
 
