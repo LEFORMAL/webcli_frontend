@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         // Obtener la información del usuario desde el servidor
-        const response = await fetch('http://localhost:3000/obtenerPerfil', {
+        const response = await fetch('https://webclibackend-production.up.railway.app/obtenerPerfil', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

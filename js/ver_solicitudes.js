@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const token = localStorage.getItem('usuarioToken');
         console.log('Token:', token); // Verificar el token en la consola
 
-        const response = await fetch('http://localhost:3000/obtenerSolicitudes', {
+        const response = await fetch('https://webclibackend-production.up.railway.app/obtenerSolicitudes', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

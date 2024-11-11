@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Verificación de duplicados en el servidor
         try {
-            const response = await fetch(`http://localhost:3000/check-email?email=${encodeURIComponent(email)}`);
+            const response = await fetch(`https://webclibackend-production.up.railway.app/check-email?email=${encodeURIComponent(email)}`);
             if (response.ok) {
                 const { exists } = await response.json();
                 emailError.textContent = exists ? 'Este email ya está registrado' : '';
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('http://localhost:3000/register', {
+            const response = await fetch('https://webclibackend-production.up.railway.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -39,7 +39,7 @@ function llenarSelectores() {
         return;
     }
 
-    fetch('http://localhost:3000/api/productos')
+    fetch('https://webclibackend-production.up.railway.app/productos')
         .then(response => response.json())
         .then(data => {
             const marcas = new Set();
@@ -176,7 +176,7 @@ function enviarSolicitud(event) {
 
     if (datosFormulario.medioPago === 'transferencia') {
         // Enviar los datos al servidor para guardar la solicitud y enviar el correo
-        fetch('http://localhost:3000/api/solicitud_transferencia', {
+        fetch('https://webclibackend-production.up.railway.app/solicitud_transferencia', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosFormulario)
@@ -196,7 +196,7 @@ function enviarSolicitud(event) {
         });
     } else {
         // Enviar los datos al servidor para crear la preferencia de pago
-        fetch('http://localhost:3000/api/solicitud', {
+        fetch('https://webclibackend-production.up.railway.app/solicitud', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosFormulario)
