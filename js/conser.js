@@ -39,7 +39,7 @@ function llenarSelectores() {
         return;
     }
 
-    fetch('https://webclibackend-production.up.railway.app/productos')
+    fetch('https://webclibackend-production.up.railway.app/api/productos')
         .then(response => response.json())
         .then(data => {
             const marcas = new Set();
