@@ -129,16 +129,16 @@ function calcularCostoTotal() {
 
     // 2. Ajustar el costo según el tipo de solicitud
     switch (tipoSolicitud) {
-        case "instalacion":
+        case "Instalación":
             costoTotal += valorProducto * 0.15 * cantidad;
             break;
-        case "remocion":
+        case "Remoción":
             costoTotal += valorProducto * 0.10 * cantidad;
             break;
-        case "mantenimiento":
+        case "Mantenimiento":
             costoTotal += valorProducto * 0.12 * cantidad;
             break;
-        case "reparacion":
+        case "Reparación":
             costoTotal = 0;
             break;
         default:
