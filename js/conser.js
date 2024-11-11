@@ -122,23 +122,26 @@ function calcularCostoTotal() {
         valorProducto = parseFloat(modeloOption.getAttribute('data-precio')) || 0;
     }
 
+    console.log('Tipo de Solicitud:', tipoSolicitud); // Depuración
+    console.log('Valor del Producto:', valorProducto); // Depuración
+
     // 1. Añadir el costo del producto si es necesario comprarlo
     if (necesitaCompra) {
         costoTotal += valorProducto * cantidad;
     }
 
     // 2. Ajustar el costo según el tipo de solicitud
-    switch (tipoSolicitud) {
-        case "Instalación":
+    switch (tipoSolicitud.toLowerCase()) {
+        case "instalación":
             costoTotal += valorProducto * 0.15 * cantidad;
             break;
-        case "Remoción":
+        case "remoción":
             costoTotal += valorProducto * 0.10 * cantidad;
             break;
-        case "Mantenimiento":
+        case "mantenimiento":
             costoTotal += valorProducto * 0.12 * cantidad;
             break;
-        case "Reparación":
+        case "reparación":
             costoTotal = 0;
             break;
         default:
