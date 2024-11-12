@@ -8,7 +8,7 @@ body {
 
 /* Header */
 header {
-  background-color: #ffcc33;  /* Fondo color amarillo */
+  background-color: #00d6dd;  /* Fondo color amarillo */
   text-align: center;  /* Alinea el contenido del encabezado al centro */
   position: sticky;  /* Fija el encabezado en la parte superior al hacer scroll */
   top: 0;  /* Mantiene el header en la parte superior de la ventana */
@@ -20,7 +20,7 @@ nav {
   display: flex;  /* Utiliza flexbox para la distribución de los elementos */
   justify-content: center;  /* Centra horizontalmente los elementos del menú */
   align-items: center;  /* Centra verticalmente los elementos */
-  background-color: #ffcc33;  /* Fondo del navbar en color amarillo */
+  background-color: #68c6f1;  /* Fondo del navbar en color amarillo */
   padding: 10px 30px;  /* Espaciado interno en el navbar */
 }
 
@@ -38,7 +38,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;  /* Elimina el subrayado de los enlaces */
-  color: #003366;  /* Color azul oscuro para los enlaces */
+  color: #000000;  /* Color azul oscuro para los enlaces */
   font-weight: bold;  /* Los enlaces tienen un texto en negrita */
 }
 
@@ -88,8 +88,8 @@ header img.logo {
 
 .btn-primary {
   padding: 10px 20px;  /* Espaciado interno del botón */
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
+  background-color: #68c6f1;  /* Fondo azul oscuro */
+  color: rgb(0, 0, 0);  /* Texto en blanco */
   text-decoration: none;  /* Sin subrayado */
   border-radius: 5px;  /* Bordes redondeados */
 }
@@ -177,8 +177,8 @@ footer {
   bottom: 0;  /* Se asegura de que esté en el borde inferior */
   left: 0;  /* Se asegura de que esté alineado a la izquierda */
   width: 100%;  /* El footer ocupa todo el ancho de la pantalla */
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
+  background-color: #ffa033;  /* Fondo azul oscuro */
+  color: rgb(5, 4, 4);  /* Texto en blanco */
   text-align: center;  /* Texto alineado en el centro */
   padding: 10px;  /* Reduce el espaciado interno */
   height: 100px;  /* Altura del footer */
@@ -231,7 +231,7 @@ footer .letrachica {
 }
 
 footer .footer-link {
-  color: #ffcc33;  /* Color amarillo para los enlaces */
+  color: #003366;  /* Color amarillo para los enlaces */
   text-decoration: none;  /* Sin subrayado en los enlaces */
 }
 
@@ -241,11 +241,18 @@ footer .footer-link:hover {
 
 /* Sección de Información adicional */
 .informacion {
-  display: flex;  /* Flexbox para organizar el contenido */
-  justify-content: space-between;  /* Espacio entre los elementos */
-  background-color: #ffcc33;  /* Fondo amarillo */
+  display: flex;  /* Usar Flexbox para organizar el contenido */
+  justify-content: center;  /* Centrar el contenido horizontalmente */
+  align-items: top;  /* Centrar el contenido verticalmente */
+  background-color: #ffffff;  /* Fondo blanco */
+  font-size: 1.5em;  /* Tamaño de fuente más grande para el texto */
+  text-align: center;  /* Alinear el texto en el centro */
+  padding-bottom: 150px;  /* Espaciado alrededor del contenido */
+  margin-bottom: 10px;  /* Espacio moderado en la parte inferior */
+  position: relative;  /* Posicionar elementos dentro de esta clase */
 }
 
+/* Mantiene el resto del estilo igual */
 .info-content h3 {
   color: #003366;  /* Títulos en azul oscuro */
 }
@@ -256,12 +263,18 @@ footer .footer-link:hover {
   color: #333;  /* Texto en gris oscuro */
 }
 
+.info-image {
+  position: absolute;
+  right: 20px;  /* Espacio desde el borde derecho */
+}
+
 .info-image img {
   max-width: 100%;  /* Ancho máximo de la imagen */
   height: 175px;  /* Altura fija de la imagen */
-  padding-bottom: 110px;  /* Espaciado inferior */
   padding-top: 10px;  /* Espaciado superior */
 }
+
+
 
 .nosotros {
   display: flex;  /* Flexbox para alinear el contenido */
