@@ -59,7 +59,7 @@
     <script>
         // Verificar si el usuario está logueado al hacer clic en el botón "Crear una solicitud"
         document.getElementById('crearSolicitudBtn').addEventListener('click', function() {
-            const token = localStorage.getItem('token'); // Cambia "token" si tienes otro indicador
+            const token = localStorage.getItem('usuarioToken'); // Cambia "token" si tienes otro indicador
 
             if (!token) {
                 alert('Debes registrarte o iniciar sesión primero para crear una solicitud.');
