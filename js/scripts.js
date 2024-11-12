@@ -34,40 +34,48 @@ window.onload = function() {
 };
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
+// Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {
-    // Verificar si el navbar está cargado y seleccionar los botones
     const loginButton = document.getElementById('loginButton');
     const registerButton = document.getElementById('registerButton');
     const verSolicitudesBtn = document.getElementById('verSolicitudesBtn');
     const miPerfilBtn = document.getElementById('miPerfilBtn');
+    const logoutButton = document.getElementById('logoutButton'); // Botón de Cerrar Sesión
 
-    if (loginButton && registerButton && verSolicitudesBtn && miPerfilBtn) {
-        // Verificar si el usuario está en localStorage (sesión activa)
+    if (loginButton && registerButton && verSolicitudesBtn && miPerfilBtn && logoutButton) {
         const usuario = localStorage.getItem('usuario');
         
         if (usuario) {
-            // Si hay un usuario logueado, ocultamos los botones de Iniciar Sesión y Registrarse
+            // Usuario logueado: muestra Perfil, Ver Solicitudes y Cerrar Sesión
             loginButton.style.display = 'none';
             registerButton.style.display = 'none';
             verSolicitudesBtn.style.display = 'inline-block';
             miPerfilBtn.style.display = 'inline-block';
+            logoutButton.style.display = 'inline-block';
+
+            // Asigna el evento de cierre de sesión al botón "Cerrar Sesión"
+            logoutButton.addEventListener('click', logoutUsuario);
         } else {
-            // Si no hay usuario, mostramos los botones de Iniciar Sesión y Registrarse
+            // Usuario no logueado: muestra Iniciar Sesión y Registrarse, oculta Perfil y Ver Solicitudes
             loginButton.style.display = 'inline-block';
             registerButton.style.display = 'inline-block';
             verSolicitudesBtn.style.display = 'none';
             miPerfilBtn.style.display = 'none';
+            logoutButton.style.display = 'none'; // Oculta el botón de Cerrar Sesión
         }
     } else {
-        console.error("No se encontraron los botones de sesión en el navbar.");
+        console.error("No se encontraron todos los botones de sesión en el navbar.");
     }
 }
 
+
 // Función para cerrar sesión y volver a mostrar los botones
 function logoutUsuario() {
-    localStorage.removeItem('usuario'); // Elimina el usuario de localStorage
+    // Eliminar datos de usuario en localStorage y redirigir a la página principal
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('usuarioToken'); // Eliminar el token del localStorage
     alert('Sesión cerrada correctamente');
-    window.location.href = 'index.html'; // Redirige a la página principal
+    window.location.href = 'index.html'; // Redirige a la página principal después de cerrar sesión
 
     // Vuelve a mostrar los botones de inicio de sesión y registro
     setNavbarButtonsVisibility();
