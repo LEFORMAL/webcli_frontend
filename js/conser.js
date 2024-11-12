@@ -208,26 +208,26 @@ function enviarSolicitud(event) {
 
     if (datosFormulario.medioPago === 'transferencia') {
         // Enviar los datos al servidor para guardar la solicitud y enviar el correo
-        fetch('https://webclibackend-production.up.railway.app/api/solicitud_transferencia', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(datosFormulario)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Respuesta del servidor (transferencia):', data); // Depuración
+    fetch('https://webclibackend-production.up.railway.app/api/solicitud_transferencia', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosFormulario)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Respuesta del servidor (transferencia):', data); // Depuración
 
-            if (data.message === 'Solicitud creada con éxito') {
-                alert('Solicitud creada con éxito. Revisa tu correo para la información de transferencia.');
-                window.location.href = 'index.html';
-            } else {
-                alert(`Hubo un problema al crear la solicitud: ${data.details || 'Error desconocido'}`);
-            }
-        })
-        .catch(error => {
-            console.error('Error al crear la solicitud:', error);
-            alert('Ocurrió un error al procesar la solicitud. Inténtalo de nuevo.');
-        });
+        if (data.message === 'Solicitud creada con éxito') {
+            alert('Solicitud creada con éxito. Revisa tu correo para la información de transferencia.');
+            window.location.href = 'pagar_transferencia.html'; // Redirige a la página de confirmación
+        } else {
+            alert(`Hubo un problema al crear la solicitud: ${data.details || 'Error desconocido'}`);
+        }
+    })
+    .catch(error => {
+        console.error('Error al crear la solicitud:', error);
+        alert('Ocurrió un error al procesar la solicitud. Inténtalo de nuevo.');
+    });
     } else {
         // Enviar los datos al servidor para crear la preferencia de pago
         fetch('https://webclibackend-production.up.railway.app/api/solicitud', {
