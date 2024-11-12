@@ -6,14 +6,11 @@
     <title>SClima - Servicio Técnico Aire Acondicionado</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/scripts.js" defer></script>
-    
 </head>
 <body>
 
     <header>
-        <header>
-            <div id="navbar"></div>
-        </header>
+        <div id="navbar"></div>
     </header>
 
     <!-- centroweb Section -->
@@ -27,35 +24,17 @@
         </div>
     </section>
 
-    <!-- Sección de Servicios -->
+    <!-- Sección de Servicios Principales -->
     <section class="servicios">
         <h2>Servicios que ofrecemos</h2>
-        <div class="accordion">
-            <div class="accordion-item">
-                <button class="accordion-button" onclick="window.location.href='conser.html?tipo=instalacion'">Instalación de equipos</button>
-                <div class="accordion-content">
-                    <p>Instalación de sistemas de climatización para residenciales, comercios, y grandes industrias.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-button" onclick="window.location.href='conser.html?tipo=mantenimiento'">Mantenimiento Preventivo</button>
-                <div class="accordion-content">
-                    <p>Mantenimiento preventivo para garantizar el buen funcionamiento de los equipos.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-button" onclick="window.location.href='conser.html?tipo=remocion'">Retiro de equipos</button>
-                <div class="accordion-content">
-                    <p>Remoción de equipos no deseados o innecesarios.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <button class="accordion-button" onclick="window.location.href='conser.html?tipo=reparacion'">Reparación de equipos</button>
-                <div class="accordion-content">
-                    <p>Reparación de equipos de climatización.</p>
-                </div>
-            </div>
-        </div>
+        <ul>
+            <li>Instalación de equipos de climatización para residenciales, comercios y grandes industrias.</li>
+            <li>Mantenimiento preventivo para garantizar el buen funcionamiento de los equipos.</li>
+            <li>Retiro de equipos no deseados o innecesarios.</li>
+            <li>Reparación de equipos de climatización.</li>
+        </ul>
+        <!-- Botón para Crear una Solicitud -->
+        <button id="crearSolicitudBtn">Crear una solicitud</button>
     </section>
 
     <!-- Sección de información adicional -->
@@ -76,5 +55,19 @@
 
     <!-- Footer -->
     <div id="footer"></div>
+
+    <script>
+        // Verificar si el usuario está logueado al hacer clic en el botón "Crear una solicitud"
+        document.getElementById('crearSolicitudBtn').addEventListener('click', function() {
+            const token = localStorage.getItem('token'); // Cambia "token" si tienes otro indicador
+
+            if (!token) {
+                alert('Debes registrarte o iniciar sesión primero para crear una solicitud.');
+                window.location.href = 'login.html'; // Redirige a la página de inicio de sesión
+            } else {
+                window.location.href = 'conser.html'; // Redirige a la página de creación de solicitud si está logueado
+            }
+        });
+    </script>
 </body>
 </html>
