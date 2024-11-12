@@ -220,10 +220,11 @@ function enviarSolicitud(event) {
         .then(data => {
             console.log('Contenido JSON de la respuesta:', data); // Verificar el contenido JSON
     
-            if (data.message === 'Solicitud creada con éxito') {
-                alert('Solicitud creada con éxito. Revisa tu correo para la información de transferencia.');
+            if (data && data.redirectionUrl) {
+                alert(data.message); // Mostramos el mensaje completo del backend
                 window.location.href = data.redirectionUrl; // Redirige a la URL proporcionada
             } else {
+                console.error('Estructura inesperada de la respuesta:', data); // Registrar la respuesta completa si no coincide
                 alert(`Hubo un problema al crear la solicitud: ${data.details || 'Error desconocido'}`);
             }
         })
