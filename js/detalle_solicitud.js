@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <p><strong>Servicio:</strong> ${capitalizeWords(solicitudDetalle.TIPO_SOLICITUD)}</p>
             <p><strong>Fecha:</strong> ${new Date(solicitudDetalle.FECHA_SOLICITUD).toLocaleDateString()}</p>
             <p><strong>Dirección:</strong> ${capitalizeWords(solicitudDetalle.DIRECCION)}</p>
-            <p><strong>Comuna:</strong> ${capitalizeWords(solicitudDetalle.COMUNA || '')}</p>
-            <p><strong>Región:</strong> ${capitalizeWords(solicitudDetalle.REGION || '')}</p>
             <p><strong>RUT Usuario:</strong> ${solicitudDetalle.RUT_USUARIO}</p>
             <p><strong>Nombre:</strong> ${capitalizeWords(solicitudDetalle.NOMBRE)}</p>
             <p><strong>RUT/NIT:</strong> ${solicitudDetalle.RUT_NIT}</p>
