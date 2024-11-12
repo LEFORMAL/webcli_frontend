@@ -56,7 +56,7 @@
 
     <script src="js/login.js"></script>
     <script>
-        function cargarDatosPerfil() {
+        async function cargarDatosPerfil() {
             const usuario = JSON.parse(localStorage.getItem('usuario'));
 
             console.log("Datos de usuario cargados desde localStorage:", usuario); // Verificar datos en consola
@@ -100,10 +100,11 @@
 
             // Enviar datos al servidor
             try {
-                const response = await fetch('http://localhost:3000/actualizarPerfil', {
+                const response = await fetch('https://webclibackend-production.up.railway.app/actualizarPerfil', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('usuarioToken')
                     },
                     body: JSON.stringify({ email, nombres, apellidos, telefono, direccion, fecha_nacimiento }),
                 });
@@ -118,6 +119,8 @@
                     alert('Perfil actualizado exitosamente');
                     cargarDatosPerfil();  // Recargar datos actualizados
                 } else {
+                    const errorMsg = await response.text();
+                    console.error('Error al actualizar el perfil:', errorMsg);
                     alert('Hubo un problema al actualizar el perfil');
                 }
             } catch (error) {
