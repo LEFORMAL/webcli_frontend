@@ -34,7 +34,6 @@ window.onload = function() {
 };
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
-// Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {
     const loginButton = document.getElementById('loginButton');
     const registerButton = document.getElementById('registerButton');
