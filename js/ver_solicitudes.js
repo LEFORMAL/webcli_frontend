@@ -58,6 +58,7 @@ function buscarSolicitudes() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
     const cards = document.getElementsByClassName('solicitud-card');
+    let found = false; // Variable para controlar si encontramos alguna coincidencia
 
     for (let i = 0; i < cards.length; i++) {
         const card = cards[i];
@@ -65,11 +66,20 @@ function buscarSolicitudes() {
 
         if (solicitudId.includes(filter)) {
             card.style.display = ''; // Mostrar la tarjeta si el ID coincide
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a la coincidencia
-            break; // Detener la búsqueda después de encontrar la primera coincidencia
+            if (!found) {
+                // Solo desplázate a la primera coincidencia y luego marca como encontrado
+                card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                found = true;
+            }
         } else {
             card.style.display = 'none'; // Ocultar la tarjeta si no coincide
         }
     }
+
+    // Si no se encuentra ninguna coincidencia y el filtro no está vacío, mostrar un mensaje o realizar una acción
+    if (!found && filter) {
+        console.log("No se encontraron solicitudes con ese ID."); // Opcional: mensaje en consola
+    }
 }
+
 
