@@ -53,6 +53,7 @@ function capitalizeWords(str) {
     return str.replace(/\b\w/g, char => char.toUpperCase());
 }
 
+// Función para buscar solicitudes solo por ID
 function buscarSolicitudes() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toLowerCase();
@@ -60,13 +61,15 @@ function buscarSolicitudes() {
 
     for (let i = 0; i < cards.length; i++) {
         const card = cards[i];
-        const textContent = card.textContent || card.innerText;
-        if (textContent.toLowerCase().indexOf(filter) > -1) {
-            card.style.display = '';
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            break;
+        const solicitudId = card.querySelector('p strong').nextSibling.textContent.trim().toLowerCase();
+
+        if (solicitudId.includes(filter)) {
+            card.style.display = ''; // Mostrar la tarjeta si el ID coincide
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Desplazarse a la coincidencia
+            break; // Detener la búsqueda después de encontrar la primera coincidencia
         } else {
-            card.style.display = 'none';
+            card.style.display = 'none'; // Ocultar la tarjeta si no coincide
         }
     }
 }
+
