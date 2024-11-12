@@ -57,15 +57,15 @@
     <div id="footer"></div>
 
     <script>
-        // Verificar si el usuario está logueado al hacer clic en el botón "Crear una solicitud"
-        document.getElementById('crearSolicitudBtn').addEventListener('click', function() {
-    const token = localStorage.getItem('usuarioToken'); // Cambiado de "token" a "usuarioToken"
+       document.getElementById('crearSolicitudBtn').addEventListener('click', function() {
+    const token = localStorage.getItem('usuarioToken');
+    console.log('Token verificado:', token); // Agregar depuración
 
     if (!token) {
         alert('Debes registrarte o iniciar sesión primero para crear una solicitud.');
-        window.location.href = 'login.html'; // Redirige a la página de inicio de sesión
+        window.location.href = 'login.html';
     } else {
-        window.location.href = 'conser.html'; // Redirige a la página de creación de solicitud si está logueado
+        window.location.href = 'conser.html';
     }
 });
     </script>
