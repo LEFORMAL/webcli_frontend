@@ -192,6 +192,8 @@ function enviarSolicitud(event) {
         telefono: document.getElementById('telefono').value,
         email: document.getElementById('email').value,
         direccion: document.getElementById('direccion').value,
+        comuna: document.getElementById('comuna').value, 
+        region: document.getElementById('region').value, 
         cantidad: parseInt(document.getElementById('cantidad').value) || 1,
         marca: document.getElementById('marca').value,
         modelo: document.getElementById('modelo_producto').value,
