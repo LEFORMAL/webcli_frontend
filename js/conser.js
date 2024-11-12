@@ -213,9 +213,12 @@ function enviarSolicitud(event) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosFormulario)
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Respuesta completa del servidor:', response);
+            return response.json(); // Intentamos parsear el JSON de la respuesta
+        })
         .then(data => {
-            console.log('Respuesta del servidor (transferencia):', data);
+            console.log('Contenido JSON de la respuesta:', data); // Verificar el contenido JSON
     
             if (data.message === 'Solicitud creada con éxito') {
                 alert('Solicitud creada con éxito. Revisa tu correo para la información de transferencia.');
@@ -225,7 +228,7 @@ function enviarSolicitud(event) {
             }
         })
         .catch(error => {
-            console.error('Error al crear la solicitud:', error);
+            console.error('Error al procesar la solicitud:', error); // Error capturado
             alert('Ocurrió un error al procesar la solicitud. Inténtalo de nuevo.');
         });
     } else {
