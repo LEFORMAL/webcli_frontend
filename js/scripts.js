@@ -48,7 +48,7 @@ function loadSidebar() {
         if (usuario.user_tipo === 'admin') {
             sidebarHtml += `
                 <a href="admin_dashboard.html">Panel de Administración</a>
-                <a href="gestionar_usuarios.html">Gestionar Usuarios</a>
+                <a href="crea_user.html">Crear técnico o gestor</a>
             `;
         }
 
