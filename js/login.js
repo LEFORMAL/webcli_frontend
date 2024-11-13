@@ -33,19 +33,19 @@ async function loginUsuario(event) {
         if (response.ok) {
             const result = await response.json();
 
-            // Verificar que la dirección esté presente en los datos del usuario
-            console.log(result.usuario); // Añadir log para depuración
-
-            // Almacenar los datos del usuario en localStorage
+            // Almacenar los datos del usuario y el tipo en localStorage
             localStorage.setItem('usuario', JSON.stringify(result.usuario));
-
-            // Almacenar el token en localStorage
             localStorage.setItem('usuarioToken', result.token);
-            console.log('Token almacenado:', result.token);
+            localStorage.setItem('usuarioTipo', result.usuario.user_tipo); // Guarda el tipo de usuario
 
-            // Redirigir a la página de solicitudes
-            alert('Login exitoso');
-            window.location.href = 'index.html';
+            // Redirigir según el rol del usuario
+            if (result.usuario.user_tipo === 'admin') {
+                alert('Bienvenido, administrador.');
+                window.location.href = 'admin_dashboard.html'; // Vista para administradores
+            } else {
+                alert('Login exitoso');
+                window.location.href = 'index.html'; // Vista estándar para usuarios
+            }
         } else {
             intentosFallidos += 1;
             const errorMsg = await response.text();
@@ -66,12 +66,12 @@ async function loginUsuario(event) {
 
 // Función para cerrar sesión
 function logoutUsuario() {
-    console.log("Cerrando sesión..."); // Añadir log para depuración
     // Eliminar datos de usuario en localStorage y redirigir a la página principal
     localStorage.removeItem('usuario');
-    localStorage.removeItem('usuarioToken'); // Eliminar el token del localStorage
+    localStorage.removeItem('usuarioToken');
+    localStorage.removeItem('usuarioTipo'); // Eliminar el tipo de usuario
     alert('Sesión cerrada correctamente');
-    window.location.href = 'index.html'; // Redirige a la página principal después de cerrar sesión
+    window.location.href = 'index.html';
 }
 
 // Asignar el evento de submit al formulario de login
@@ -84,9 +84,22 @@ if (loginForm) {
 const logoutBtn = document.querySelector('#logoutBtn');
 if (logoutBtn) {
     logoutBtn.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita comportamiento por defecto
+        event.preventDefault();
         logoutUsuario();
     });
-} else {
-    console.error("No se encontró el botón de cerrar sesión con el ID 'logoutBtn'");
 }
+
+// Función para mostrar u ocultar elementos de la interfaz según el tipo de usuario
+function setupInterface() {
+    const usuarioTipo = localStorage.getItem('usuarioTipo');
+    if (usuarioTipo === 'admin') {
+        // Mostrar opciones específicas para el administrador
+        document.getElementById('adminOptions').style.display = 'block';
+    } else {
+        // Ocultar opciones específicas para el administrador
+        document.getElementById('adminOptions').style.display = 'none';
+    }
+}
+
+// Llamar a setupInterface al cargar la página para ajustar la interfaz según el rol
+document.addEventListener('DOMContentLoaded', setupInterface);
