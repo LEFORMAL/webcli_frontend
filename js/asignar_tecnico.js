@@ -59,27 +59,27 @@ async function cargarTecnicos() {
 }
 
 // Manejar el formulario de asignación en el modal
+// Manejar el formulario de asignación en el modal
 document.getElementById('assignTechnicianForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const solicitudId = document.getElementById('selectedSolicitud').value;
-    const tecnicoRut = document.getElementById('tecnico').value;
+    const tecnicoId = document.getElementById('tecnico').value;
     const fechaRealizacion = document.getElementById('fechaRealizacion').value;
-    const estado = document.getElementById('estado').value;
 
     try {
         const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
-            method: 'POST',
+            method: 'PUT',  // Cambiar a PUT
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ solicitudId, tecnicoRut, fechaRealizacion, estado })
+            body: JSON.stringify({ solicitudId, tecnicoId, fechaRealizacion })
         });
 
         if (response.ok) {
-            document.getElementById('message').textContent = 'Técnico asignado con éxito';
+            document.getElementById('message').textContent = 'Técnico asignado con éxito y fecha de realización actualizada';
             document.getElementById('assignTechnicianForm').reset();
-            closeModal();
+            closeModal();  // Asegúrate de que esta función esté definida para cerrar el modal
         } else {
             const errorText = await response.text();
             document.getElementById('message').textContent = `Error: ${errorText}`;
@@ -89,6 +89,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
         document.getElementById('message').textContent = 'Error al asignar técnico';
     }
 });
+
 
 // Funciones para abrir y cerrar el modal
 function openModal(solicitudId) {
