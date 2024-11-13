@@ -6,12 +6,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 // Función para cargar asignaciones del técnico
 async function cargarAsignaciones() {
     try {
-        // Obtener el nombre del técnico desde el objeto usuario almacenado en localStorage
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        const nombreTecnico = `${usuario.nombres} ${usuario.apellidos}`;
+        // Obtener el nombre del técnico desde el localStorage
+        const tecnico = JSON.parse(localStorage.getItem('usuario')).nombre;
 
-        const response = await fetch(`https://webclibackend-production.up.railway.app/api/mis_asignaciones?tecnicoAsignado=${encodeURIComponent(nombreTecnico)}`);
-
+        const response = await fetch(`https://webclibackend-production.up.railway.app/api/mis_asignaciones?nombre=${encodeURIComponent(tecnico)}`);
+        
         if (!response.ok) {
             throw new Error('Error al obtener las asignaciones');
         }
