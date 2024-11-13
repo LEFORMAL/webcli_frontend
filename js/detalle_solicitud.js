@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         detalleContainer.innerHTML = `
             <p><strong>ID:</strong> ${solicitudDetalle.ID_SOLICITUD}</p>
             <p><strong>Servicio:</strong> ${capitalizeWords(solicitudDetalle.TIPO_SOLICITUD)}</p>
-            <p><strong>Fecha:</strong> ${new Date(solicitudDetalle.FECHA_SOLICITUD).toLocaleDateString()}</p>
             <p><strong>Dirección:</strong> ${capitalizeWords(solicitudDetalle.DIRECCION)}</p>
             <p><strong>RUT Usuario:</strong> ${solicitudDetalle.RUT_USUARIO}</p>
             <p><strong>Nombre:</strong> ${capitalizeWords(solicitudDetalle.NOMBRE)}</p>
@@ -21,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <p><strong>Medio de Pago:</strong> ${capitalizeWords(solicitudDetalle.MEDIO_PAGO)}</p>
             <p><strong>Costo Total:</strong> ${solicitudDetalle.COSTO_TOTAL}</p>
             <p><strong>Fecha de Creación:</strong> ${new Date(solicitudDetalle.FECHA_CREACION).toLocaleString()}</p>
+            <p><strong>Estado de Solicitud:</strong> ${capitalizeWords(solicitudDetalle.ESTADO_SOLICITUD)}</p>
+            <p><strong>Técnico Asignado:</strong> ${capitalizeWords(solicitudDetalle.TECNICO_ASIGNADO || 'No asignado')}</p>
         `;
     } else {
         alert('No se encontraron detalles para esta solicitud.');
