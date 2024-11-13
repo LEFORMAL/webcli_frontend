@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Servicio - Panel de Administración</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza con un archivo CSS, si tienes uno -->
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Nuevo Servicio</h1>
+        
+        <form id="addServicioForm">
+            <label for="nombre">Nombre del Servicio:</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Instalación, Reparación">
+            
+            <button type="submit">Agregar Servicio</button>
+        </form>
+        
+        <div id="message"></div> <!-- Muestra mensajes de éxito o error -->
+    </div>
+
+    <!-- Enlazar el archivo JavaScript para manejar la lógica del formulario -->
+    <script src="add_service.js"></script>
+</body>
+</html>
