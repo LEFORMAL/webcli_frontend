@@ -1,599 +1,883 @@
 /* Estilos generales */
 body {
-  font-family: 'Arial', sans-serif;  /* Fuente de texto general */
-  margin: 0;  /* Elimina el margen por defecto */
-  padding: 0;  /* Elimina el relleno por defecto */
-  background-color: #f4f4f4;  /* Color de fondo gris claro */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 /* Header */
 header {
-  background-color: #00d6dd;  /* Fondo color amarillo */
-  text-align: center;  /* Alinea el contenido del encabezado al centro */
-  position: sticky;  /* Fija el encabezado en la parte superior al hacer scroll */
-  top: 0;  /* Mantiene el header en la parte superior de la ventana */
-  z-index: 100;  /* Asegura que el header esté sobre otros elementos */
+  background-color: #00d6dd;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 /* Navbar */
 nav {
-  display: flex;  /* Utiliza flexbox para la distribución de los elementos */
-  justify-content: center;  /* Centra horizontalmente los elementos del menú */
-  align-items: center;  /* Centra verticalmente los elementos */
-  background-color: #68c6f1;  /* Fondo del navbar en color amarillo */
-  padding: 10px 30px;  /* Espaciado interno en el navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #68c6f1;
+  padding: 10px 30px;
 }
 
 nav ul {
-  display: flex;  /* Flexbox para alinear los ítems del menú */
-  list-style: none;  /* Elimina los puntos de lista */
-  padding: 0;  /* Sin relleno en la lista */
-  margin: 0;  /* Sin márgenes */
-  align-items: center;  /* Alinea verticalmente los ítems del menú */
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
 nav ul li {
-  margin: 0 20px;  /* Espaciado horizontal entre los ítems del menú */
+  margin: 0 20px;
 }
 
 nav ul li a {
-  text-decoration: none;  /* Elimina el subrayado de los enlaces */
-  color: #000000;  /* Color azul oscuro para los enlaces */
-  font-weight: bold;  /* Los enlaces tienen un texto en negrita */
-}
-
-/* Ajustar el logo en el centro */
-nav .logo {
-  margin: 0 20px;  /* Añade espacio a los lados del logo */
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
 }
 
 header img.logo {
-  max-width: 150px;  /* Ajusta el tamaño máximo del logo */
-  border-radius: 10px;  /* Bordes redondeados en el logo */
-  padding: 5px;  /* Añade espaciado alrededor del logo */
-  background-color: white;  /* Fondo blanco detrás del logo */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Añade una sombra suave alrededor del logo */
+  max-width: 150px;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
 .centroweb {
-  display: flex;  /* Flexbox para organizar el contenido en dos partes */
-  justify-content: space-between;  /* Espaciado entre los elementos */
-  align-items: center;  /* Alinea verticalmente */
-  background-color: #ffffff;  /* Fondo blanco */
-  padding: 25px;  /* Espaciado interno */
-  padding-left: 100px;  /* Espaciado a la izquierda */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 25px;
 }
 
 .centroweb-content {
-  max-width: 50%;  /* El contenido ocupa el 50% del ancho */
+  max-width: 50%;
 }
 
 .centroweb h1 {
-  color: #003366;  /* Texto de color azul oscuro */
-  font-size: 2.5rem;  /* Tamaño grande del título */
+  color: #003366;
+  font-size: 2.5rem;
 }
 
 .centroweb p {
-  font-size: 1.2rem;  /* Tamaño del párrafo */
-  color: #333;  /* Color de texto gris oscuro */
+  font-size: 1.2rem;
+  color: #333;
 }
 
 .centroweb-image img {
-  width: 100%;  /* Ancho completo */
-  height: auto;  /* Altura automática */
-  max-width: 1300px;  /* Ancho máximo */
-  max-height: 500px;  /* Altura máxima */
+  width: 100%;
+  height: auto;
+  max-width: 1300px;
+  max-height: 500px;
 }
 
+/* Botón Primario */
 .btn-primary {
-  padding: 10px 20px;  /* Espaciado interno del botón */
-  background-color: #68c6f1;  /* Fondo azul oscuro */
-  color: rgb(0, 0, 0);  /* Texto en blanco */
-  text-decoration: none;  /* Sin subrayado */
-  border-radius: 5px;  /* Bordes redondeados */
+  padding: 10px 20px;
+  background-color: #68c6f1;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 /* Services Section */
 .services {
-  padding: 50px 20px;  /* Espaciado interno */
-  background-color: white;  /* Fondo blanco */
-  text-align: center;  /* Alineación central del texto */
+  padding: 50px 20px;
+  background-color: white;
+}
+
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Ajustes para header y navbar */
+  nav {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  header img.logo {
+    max-width: 120px; /* Ajusta el tamaño del logo */
+  }
+
+  /* Hero Section en Móvil */
+  .centroweb {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .centroweb-content {
+    max-width: 100%;
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+  }
+
+  .centroweb h1 {
+    font-size: 2rem; /* Reduce el tamaño del título */
+  }
+
+  .centroweb p {
+    font-size: 1rem; /* Reduce el tamaño del párrafo */
+  }
+
+  .centroweb-image img {
+    max-height: 300px; /* Limita la altura de la imagen */
+  }
+
+  /* Ajustes para Botón Primario */
+  .btn-primary {
+    padding: 8px 15px; /* Reduce el padding en pantallas móviles */
+    font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
+  }
+
+  /* Services Section */
+  .services {
+    padding: 30px 15px; /* Reduce el padding en pantallas móviles */
+  }
+}
+/* Services Section */
+.services {
+  padding: 50px 20px;
+  background-color: white;
+  text-align: center;
 }
 
 .services h2 {
-  color: #003366;  /* Color del texto en azul oscuro */
+  color: #003366;
 }
 
 .service-items {
-  display: flex;  /* Flexbox para alinear los elementos */
-  justify-content: space-around;  /* Espaciado alrededor de los elementos */
-  margin-top: 20px;  /* Espacio superior entre los servicios */
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 .service-item {
-  background-color: #ffcc33;  /* Fondo amarillo */
-  color: #003366;  /* Texto en azul oscuro */
-  padding: 20px;  /* Espaciado interno */
-  border-radius: 10px;  /* Bordes redondeados */
-  width: 30%;  /* Cada elemento ocupa el 30% del ancho */
+  background-color: #ffcc33;
+  color: #003366;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
 }
 
 /* Accordion (Sección de Servicios) */
 .servicios {
-  padding: 50px;  /* Espaciado interno */
-  background-color: #fff;  /* Fondo blanco */
+  padding: 50px;
+  background-color: #fff;
 }
 
 .servicios h2 {
-  text-align: center;  /* Alineación central del título */
-  color: #003366;  /* Color del texto en azul oscuro */
-  margin-bottom: 20px;  /* Margen inferior */
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
 }
 
 .accordion {
-  max-width: 700px;  /* Ancho máximo del acordeón */
-  margin: 0 auto;  /* Centra el acordeón */
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .accordion-item {
-  background-color: #f4f4f4;  /* Fondo gris claro */
-  border-bottom: 1px solid #ddd;  /* Línea de separación */
-  padding: 10px 20px;  /* Espaciado interno */
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
 }
 
 .accordion-button {
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
-  padding: 15px;  /* Espaciado interno */
-  border: none;  /* Sin borde */
-  text-align: left;  /* Texto alineado a la izquierda */
-  width: 100%;  /* El botón ocupa todo el ancho */
-  cursor: pointer;  /* El cursor cambia al estilo de puntero */
+  background-color: #003366;
+  color: white;
+  padding: 15px;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
 }
 
-.accordion-button.active, .accordion-button:hover {
-  background-color: #ffcc33;  /* Cambio de color al hacer hover o estar activo */
-  color: #003366;  /* Texto en azul oscuro */
+.accordion-button.active,
+.accordion-button:hover {
+  background-color: #ffcc33;
+  color: #003366;
 }
 
 .accordion-content {
-  max-height: 0;  /* Altura inicial colapsada */
-  overflow: hidden;  /* Oculta el contenido que no cabe en el espacio disponible */
-  transition: max-height 0.4s ease;  /* Transición suave para expandir el acordeón */
-  padding: 0 15px;  /* Espaciado interno */
-  color: #333;  /* Color del texto en gris oscuro */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 15px;
+  color: #333;
 }
 
 .accordion-content p {
-  margin: 0;  /* Sin márgenes */
-  padding: 10px 0;  /* Espaciado interno en los párrafos */
+  margin: 0;
+  padding: 10px 0;
 }
 
-/* Estilos del footer adaptado */
-/* El footer siempre estará fijo en la parte inferior de la pantalla */
+/* Footer */
 footer {
-  position: fixed;  /* Fija el footer en la parte inferior de la pantalla */
-  bottom: 0;  /* Se asegura de que esté en el borde inferior */
-  left: 0;  /* Se asegura de que esté alineado a la izquierda */
-  width: 100%;  /* El footer ocupa todo el ancho de la pantalla */
-  background-color: #ffa033;  /* Fondo azul oscuro */
-  color: rgb(5, 4, 4);  /* Texto en blanco */
-  text-align: center;  /* Texto alineado en el centro */
-  padding: 10px;  /* Reduce el espaciado interno */
-  height: 100px;  /* Altura del footer */
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);  /* Sombra sutil en la parte superior del footer */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffa033;
+  color: rgb(5, 4, 4);
+  text-align: center;
+  padding: 10px;
+  height: 100px;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer .container {
-  display: flex;  /* Flexbox para organizar el contenido */
-  justify-content: space-between;  /* Espacio entre los elementos */
-  align-items: center;  /* Alineación vertical */
-  flex-wrap: wrap;  /* Permite que los elementos se ajusten si es necesario */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 footer .row {
-  display: flex;  /* Flexbox para organizar el contenido */
-  justify-content: space-between;  /* Espacio entre los elementos */
-  align-items: center;  /* Alineación vertical */
-  width: 100%;  /* Ocupa todo el ancho disponible */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-footer .col-3, .col-6 {
-  padding: 10px;  /* Espaciado interno en las columnas */
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Sección de Servicios en Móvil */
+  .service-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  /* Acordeón */
+  .accordion {
+    max-width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
+  }
+
+  .accordion-button {
+    padding: 12px; /* Reduce el padding en móvil */
+    font-size: 1rem; /* Ajusta el tamaño de fuente */
+  }
+
+  .accordion-content {
+    padding: 10px; /* Aumenta el padding para legibilidad */
+  }
+
+  /* Footer en Móvil */
+  footer {
+    position: relative;
+    height: auto;
+    padding: 20px;
+  }
+
+  footer .container,
+  footer .row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+/* Footer */
+footer .col-3, footer .col-6 {
+  padding: 10px;
 }
 
 footer .footer-title {
-  font-size: 0.8rem;  /* Tamaño pequeño del título en el footer */
-  margin-bottom: 10px;  /* Margen inferior */
+  font-size: 0.8rem;
+  margin-bottom: 10px;
 }
 
 footer .instagram-photos img {
-  width: 40px;  /* Ancho de las imágenes de redes sociales */
-  height: 40px;  /* Altura de las imágenes de redes sociales */
-  border-radius: 50%;  /* Bordes redondeados */
-  padding: 5px;  /* Espaciado interno */
-  background-color: white;  /* Fondo blanco detrás de las imágenes */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);  /* Sombra suave alrededor de las imágenes */
-  transition: transform 0.3s ease;  /* Transición suave al hacer hover */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 footer .instagram-photos img:hover {
-  transform: scale(1.1);  /* Aumenta el tamaño de las imágenes al hacer hover */
+  transform: scale(1.1);
 }
 
 footer .m-0 {
-  margin: 0;  /* Sin márgenes */
+  margin: 0;
 }
 
 footer .letrachica {
-  font-size: 0.8rem;  /* Tamaño pequeño del texto en el footer */
+  font-size: 0.8rem;
 }
 
 footer .footer-link {
-  color: #003366;  /* Color amarillo para los enlaces */
-  text-decoration: none;  /* Sin subrayado en los enlaces */
+  color: #003366;
+  text-decoration: none;
 }
 
 footer .footer-link:hover {
-  text-decoration: underline;  /* Subraya los enlaces al hacer hover */
+  text-decoration: underline;
 }
 
 /* Sección de Información adicional */
 .informacion {
-  display: flex;  /* Usar Flexbox para organizar el contenido */
-  justify-content: center;  /* Centrar el contenido horizontalmente */
-  align-items: top;  /* Centrar el contenido verticalmente */
-  background-color: #ffffff;  /* Fondo blanco */
-  font-size: 1.5em;  /* Tamaño de fuente más grande para el texto */
-  text-align: center;  /* Alinear el texto en el centro */
-  padding-bottom: 150px;  /* Espaciado alrededor del contenido */
-  margin-bottom: 10px;  /* Espacio moderado en la parte inferior */
-  position: relative;  /* Posicionar elementos dentro de esta clase */
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: #ffffff;
+  font-size: 1.5em;
+  text-align: center;
+  padding-bottom: 150px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
-/* Mantiene el resto del estilo igual */
 .info-content h3 {
-  color: #003366;  /* Títulos en azul oscuro */
+  color: #003366;
 }
 
 .info-content ul {
-  list-style: none;  /* Sin puntos en la lista */
-  padding: 0;  /* Sin relleno */
-  color: #333;  /* Texto en gris oscuro */
+  list-style: none;
+  padding: 0;
+  color: #333;
 }
 
 .info-image {
   position: absolute;
-  right: 20px;  /* Espacio desde el borde derecho */
+  right: 20px;
 }
 
 .info-image img {
-  max-width: 100%;  /* Ancho máximo de la imagen */
-  height: 175px;  /* Altura fija de la imagen */
-  padding-top: 10px;  /* Espaciado superior */
+  max-width: 100%;
+  height: 175px;
+  padding-top: 10px;
 }
 
-
-
+/* Nosotros Section */
 .nosotros {
-  display: flex;  /* Flexbox para alinear el contenido */
-  justify-content: space-between;  /* Espaciado entre los elementos */
-  align-items: center;  /* Alineación vertical */
-  background-color: #ffffff;  /* Fondo blanco */
-  padding: 100px;  /* Espaciado interno */
-  padding-left: 100px;  /* Espaciado a la izquierda */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 100px;
+  padding-left: 100px;
 }
 
 .nosotros-content {
-  max-width: 50%;  /* El contenido ocupa el 50% del ancho */
+  max-width: 50%;
 }
 
 .nosotros h1 {
-  color: #003366;  /* Títulos en azul oscuro */
-  font-size: 3.5rem;  /* Tamaño grande del título */
+  color: #003366;
+  font-size: 3.5rem;
 }
 
 .nosotros p {
-  font-size: 1.5rem;  /* Tamaño grande del párrafo */
-  color: #333;  /* Color de texto gris oscuro */
+  font-size: 1.5rem;
+  color: #333;
 }
 
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Footer en Móvil */
+  footer .col-3, footer .col-6 {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+  }
+
+  footer .instagram-photos img {
+    width: 30px;
+    height: 30px;
+  }
+
+  footer .footer-title,
+  footer .letrachica {
+    font-size: 0.7rem;
+  }
+
+  /* Información Adicional en Móvil */
+  .informacion {
+    display: block;
+    padding: 50px 10px;
+    font-size: 1rem;
+  }
+
+  .info-image {
+    position: static; /* Posicionamiento normal en pantallas pequeñas */
+    margin: 10px auto; /* Centra la imagen */
+  }
+
+  /* Nosotros Section en Móvil */
+  .nosotros {
+    display: block;
+    padding: 50px 10px;
+  }
+
+  .nosotros h1 {
+    font-size: 2rem;
+  }
+
+  .nosotros p {
+    font-size: 1rem;
+  }
+
+  .nosotros-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ajustes adicionales para pantallas muy pequeñas */
+  .informacion {
+    padding: 30px 5px;
+    font-size: 0.9rem;
+  }
+
+  footer .footer-title {
+    font-size: 0.6rem;
+  }
+
+  footer .letrachica {
+    font-size: 0.6rem;
+  }
+
+  .nosotros h1 {
+    font-size: 1.8rem;
+  }
+
+  .nosotros p {
+    font-size: 0.9rem;
+  }
+}
+/* Imagen en Nosotros */
 .nosotros-image img {
-  width: 100%;  /* Ancho completo */
-  height: auto;  /* Altura automática */
-  max-height: 500px;  /* Altura máxima */
-  border-radius: 25px;  /* Bordes redondeados */
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 25px;
 }
 
-/* Estilos para el botón de usuario (Iniciar sesión) */
+/* Botón de Usuario (Iniciar sesión) */
 .user-button {
-  position: absolute;  /* Posicionamiento absoluto para ubicar el botón */
-  right: 20px;  /* El botón está alineado a la derecha */
-  top: 20px;  /* El botón está en la parte superior */
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
-  border: none;  /* Sin borde */
-  padding: 10px 20px;  /* Espaciado interno */
-  border-radius: 5px;  /* Bordes redondeados */
-  font-size: 16px;  /* Tamaño del texto */
-  cursor: pointer;  /* El cursor cambia al estilo de puntero */
-  display: flex;  /* Flexbox para alinear el contenido */
-  align-items: center;  /* Alineación vertical */
-  width: 180px;  /* Ancho fijo */
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* Transiciones para hover */
-  z-index: 1000;  /* Eleva el botón sobre otros elementos */
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 180px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
 }
 
 .user-button i {
-  margin-right: 10px;  /* Espaciado a la derecha del icono */
-  font-size: 20px;  /* Tamaño del icono */
+  margin-right: 10px;
+  font-size: 20px;
 }
 
-/* Estilos para el botón de registrarse */
+/* Botón de Registro */
 .register-button {
-  position: absolute;  /* Posicionamiento absoluto para ubicar el botón */
-  right: 20px;  /* El botón está alineado a la derecha */
-  top: 70px;  /* El botón está debajo del botón de iniciar sesión */
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
-  border: none;  /* Sin borde */
-  padding: 10px 20px;  /* Espaciado interno */
-  border-radius: 5px;  /* Bordes redondeados */
-  font-size: 16px;  /* Tamaño del texto */
-  cursor: pointer;  /* El cursor cambia al estilo de puntero */
-  display: flex;  /* Flexbox para alinear el contenido */
-  align-items: center;  /* Alineación vertical */
-  width: 180px;  /* Ancho fijo */
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* Transiciones para hover */
-  z-index: 1000;  /* Eleva el botón sobre otros elementos */
+  position: absolute;
+  right: 20px;
+  top: 70px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 180px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
 }
 
 .register-button i {
-  margin-right: 10px;  /* Espaciado a la derecha del icono */
-  font-size: 20px;  /* Tamaño del icono */
+  margin-right: 10px;
+  font-size: 20px;
 }
 
 /* Hover para ambos botones */
 .user-button:hover, .register-button:hover {
-  transform: scale(1.05);  /* Aumenta el tamaño del botón al hacer hover */
+  transform: scale(1.05);
 }
 
 .user-button:hover {
-  background-color: #005599;  /* Fondo azul más claro al hacer hover */
+  background-color: #005599;
 }
 
 .register-button:hover {
-  background-color: #1C569B;  /* Fondo azul más claro al hacer hover */
+  background-color: #1C569B;
 }
-
-/* Estilos adicionales para formularios de login, contacto y registro */
 
 /* Sección de Login */
 .login-section {
-  padding: 50px 20px;  /* Espaciado interno */
-  background-color: #f4f4f4;  /* Fondo gris claro */
-  text-align: center;  /* Alineación central del contenido */
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
 }
 
 .login-container {
-  max-width: 600px;  /* Ancho máximo del contenedor de login */
-  margin: 0 auto;  /* Centra el contenedor de login */
-  background-color: white;  /* Fondo blanco */
-  padding: 40px;  /* Espaciado interno */
-  border-radius: 10px;  /* Bordes redondeados */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);  /* Sombra suave */
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .login-title h1 {
-  color: #003366;  /* Título en azul oscuro */
-  font-size: 3rem;  /* Tamaño del título */
-  margin-bottom: 40px;  /* Margen inferior */
+  color: #003366;
+  font-size: 3rem;
+  margin-bottom: 40px;
 }
 
 .login-form {
-  width: 100%;  /* Formulario ocupa todo el ancho */
-  text-align: left;  /* Alineación izquierda del formulario */
+  width: 100%;
+  text-align: left;
 }
 
 .login-form h3 {
-  font-size: 1.5rem;  /* Tamaño del subtítulo */
-  color: #003366;  /* Color del subtítulo */
-  margin-bottom: 20px;  /* Margen inferior */
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 20px;
 }
 
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Imagen en Nosotros en Móvil */
+  .nosotros-image img {
+    max-height: 300px;
+  }
+
+  /* Botones de Usuario y Registro en Móvil */
+  .user-button,
+  .register-button {
+    width: 150px;
+    padding: 8px 15px;
+    font-size: 14px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .register-button {
+    top: 50px;
+  }
+
+  /* Login en Móvil */
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-title h1 {
+    font-size: 2rem;
+  }
+
+  .login-form h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Botones en pantallas muy pequeñas */
+  .user-button,
+  .register-button {
+    width: 130px;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* Formulario de Login en pantallas muy pequeñas */
+  .login-container {
+    padding: 15px;
+  }
+
+  .login-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .login-form h3 {
+    font-size: 1rem;
+  }
+}
+/* Estilos del formulario de Login */
 .login-form input {
-  width: 100%;  /* Los campos de entrada ocupan todo el ancho */
-  padding: 12px;  /* Espaciado interno */
-  margin-bottom: 20px;  /* Margen inferior */
-  border: 1px solid #ccc;  /* Borde gris claro */
-  border-radius: 5px;  /* Bordes redondeados */
-  font-size: 1rem;  /* Tamaño del texto */
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .login-remember {
-  display: flex;  /* Flexbox para alinear los elementos */
-  align-items: center;  /* Alinea verticalmente el checkbox y el texto */
-  justify-content: flex-start;  /* Alinea a la izquierda */
-  margin-bottom: 10px;  /* Margen inferior */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .login-remember input {
-  margin-right: 10px;  /* Espaciado a la derecha del checkbox */
+  margin-right: 10px;
 }
 
 .forgot-password {
-  color: #003366;  /* Enlace de "Olvidé mi contraseña" en azul oscuro */
-  text-decoration: none;  /* Sin subrayado en el enlace */
-  font-size: 0.9rem;  /* Tamaño del texto */
-  margin-bottom: 20px;  /* Margen inferior */
-  display: inline-block;  /* Se comporta como un bloque en línea */
+  color: #003366;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .forgot-password:hover {
-  text-decoration: underline;  /* Subraya el enlace al hacer hover */
+  text-decoration: underline;
 }
 
 .login-form button {
-  background-color: #003366;  /* Fondo azul oscuro */
-  color: white;  /* Texto en blanco */
-  border: none;  /* Sin borde */
-  padding: 12px 20px;  /* Espaciado interno */
-  font-size: 1rem;  /* Tamaño del texto */
-  cursor: pointer;  /* El cursor cambia al estilo de puntero */
-  border-radius: 5px;  /* Bordes redondeados */
-  transition: background-color 0.3s ease;  /* Transición suave al hacer hover */
-  width: 100%;  /* El botón ocupa todo el ancho */
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .login-form button:hover {
-  background-color: #002244;  /* Fondo más oscuro al hacer hover */
+  background-color: #002244;
 }
+
 /* Sección de Registro */
 .register-section {
-  padding: 50px 20px;  /* Espaciado interno */
-  background-color: #f4f4f4;  /* Fondo gris claro */
-  text-align: center;  /* Alineación central */
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
 }
-/* Contenedor del formulario de registro */
+
 .register-container {
-  max-width: 900px; /* Ancho máximo del contenedor */
-  margin: 0 auto; /* Centra el contenedor */
-  background-color: white; /* Fondo blanco para el contenedor */
-  padding: 40px; /* Espaciado interno de 40px alrededor */
-  padding-bottom: 150px; /* Espaciado inferior mayor de 150px */
-  border-radius: 10px; /* Bordes redondeados de 10px */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil alrededor del contenedor */
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px;
+  padding-bottom: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Título del formulario de registro */
 .register-title h1 {
-  color: #003366; /* Color azul oscuro para el título */
-  font-size: 3rem; /* Tamaño grande del título (3 rem) */
-  margin-bottom: 40px; /* Margen inferior de 40px */
+  color: #003366;
+  font-size: 3rem;
+  margin-bottom: 40px;
 }
 
-/* Estilos generales para el formulario de registro */
 .register-form {
-  width: 100%; /* El formulario ocupa el 100% del ancho disponible */
-  text-align: left; /* Alineación del texto a la izquierda */
+  width: 100%;
+  text-align: left;
 }
 
-/* Estilos para los subtítulos dentro del formulario de registro */
 .register-form h3 {
-  font-size: 1.5rem; /* Tamaño de letra del subtítulo (1.5 rem) */
-  color: #003366; /* Color azul oscuro para los subtítulos */
-  margin-bottom: 20px; /* Margen inferior de 20px */
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 20px;
 }
 
-/* Estilos generales para los campos de entrada y select */
 .register-form input,
 .register-form select {
-  width: 100%; /* Los inputs ocupan el 100% del ancho disponible */
-  padding: 12px; /* Espaciado interno de 12px */
-  margin-bottom: 20px; /* Margen inferior de 20px */
-  border: 1px solid #ccc; /* Borde gris claro de 1px */
-  border-radius: 5px; /* Bordes redondeados de 5px */
-  font-size: 1rem; /* Tamaño de la letra dentro del input */
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-/* Ajuste específico para campos de fecha */
 .register-form input[type="date"] {
-  padding: 10px; /* Espaciado interno específico de 10px para los campos de fecha */
+  padding: 10px;
 }
 
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Formulario de Login en Móvil */
+  .login-form input,
+  .login-form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .forgot-password {
+    font-size: 0.8rem;
+  }
+
+  /* Sección de Registro en Móvil */
+  .register-section {
+    padding: 30px 15px;
+  }
+
+  .register-container {
+    padding: 20px;
+    padding-bottom: 100px;
+  }
+
+  .register-title h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .register-form h3 {
+    font-size: 1.3rem;
+  }
+
+  .register-form input,
+  .register-form select {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Formulario de Login en pantallas muy pequeñas */
+  .login-form input,
+  .login-form button {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .forgot-password {
+    font-size: 0.75rem;
+  }
+
+  /* Registro en pantallas muy pequeñas */
+  .register-container {
+    padding: 15px;
+    padding-bottom: 80px;
+  }
+
+  .register-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .register-form h3 {
+    font-size: 1.1rem;
+  }
+
+  .register-form input,
+  .register-form select {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
 /* Estilos para el botón de envío del formulario de registro */
 .register-form button {
-  background-color: #003366; /* Fondo azul oscuro */
-  color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  padding: 12px 20px; /* Espaciado interno de 12px arriba y abajo, 20px a los lados */
-  font-size: 1rem; /* Tamaño del texto en el botón */
-  cursor: pointer; /* Muestra el puntero de mano al pasar sobre el botón */
-  border-radius: 5px; /* Bordes redondeados de 5px */
-  transition: background-color 0.3s ease; /* Transición suave al hacer hover */
-  width: 100%; /* El botón ocupa el 100% del ancho disponible */
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
-/* Efecto hover para el botón de envío */
 .register-form button:hover {
-  background-color: #002244; /* Cambia el color de fondo a un azul más oscuro al hacer hover */
+  background-color: #002244;
 }
 
 /* Sección para el formulario de solicitud de servicio */
 .service-request-section {
-  padding: 50px 20px; /* Espaciado interno de 50px arriba/abajo y 20px a los lados */
-  background-color: #f4f4f4; /* Fondo gris claro */
-  text-align: center; /* Alineación central del texto */
-  
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
 }
 
-/* Contenedor del formulario de solicitud de servicio */
 .service-request-container {
-  max-width: 900px; /* Ancho máximo de 900px */
-  margin: 0 auto; /* Centra el contenedor */
-  background-color: white; /* Fondo blanco */
-  padding: 40px; /* Espaciado interno de 40px */
-  border-radius: 10px; /* Bordes redondeados de 10px */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil alrededor del contenedor */
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el título del formulario de solicitud de servicio */
 .service-request-title h1 {
-  color: #003366; /* Color azul oscuro */
-  font-size: 3rem; /* Tamaño grande del título */
-  margin-bottom: 40px; /* Margen inferior de 40px */
+  color: #003366;
+  font-size: 3rem;
+  margin-bottom: 40px;
 }
 
-/* Estilos generales del formulario de solicitud de servicio */
 .service-request-form {
-  width: 100%; /* El formulario ocupa el 100% del ancho disponible */
-  text-align: left; /* Alineación izquierda del texto */
+  width: 100%;
+  text-align: left;
 }
 
-/* Estilos para los subtítulos dentro del formulario de solicitud de servicio */
 .service-request-form h3 {
-  font-size: 1.5rem; /* Tamaño de letra del subtítulo (1.5 rem) */
-  color: #003366; /* Color azul oscuro */
-  margin-bottom: 20px; /* Margen inferior de 20px */
+  font-size: 1.5rem;
+  color: #003366;
+  margin-bottom: 20px;
 }
 
-/* Estilos generales para los campos de entrada, select y textarea */
 .service-request-form input,
 .service-request-form select,
 .service-request-form textarea {
-  width: 100%; /* Los campos ocupan el 100% del ancho disponible */
-  padding: 12px; /* Espaciado interno de 12px */
-  margin-bottom: 20px; /* Margen inferior de 20px */
-  border: 1px solid #ccc; /* Borde gris claro de 1px */
-  border-radius: 5px; /* Bordes redondeados de 5px */
-  font-size: 1rem; /* Tamaño de letra dentro de los campos */
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
-/* Estilos para el textarea (campo de texto de varias líneas) */
 .service-request-form textarea {
-  resize: none; /* Desactiva la capacidad de redimensionar el textarea */
+  resize: none;
 }
 
-/* Estilos para el botón de envío del formulario de solicitud de servicio */
 .service-request-form button {
-  background-color: #003366; /* Fondo azul oscuro */
-  color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  padding: 12px 20px; /* Espaciado interno de 12px arriba/abajo, 20px a los lados */
-  font-size: 1rem; /* Tamaño de letra */
-  cursor: pointer; /* Muestra el puntero de mano al pasar sobre el botón */
-  border-radius: 5px; /* Bordes redondeados de 5px */
-  transition: background-color 0.3s ease; /* Transición suave al hacer hover */
-  width: 100%; /* El botón ocupa el 100% del ancho disponible */
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
-/* Efecto hover para el botón de envío */
 .service-request-form button:hover {
-  background-color: #002244; /* Cambia el fondo a un azul más oscuro al hacer hover */
+  background-color: #002244;
 }
-/* Estilos para la sección de restablecimiento de contraseña */
-.reset-password-section, .reset-password-container {
+
+/* Sección de Restablecimiento de Contraseña */
+.reset-password-section,
+.reset-password-container {
   text-align: center;
 }
 
@@ -606,19 +890,110 @@ footer .footer-link:hover {
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Títulos y textos */
 .reset-password-container h1 {
   color: #003366;
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Botón de registro en móvil */
+  .register-form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Formulario de solicitud de servicio en móvil */
+  .service-request-section {
+    padding: 30px 15px;
+  }
+
+  .service-request-container {
+    padding: 20px;
+  }
+
+  .service-request-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .service-request-form h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-request-form input,
+  .service-request-form select,
+  .service-request-form textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .service-request-form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Restablecimiento de contraseña en móvil */
+  .reset-password-container {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .reset-password-container h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Botón de registro en pantallas muy pequeñas */
+  .register-form button {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Formulario de solicitud de servicio en pantallas muy pequeñas */
+  .service-request-container {
+    padding: 15px;
+  }
+
+  .service-request-title h1 {
+    font-size: 2rem;
+  }
+
+  .service-request-form h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-request-form input,
+  .service-request-form select,
+  .service-request-form textarea {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .service-request-form button {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  /* Restablecimiento de contraseña en pantallas muy pequeñas */
+  .reset-password-container {
+    padding: 15px;
+    max-width: 85%;
+  }
+
+  .reset-password-container h1 {
+    font-size: 1.5rem;
+  }
+}
+/* Párrafo en el formulario de restablecimiento de contraseña */
 .reset-password-container p {
   color: #333;
   font-size: 1rem;
 }
 
-/* Formularios */
+/* Formularios de restablecimiento de contraseña */
 .reset-password-container form {
   display: flex;
   flex-direction: column;
@@ -665,119 +1040,202 @@ footer .footer-link:hover {
 
 .button-separator {
   display: inline-block;
-  width: 1px; /* Ancho del separador */
-  height: 30px; /* Altura del separador */
-  background-color: #ccc; /* Color del separador */
-  margin: 0 10px; /* Espacio alrededor del separador */
+  width: 1px;
+  height: 30px;
+  background-color: #ccc;
+  margin: 0 10px;
   vertical-align: middle;
 }
-/* Estilos mejorados para las tarjetas de solicitudes con separadores */
+
+/* Estilos para las tarjetas de solicitudes */
 .solicitudes-section {
   padding: 50px 20px;
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: #ffffff;
   text-align: center;
 }
 
 .solicitudes-container {
-  max-width: 1000px; /* Ancho máximo del contenedor */
+  max-width: 1000px;
   margin: 0 auto;
-  background-color: #f9f9f9; /* Fondo gris claro */
+  background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-input {
-  width: calc(100% - 40px); /* Ajustar el ancho para que coincida con el contenedor */
+  width: calc(100% - 40px);
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   margin-left: auto;
   margin-right: auto;
-  display: block; /* Centrar el campo de búsqueda */
+  display: block;
 }
 
 .solicitud-card {
-  background-color: #ffffff; /* Fondo blanco */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 10px; /* Bordes redondeados */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   padding: 20px;
-  margin-bottom: 20px; /* Espaciado inferior */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
 
 .solicitud-card p {
-  margin: 10px 0; /* Margen superior e inferior */
-  color: #333; /* Texto gris oscuro */
-  border-bottom: 1px solid #ddd; /* Línea divisoria */
-  padding-bottom: 10px; /* Espaciado inferior */
+  margin: 10px 0;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
 }
 
 .solicitud-card p:last-child {
-  border-bottom: none; /* Sin línea divisoria en el último elemento */
+  border-bottom: none;
 }
 
 .solicitud-card p strong {
-  color: #003366; /* Texto azul oscuro */
+  color: #003366;
 }
-/* Estilos para la sección de contacto */
+
+/* ----- Responsividad ----- */
+@media (max-width: 768px) {
+  /* Restablecimiento de contraseña en móvil */
+  .reset-password-container form input[type="email"],
+  .reset-password-container form input[type="password"] {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .reset-password-container form button.btn-primary {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Ajustes para la sección de solicitudes */
+  .solicitudes-section {
+    padding: 30px 15px;
+  }
+
+  .solicitudes-container {
+    padding: 15px;
+  }
+
+  .search-input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* Tarjetas de solicitudes en móvil */
+  .solicitud-card {
+    padding: 15px;
+  }
+
+  .solicitud-card p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    padding-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Restablecimiento de contraseña en pantallas muy pequeñas */
+  .reset-password-container form input[type="email"],
+  .reset-password-container form input[type="password"] {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .reset-password-container form button.btn-primary {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Ajustes para la sección de solicitudes en pantallas muy pequeñas */
+  .solicitudes-section {
+    padding: 20px 10px;
+  }
+
+  .solicitudes-container {
+    padding: 10px;
+  }
+
+  .search-input {
+    width: calc(100% - 10px);
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  /* Tarjetas de solicitudes en pantallas muy pequeñas */
+  .solicitud-card {
+    padding: 10px;
+  }
+
+  .solicitud-card p {
+    margin: 6px 0;
+    font-size: 0.8rem;
+    padding-bottom: 6px;
+  }
+}
+/* Sección de Contacto */
 .contact-section {
   padding: 50px 20px;
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: #ffffff;
   text-align: left;
 }
 
 .contact-container {
   display: flex;
   justify-content: space-between;
-  max-width: 1000px; /* Ancho máximo del contenedor */
+  max-width: 1000px;
   margin: 0 auto;
-  background-color: #f9f9f9; /* Fondo gris claro */
+  background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-info {
-  width: 65%; /* Dos tercios del ancho */
+  width: 65%;
 }
 
 .contact-info h1 {
-  color: #003366; /* Texto azul oscuro */
+  color: #003366;
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
 
 .contact-info p {
-  margin: 10px 0; /* Margen superior e inferior */
-  color: #333; /* Texto gris oscuro */
+  margin: 10px 0;
+  color: #333;
 }
 
 .contact-info h3, .contact-info h4 {
-  color: #003366; /* Texto azul oscuro */
+  color: #003366;
   margin-top: 20px;
 }
 
 .contact-info p strong {
-  color: #003366; /* Texto azul oscuro */
+  color: #003366;
 }
 
+/* Tarjeta Social */
 .social-card {
-  width: 30%; /* Un tercio del ancho */
-  background-color: #ffffff; /* Fondo blanco */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 10px; /* Bordes redondeados */
+  width: 30%;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .social-card h3 {
-  color: #003366; /* Texto azul oscuro */
+  color: #003366;
   margin-bottom: 20px;
 }
 
@@ -786,10 +1244,10 @@ footer .footer-link:hover {
   width: 92%;
   padding: 10px;
   margin: 10px 0;
-  background-color: #003366; /* Fondo azul oscuro */
-  color: #ffffff; /* Texto blanco */
+  background-color: #003366;
+  color: #ffffff;
   text-align: center;
-  border-radius: 5px; /* Bordes redondeados */
+  border-radius: 5px;
   text-decoration: none;
   font-size: 1.2rem;
 }
@@ -799,8 +1257,9 @@ footer .footer-link:hover {
 }
 
 .social-button:hover {
-  background-color: #00509e; /* Fondo azul más claro al pasar el cursor */
+  background-color: #00509e;
 }
+
 /* Estilos para la página de redirección móvil */
 body, html {
   height: 100%;
@@ -808,304 +1267,152 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
-.mobile-redirect-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-  color: #ffffff;
-  position: relative;
-  z-index: 1; /* Asegura que el contenido esté delante de la imagen de fondo */
-}
-
-.mobile-redirect-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
-  z-index: -1; /* Coloca el fondo detrás del contenido */
-}
-
-.mobile-redirect-container h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.mobile-redirect-container p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.download-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  color: #003366;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.download-button:hover {
-  background-color: #003366;
-  color: #ffffff;
-}
-
-/*-------responsive---------*/
-/* Media Queries para hacer la página responsive */
-
-/* Estilos generales para dispositivos móviles */
+/* ----- Responsividad ----- */
 @media (max-width: 768px) {
-  body {
-    font-size: 14px; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para el header */
-  header {
-    padding: 10px;
-  }
-
-  /* Ajustes para el navbar */
-  nav {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    padding: 10px;
-  }
-
-  nav ul {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    align-items: center; /* Centra los ítems del menú */
-  }
-
-  nav ul li {
-    margin: 10px 0; /* Espaciado vertical entre los ítems del menú */
-  }
-
-  nav .logo {
-    margin: 20px 0; /* Espaciado vertical para el logo */
-  }
-
-  /* Ajustes para la sección de contacto */
+  /* Ajustes en la sección de contacto en tabletas */
   .contact-container {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    padding: 20px;
-  }
-
-  .contact-info, .social-card {
-    width: 100%; /* Ocupa todo el ancho */
-    margin-bottom: 20px; /* Espaciado inferior */
-  }
-
-  /* Ajustes para las tarjetas de solicitudes */
-  .solicitudes-container {
-    padding: 20px;
-  }
-
-  .solicitud-card {
+    flex-direction: column; /* Cambiar a disposición en columna */
     padding: 15px;
   }
 
-  /* Ajustes para el campo de búsqueda */
-  .search-input {
-    width: calc(100% - 20px); /* Ajustar el ancho para que coincida con el contenedor */
-  }
-
-  /* Ajustes para la sección de servicios */
-  .service-items {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-  }
-
-  .service-item {
-    width: 100%; /* Ocupa todo el ancho */
-    margin-bottom: 20px; /* Espaciado inferior */
-  }
-
-  /* Ajustes para el footer */
-  footer {
-    position: relative; /* Cambia la posición a relativa */
-    height: auto; /* Ajusta la altura automáticamente */
-    padding: 20px;
-  }
-
-  footer .container {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    align-items: center; /* Centra los ítems del footer */
-  }
-
-  footer .row {
-    flex-direction: column; /* Cambia la dirección del flex a columna */
-    align-items: center; /* Centra los ítems del footer */
-  }
-
-  footer .col-3, footer .col-6 {
-    width: 100%; /* Ocupa todo el ancho */
-    text-align: center; /* Alineación central del texto */
-    margin-bottom: 20px; /* Espaciado inferior */
-  }
-
-  /* Ajustes para la sección de login */
-  .login-container {
-    padding: 20px;
-  }
-
-  .login-title h1 {
-    font-size: 2rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de registro */
-  .register-container {
-    padding: 20px;
-  }
-
-  .register-title h1 {
-    font-size: 2rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de solicitud de servicio */
-  .service-request-container {
-    padding: 20px;
-  }
-
-  .service-request-title h1 {
-    font-size: 2rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de restablecimiento de contraseña */
-  .reset-password-container {
-    padding: 20px;
-  }
-
-  .reset-password-container h1 {
-    font-size: 2rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para las imágenes */
-  .centroweb-image img,
-  .nosotros-image img,
-  .info-image img {
-    width: 100%; /* Las imágenes ocupan todo el ancho disponible */
-    height: auto; /* La altura se ajusta automáticamente */
-  }
-}
-
-/* Media Queries para dispositivos muy pequeños (teléfonos en modo retrato) */
-@media (max-width: 480px) {
-  body {
-    font-size: 12px; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para el header */
-  header {
-    padding: 5px;
-  }
-
-  /* Ajustes para el navbar */
-  nav {
-    padding: 5px;
-  }
-
-  nav ul li {
-    margin: 5px 0; /* Espaciado vertical entre los ítems del menú */
-  }
-
-  /* Ajustes para la sección de contacto */
-  .contact-container {
-    padding: 10px;
-  }
-
   .contact-info, .social-card {
-    padding: 10px;
+    width: 100%; /* Ocupan el ancho completo en pantallas pequeñas */
+    margin-bottom: 20px;
   }
 
-  /* Ajustes para las tarjetas de solicitudes */
-  .solicitudes-container {
-    padding: 10px;
+  .contact-info h1 {
+    font-size: 2rem; /* Reducir tamaño de fuente en tabletas */
   }
 
-  .solicitud-card {
-    padding: 10px;
-  }
-
-  /* Ajustes para el campo de búsqueda */
-  .search-input {
-    width: calc(100% - 10px); /* Ajustar el ancho para que coincida con el contenedor */
-  }
-
-  /* Ajustes para la sección de servicios */
-  .service-items {
-    padding: 10px;
-  }
-
-  .service-item {
-    padding: 10px;
-  }
-
-  /* Ajustes para el footer */
-  footer {
-    padding: 10px;
-  }
-
-  footer .container {
-    padding: 10px;
-  }
-
-  footer .row {
-    padding: 10px;
-  }
-
-  footer .col-3, footer .col-6 {
-    padding: 10px;
-  }
-
-  /* Ajustes para la sección de login */
-  .login-container {
-    padding: 10px;
-  }
-
-  .login-title h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de registro */
-  .register-container {
-    padding: 10px;
-  }
-
-  .register-title h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de solicitud de servicio */
-  .service-request-container {
-    padding: 10px;
-  }
-
-  .service-request-title h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para la sección de restablecimiento de contraseña */
-  .reset-password-container {
-    padding: 10px;
-  }
-
-  .reset-password-container h1 {
-    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-  }
-
-  /* Ajustes para las imágenes */
-  .centroweb-image img,
-  .nosotros-image img,
-  .info-image img {
-    width: 100%; /* Las imágenes ocupan todo el ancho disponible */
-    height: auto; /* La altura se ajusta automáticamente */
+  .social-button {
+    font-size: 1rem; /* Reducir tamaño de fuente en botones sociales */
+    padding: 8px;
   }
 }
 
+@media (max-width: 480px) {
+  /* Ajustes adicionales para móviles */
+  .contact-section {
+    padding: 30px 15px; /* Reducir padding en móviles */
+  }
 
+  .contact-info h1 {
+    font-size: 1.8rem; /* Tamaño de fuente más pequeño */
+  }
 
+  .social-button {
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+}
+/* Ocultar navbar y footer en móviles y mostrar icono de menú */
+@media (max-width: 768px) {
+  #navbar,
+  #footer {
+    display: none !important; /* Ocultar navbar y footer en móviles */
+  }
+
+  .menu-icon {
+    display: block; /* Mostrar el icono de menú */
+    font-size: 24px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001; /* Asegura que el icono esté en el frente */
+  }
+
+  /* Sidebar estilos */
+  .sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    background-color: #575757;
+  }
+
+  .sidebar .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+  }
+}
+/* Estilos para la versión móvil */
+@media (max-width: 768px) {
+  /* Cambiar el fondo del sidebar a un color */
+  .sidebar {
+      background-color: #003366; /* Cambia a un fondo azul oscuro */
+      color: #ffffff; /* Texto blanco */
+  }
+
+  /* Estilos para los enlaces dentro del sidebar */
+  .sidebar a {
+      color: #ffffff; /* Texto blanco */
+      padding: 15px 20px; /* Aumenta el espaciado interno */
+      text-decoration: none; /* Sin subrayado */
+      display: block; /* Los enlaces ocupan todo el ancho */
+      font-size: 1.2rem; /* Tamaño del texto */
+  }
+
+  /* Efecto hover en los enlaces del sidebar */
+  .sidebar a:hover {
+      background-color: #ffcc33; /* Cambia el fondo a amarillo claro al pasar el cursor */
+      color: #003366; /* Cambia el texto a azul oscuro */
+  }
+
+  /* Estilos para el icono del menú en dispositivos móviles */
+  .menu-icon {
+      font-size: 2rem; /* Aumenta el tamaño del icono */
+      color: #003366; /* Color del icono */
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+  }
+
+  /* Estilos para la vista del contenido en la versión móvil */
+  body, html {
+      background-color: #f0f4f8; /* Fondo gris claro */
+  }
+}
+@media (max-width: 768px) {
+  body, html {
+      background-color: #103242; /* Fondo azul claro para dispositivos móviles */
+  }
+
+  .menu-icon {
+      font-size: 2rem;
+      color: #003366;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 1000;
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+  }
+
+  .content {
+      padding-top: 80px; /* Espacio suficiente para evitar solapamiento */
+  }
+}

@@ -1,37 +1,65 @@
-// Cargar el navbar y el footer desde archivos externos
+// Cargar el navbar y el footer o el sidebar según el dispositivo
 window.onload = function() {
-    loadComponent("navbar", "components/navbar.html");
-    loadComponent("footer", "components/footer.html");
+    if (isMobile()) {
+        // Si es móvil, carga el sidebar y oculta el navbar y footer
+        loadSidebar();
+    } else {
+        // Si es pantalla grande, carga el navbar y el footer normales
+        loadComponent("navbar", "components/navbar.html");
+        loadComponent("footer", "components/footer.html");
+    }
 
     setupAccordion();
-
-    // Configuración para mostrar u ocultar los botones de sesión según el estado del usuario
     setNavbarButtonsVisibility();
-
-    // Establecer la fecha actual en el campo de fecha "fecha-solicitud"
-    const fechaHoy = new Date().toISOString().split('T')[0];
-    const fechaSolicitudElement = document.getElementById('fecha-solicitud');
-
-    if (fechaSolicitudElement) {
-        fechaSolicitudElement.value = fechaHoy;
-    }
-
-    // Obtener el tipo de solicitud desde la URL (si está presente)
-    const urlParams = new URLSearchParams(window.location.search);
-    const tipoSolicitud = urlParams.get('tipo');
-
-    if (tipoSolicitud) {
-        const selectElement = document.getElementById('tipo-solicitud');
-        if (selectElement) {
-            const optionToSelect = Array.from(selectElement.options).find(
-                option => option.value.toLowerCase() === tipoSolicitud.toLowerCase()
-            );
-            if (optionToSelect) {
-                optionToSelect.selected = true;
-            }
-        }
-    }
+    setFechaActual();
+    selectTipoSolicitud();
 };
+
+// Detectar si es una pantalla pequeña (por ejemplo, móviles)
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+// Cargar el sidebar para la versión móvil
+function loadSidebar() {
+    const usuario = localStorage.getItem('usuario'); // Verifica si el usuario está logueado
+    let sidebarHtml = `
+        <div class="menu-icon" onclick="openSidebar()">☰</div>
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+    `;
+
+    // Si el usuario está logueado, muestra opciones específicas
+    if (usuario) {
+        sidebarHtml += `
+            <a href="perfil.html">Mi Perfil</a>
+            <a href="solicitudes.html">Mis Solicitudes</a>
+            <a href="javascript:void(0)" onclick="logoutUsuario()">Cerrar Sesión</a>
+        `;
+    } else {
+        // Opciones para usuarios no logueados
+        sidebarHtml += `
+            <a href="login.html">Iniciar Sesión</a>
+            <a href="registro.html">Registrarse</a>
+        `;
+    }
+
+    sidebarHtml += `</div>`; // Cierra el contenedor del sidebar
+    document.body.insertAdjacentHTML("beforeend", sidebarHtml); // Inserta el sidebar en el body
+}
+
+// Funciones para abrir y cerrar el sidebar
+function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px"; // Ajusta el ancho del sidebar al abrirlo
+}
+
+function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0"; // Vuelve a cerrarlo
+}
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {
@@ -67,7 +95,6 @@ function setNavbarButtonsVisibility() {
     }
 }
 
-
 // Función para cerrar sesión y volver a mostrar los botones
 function logoutUsuario() {
     // Eliminar datos de usuario en localStorage y redirigir a la página principal
@@ -101,6 +128,32 @@ function loadComponent(elementId, filePath) {
             }
         })
         .catch(error => console.error(error));
+}
+
+// Función para establecer la fecha actual en el campo de fecha "fecha-solicitud"
+function setFechaActual() {
+    const fechaHoy = new Date().toISOString().split('T')[0];
+    const fechaSolicitudElement = document.getElementById('fecha-solicitud');
+    if (fechaSolicitudElement) {
+        fechaSolicitudElement.value = fechaHoy;
+    }
+}
+
+// Función para seleccionar el tipo de solicitud desde la URL (si está presente)
+function selectTipoSolicitud() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tipoSolicitud = urlParams.get('tipo');
+    if (tipoSolicitud) {
+        const selectElement = document.getElementById('tipo-solicitud');
+        if (selectElement) {
+            const optionToSelect = Array.from(selectElement.options).find(
+                option => option.value.toLowerCase() === tipoSolicitud.toLowerCase()
+            );
+            if (optionToSelect) {
+                optionToSelect.selected = true;
+            }
+        }
+    }
 }
 
 // Configurar el comportamiento del acordeón
