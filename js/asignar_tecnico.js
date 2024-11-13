@@ -25,7 +25,7 @@ async function cargarSolicitudes() {
             solicitudItem.classList.add('solicitud-item');
 
             // Mostrar "Sí" o "No" según el valor de NECESITA_COMPRA
-            const necesitaCompraText = solicitud.NECESITA_COMPRA === 'S' ? 'Sí' : 'No';
+            const necesitaCompraText = solicitud.NECESITA_COMPRA === 'Y' ? 'Sí' : 'No';
             
             // Verificar si hay un técnico asignado
             const tecnicoAsignado = solicitud.TECNICO_ASIGNADO ? solicitud.TECNICO_ASIGNADO : 'No asignado';
