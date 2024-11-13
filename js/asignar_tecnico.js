@@ -7,19 +7,20 @@ document.addEventListener('DOMContentLoaded', async function() {
 // Función para cargar solicitudes en el formulario
 async function cargarSolicitudes() {
     try {
-        const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitudes'); // Endpoint para obtener solicitudes
-        const solicitudes = await response.json();
+        const response = await fetch('https://webclibackend-production.up.railway.app/api/obtenerTodasLasSolicitudes');
 
-        const solicitudSelect = document.getElementById('solicitud');
-        solicitudes.forEach(solicitud => {
-            const option = document.createElement('option');
-            option.value = solicitud.id; // ID de la solicitud
-            option.textContent = `Solicitud ID: ${solicitud.id} - ${solicitud.tipo_solicitud}`;
-            solicitudSelect.appendChild(option);
-        });
+        if (!response.ok) {
+            throw new Error('Error al obtener las solicitudes');
+        }
+
+        const data = await response.json();
+        const solicitudes = data.solicitudes;
+        
+        // Procesar y mostrar las solicitudes
+        console.log(solicitudes);
+
     } catch (error) {
         console.error('Error al cargar solicitudes:', error);
-        document.getElementById('message').textContent = 'Error al cargar solicitudes';
     }
 }
 
