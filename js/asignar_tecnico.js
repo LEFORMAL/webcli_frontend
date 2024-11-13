@@ -26,6 +26,9 @@ async function cargarSolicitudes() {
 
             // Mostrar "Sí" o "No" según el valor de NECESITA_COMPRA
             const necesitaCompraText = solicitud.NECESITA_COMPRA === 'S' ? 'Sí' : 'No';
+            
+            // Verificar si hay un técnico asignado
+            const tecnicoAsignado = solicitud.TECNICO_ASIGNADO ? solicitud.TECNICO_ASIGNADO : 'No asignado';
 
             solicitudItem.innerHTML = `
                 <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
@@ -33,6 +36,7 @@ async function cargarSolicitudes() {
                 <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>
                 <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
                 <p><strong>Necesita Compra:</strong> ${necesitaCompraText}</p>
+                <p><strong>Técnico Asignado:</strong> ${tecnicoAsignado}</p>
             `;
             solicitudItem.addEventListener('click', () => openModal(solicitud.ID_SOLICITUD)); // Abrir modal al hacer clic
             solicitudesList.appendChild(solicitudItem);
@@ -90,6 +94,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
             }
             document.getElementById('assignTechnicianForm').reset();
             closeModal(); // Cerrar modal después de asignar
+            await cargarSolicitudes(); // Volver a cargar la lista de solicitudes para reflejar cambios
         } else {
             const errorText = await response.text();
             if (messageElement) {
