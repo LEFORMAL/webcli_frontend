@@ -11,59 +11,42 @@
         <div id="navbar"></div>
     </header>
 
-    <!-- Sección de lista de solicitudes -->
-    <section class="solicitudes-container">
-        <h1>Lista de Solicitudes</h1>
-        <div id="message"></div>
-        
-        <!-- Lista dinámica de solicitudes -->
-        <div id="solicitudes-list">
-            <!-- Aquí se cargarán las solicitudes en formato de lista -->
+    <section class="assign-technician-section">
+        <div class="assign-technician-container">
+            <h1>Lista de Solicitudes</h1>
+            <div id="solicitudes-list" class="solicitudes-list">
+                <!-- Las solicitudes serán generadas dinámicamente -->
+            </div>
         </div>
     </section>
 
-    <!-- Modal para asignar técnico y estado a una solicitud específica -->
+    <!-- Modal para asignar técnico -->
     <div id="assignTechnicianModal" class="modal">
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">Cerrar</button>
-            <h2>Asignar Técnico a la Solicitud</h2>
-            
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Asignar Técnico</h2>
             <form id="assignTechnicianForm">
-                <input type="hidden" id="selectedSolicitud" name="solicitud" />
-
+                <input type="hidden" id="selectedSolicitud" name="selectedSolicitud">
                 <label for="tecnico">Seleccionar Técnico:</label>
                 <select id="tecnico" name="tecnico" required>
                     <!-- Opciones de técnicos serán cargadas dinámicamente -->
                 </select>
 
-                <label for="fechaRealizacion">Fecha de Realización:</label>
-                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
-
                 <label for="estado">Estado de la Solicitud:</label>
                 <select id="estado" name="estado" required>
                     <option value="Pendiente">Pendiente</option>
-                    <option value="En Progreso">En Progreso</option>
-                    <option value="Completado">Completado</option>
+                    <option value="En Proceso">En Proceso</option>
+                    <option value="Completada">Completada</option>
                 </select>
+
+                <label for="fechaRealizacion">Fecha de Realización:</label>
+                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
 
                 <button type="submit" class="btn-primary">Asignar Técnico</button>
             </form>
         </div>
     </div>
 
-    <button class="btn-primary back-button" onclick="history.back()">Volver</button>
-
     <script src="js/asignar_tecnico.js"></script>
-    <script>
-        // Funciones para abrir y cerrar el modal
-        function openModal(solicitudId) {
-            document.getElementById('assignTechnicianModal').style.display = 'flex';
-            document.getElementById('selectedSolicitud').value = solicitudId; // Asignar ID de la solicitud al campo oculto
-        }
-
-        function closeModal() {
-            document.getElementById('assignTechnicianModal').style.display = 'none';
-        }
-    </script>
 </body>
 </html>

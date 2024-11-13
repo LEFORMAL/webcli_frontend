@@ -1143,6 +1143,53 @@ select {
   #footer {
     display: none !important; /* Ocultar navbar y footer en móviles */
   }
+  /* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.solicitudes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.solicitud-item {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.solicitud-item:hover {
+  background-color: #e0e0e0;
+}
+
   /* Icono del menú: siempre fijo y separado del contenido */
 /* Contenedor superior para el menú y logo */
 .menu-icon-container {

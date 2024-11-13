@@ -48,7 +48,7 @@ async function cargarTecnicos() {
         tecnicoSelect.innerHTML = ''; // Limpiar opciones previas
         tecnicos.forEach(tecnico => {
             const option = document.createElement('option');
-            option.value = tecnico.rut; // RUT del técnico
+            option.value = tecnico.rut;
             option.textContent = `${tecnico.nombres} ${tecnico.apellidos}`;
             tecnicoSelect.appendChild(option);
         });
@@ -62,7 +62,7 @@ async function cargarTecnicos() {
 document.getElementById('assignTechnicianForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const solicitudId = document.getElementById('selectedSolicitud').value; // ID de solicitud seleccionada
+    const solicitudId = document.getElementById('selectedSolicitud').value;
     const tecnicoRut = document.getElementById('tecnico').value;
     const fechaRealizacion = document.getElementById('fechaRealizacion').value;
     const estado = document.getElementById('estado').value;
@@ -79,7 +79,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
         if (response.ok) {
             document.getElementById('message').textContent = 'Técnico asignado con éxito';
             document.getElementById('assignTechnicianForm').reset();
-            closeModal(); // Cerrar el modal después de asignar
+            closeModal();
         } else {
             const errorText = await response.text();
             document.getElementById('message').textContent = `Error: ${errorText}`;
