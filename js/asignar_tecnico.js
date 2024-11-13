@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     await cargarTecnicos();
 });
 
-// Función para cargar solicitudes en la lista
+// Función para cargar solo las solicitudes sin técnico asignado en la lista
 async function cargarSolicitudes() {
     try {
         const response = await fetch('https://webclibackend-production.up.railway.app/api/obtenerTodasLasSolicitudes');
@@ -15,20 +15,19 @@ async function cargarSolicitudes() {
 
         const data = await response.json();
         const solicitudes = data.solicitudes;
-        
-        // Mostrar las solicitudes en formato de lista
+
+        // Filtrar solo las solicitudes sin técnico asignado
+        const solicitudesSinTecnico = solicitudes.filter(solicitud => !solicitud.TECNICO_ASIGNADO);
+
+        // Mostrar las solicitudes sin técnico en la lista
         const solicitudesList = document.getElementById('solicitudes-list');
         solicitudesList.innerHTML = ''; // Limpiar contenido previo
 
-        solicitudes.forEach(solicitud => {
+        solicitudesSinTecnico.forEach(solicitud => {
             const solicitudItem = document.createElement('div');
             solicitudItem.classList.add('solicitud-item');
 
-            // Mostrar "Sí" o "No" según el valor de NECESITA_COMPRA
             const necesitaCompraText = solicitud.NECESITA_COMPRA === 'Y' ? 'Sí' : 'No';
-            
-            // Verificar si hay un técnico asignado
-            const tecnicoAsignado = solicitud.TECNICO_ASIGNADO ? solicitud.TECNICO_ASIGNADO : 'No asignado';
 
             solicitudItem.innerHTML = `
                 <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
@@ -36,7 +35,6 @@ async function cargarSolicitudes() {
                 <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>
                 <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
                 <p><strong>Necesita Compra:</strong> ${necesitaCompraText}</p>
-                <p><strong>Técnico Asignado:</strong> ${tecnicoAsignado}</p>
             `;
             solicitudItem.addEventListener('click', () => openModal(solicitud.ID_SOLICITUD)); // Abrir modal al hacer clic
             solicitudesList.appendChild(solicitudItem);
