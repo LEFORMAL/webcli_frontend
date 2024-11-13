@@ -23,12 +23,16 @@ async function cargarSolicitudes() {
         solicitudes.forEach(solicitud => {
             const solicitudItem = document.createElement('div');
             solicitudItem.classList.add('solicitud-item');
+
+            // Mostrar "Sí" o "No" según el valor de NECESITA_COMPRA
+            const necesitaCompraText = solicitud.NECESITA_COMPRA === 'S' ? 'Sí' : 'No';
+
             solicitudItem.innerHTML = `
                 <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
                 <p><strong>Dirección:</strong> ${solicitud.DIRECCION}</p>
                 <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>
                 <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
-                <p><strong>Necesita Compra:</strong> ${solicitud.NECESITA_COMPRA ? 'Sí' : 'No'}</p>
+                <p><strong>Necesita Compra:</strong> ${necesitaCompraText}</p>
             `;
             solicitudItem.addEventListener('click', () => openModal(solicitud.ID_SOLICITUD)); // Abrir modal al hacer clic
             solicitudesList.appendChild(solicitudItem);
