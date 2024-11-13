@@ -60,8 +60,8 @@ async function cargarTecnicos() {
 document.getElementById('assignTechnicianForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const solicitudId = document.getElementById('solicitud').value;
-    const tecnicoNombre = document.getElementById('tecnico').value; // Ahora es el nombre completo
+    const solicitudId = document.getElementById('selectedSolicitud').value; // Ahora usa el campo oculto
+    const tecnicoNombre = document.getElementById('tecnico').value; // Nombre completo del técnico
     const fechaRealizacion = document.getElementById('fechaRealizacion').value;
 
     try {
@@ -76,6 +76,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
         if (response.ok) {
             document.getElementById('message').textContent = 'Técnico asignado con éxito';
             document.getElementById('assignTechnicianForm').reset();
+            closeModal(); // Cerrar modal después de asignar
         } else {
             const errorText = await response.text();
             document.getElementById('message').textContent = `Error: ${errorText}`;
@@ -85,6 +86,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
         document.getElementById('message').textContent = 'Error al asignar técnico';
     }
 });
+
 
 
 // Funciones para abrir y cerrar el modal
