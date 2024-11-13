@@ -54,6 +54,14 @@ function loadSidebar() {
             `;
         }
 
+        // Opciones adicionales para el técnico
+        if (usuario.user_tipo === 'tecnico') {
+            sidebarHtml += `
+                <a href="mis_asignaciones.html">Mis Asignaciones</a>
+                
+            `;
+        }
+
         sidebarHtml += `
             <a href="javascript:void(0)" onclick="logoutUsuario()">Cerrar Sesión</a>
         `;
@@ -71,6 +79,7 @@ function loadSidebar() {
     // Añade el evento de clic para cerrar el sidebar al hacer clic fuera de él
     document.addEventListener("click", handleClickOutsideSidebar);
 }
+
 
 function openSidebar() {
     document.getElementById("sidebar").style.width = "250px";
