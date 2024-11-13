@@ -1091,10 +1091,27 @@ body, html {
     border-radius: 5px;
     cursor: pointer;
   }
-  
   .back-button:hover {
     background-color: #0056b3; /* Cambia el color al pasar el mouse */
   }
+  input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    box-sizing: border-box; /* Asegura que padding y borde no expandan el ancho */
+    padding: 10px; /* Espaciado interno */
+    margin-top: 10px; /* Espacio superior para separar campos */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de letra uniforme */
+}
+  .form-group {
+    padding-left: 10px;
+    padding-right: 10px;
+}
   .contact-info, .social-card {
     width: 100%; /* Ocupan el ancho completo en pantallas pequeñas */
     margin-bottom: 20px;

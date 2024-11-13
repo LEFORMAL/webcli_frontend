@@ -15,7 +15,8 @@
     <section class="service-request-section" style="padding-bottom: 150px;">
         
         <div class="service-request-container">
-            <button class="btn-primary back-button" id="backButton" onclick="history.back()">Volver</button>            <div class="service-request-title">
+            <button class="btn-primary back-button" id="backButton" onclick="history.back()">Volver</button>
+            <div class="service-request-title">
                 <h1>Solicitud de Servicio</h1>
             </div>
             <div class="service-request-form">
@@ -54,15 +55,15 @@
 
                     <label for="tipo-solicitud">Tipo de Solicitud:</label>
                     <select id="tipo-solicitud" name="tipo-solicitud" required>
-                        
-                        
+                        <!-- Opciones de tipo de solicitud -->
                     </select>
 
                     <label for="fecha-solicitud">Fecha de Solicitud:</label>
                     <input type="date" id="fecha-solicitud" name="fecha-solicitud" required>
 
-                    <label for="fecha-realizacion">Fecha de Realización:</label>
-                    <input type="date" id="fecha-realizacion" name="fecha-realizacion" required>
+                    <!-- Campo oculto para la fecha de realización -->
+                    <input type="hidden" id="fecha-realizacion" name="fecha-realizacion">
+                    <p>La fecha de realización será asignada automáticamente al procesar la solicitud.</p>
 
                     <label for="descripcion">Descripción:</label>
                     <textarea id="descripcion" name="descripcion" required></textarea>
@@ -83,7 +84,12 @@
     </section>
     
     <script src="js/conser.js"></script>
-    
-    
+    <script>
+        // Asigna la fecha actual al campo oculto "fecha-realizacion" al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const fechaActual = new Date().toISOString().split('T')[0]; // Formato "YYYY-MM-DD"
+            document.getElementById('fecha-realizacion').value = fechaActual;
+        });
+    </script>
 </body>
 </html>
