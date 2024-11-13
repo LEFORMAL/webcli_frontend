@@ -47,7 +47,7 @@ function loadSidebar() {
         // Opciones adicionales para el administrador
         if (usuario.user_tipo === 'admin') {
             sidebarHtml += `
-                <a href="admin_dashboard.html">Panel de Administración</a>
+                
                 <a href="asignar_tecnico.html">Administrar solicitudes</a>
                 <a href="crea_user.html">Crear técnico o gestor</a>
                 <a href="add_service.html">Añadir nuevo servicio</a>
