@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Servicio - Panel de Administración</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enlaza con un archivo CSS, si tienes uno -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Enlaza con un archivo CSS, si tienes uno -->
 </head>
 <body>
-    <div class="container">
-        <h1>Agregar Nuevo Servicio</h1>
+    <section class="service-request-section" style="padding-bottom: 150px;">
+        <div class="service-request-container">
+            <div class="service-request-title">
+                <h1>Agregar servicio</h1>
+            </div>
+            <div class="service-request-form">
+           
         
-        <form id="addServicioForm">
-            <label for="nombre">Nombre del Servicio:</label>
-            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Instalación, Reparación">
+                <form id="addServicioForm">
+                    <label for="nombre">Nombre del Servicio:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ej: Instalación, Reparación">
             
-            <button type="submit">Agregar Servicio</button>
-        </form>
+                    <button type="submit">Agregar Servicio</button>
+                </form>
         
         <div id="message"></div> <!-- Muestra mensajes de éxito o error -->
     </div>
+    </div>
+    </section>
 
     <!-- Enlazar el archivo JavaScript para manejar la lógica del formulario -->
     <script src="js/add_service.js"></script>
+    <script src="js/scripts.js" defer></script>
 </body>
 </html>
