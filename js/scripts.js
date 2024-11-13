@@ -23,8 +23,13 @@ function isMobile() {
 // Cargar el sidebar para la versión móvil
 function loadSidebar() {
     const usuario = localStorage.getItem('usuario'); // Verifica si el usuario está logueado
+    const logoUrl = "ruta/a/tu/logo.png"; // Asegúrate de reemplazar con la ruta correcta de tu logo
+
     let sidebarHtml = `
-        <div class="menu-icon" onclick="openSidebar()">☰</div>
+        <div class="menu-icon-container">
+            <div class="menu-icon" onclick="openSidebar()">☰</div>
+            <img src="${"assets/logo.jpeg"}" alt="Logo" class="menu-logo" onclick="window.location.href='index.html'">
+        </div>
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
             <a href="index.html">Inicio</a>
@@ -33,7 +38,7 @@ function loadSidebar() {
             <a href="contacto.html">Contacto</a>
     `;
 
-    // Si el usuario está logueado, muestra opciones específicas
+    // Opciones de navegación específicas según el estado del usuario
     if (usuario) {
         sidebarHtml += `
             <a href="perfil.html">Mi Perfil</a>
@@ -41,25 +46,24 @@ function loadSidebar() {
             <a href="javascript:void(0)" onclick="logoutUsuario()">Cerrar Sesión</a>
         `;
     } else {
-        // Opciones para usuarios no logueados
         sidebarHtml += `
             <a href="login.html">Iniciar Sesión</a>
             <a href="registro.html">Registrarse</a>
         `;
     }
-
-    sidebarHtml += `</div>`; // Cierra el contenedor del sidebar
-    document.body.insertAdjacentHTML("beforeend", sidebarHtml); // Inserta el sidebar en el body
+    sidebarHtml += `</div>`;
+    document.body.insertAdjacentHTML("beforeend", sidebarHtml);
 }
 
-// Funciones para abrir y cerrar el sidebar
 function openSidebar() {
-    document.getElementById("sidebar").style.width = "250px"; // Ajusta el ancho del sidebar al abrirlo
+    document.getElementById("sidebar").style.width = "250px";
 }
 
 function closeSidebar() {
-    document.getElementById("sidebar").style.width = "0"; // Vuelve a cerrarlo
+    document.getElementById("sidebar").style.width = "0";
 }
+
+
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {

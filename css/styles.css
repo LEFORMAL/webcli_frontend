@@ -1184,7 +1184,6 @@ footer .footer-link:hover {
 /* Sección de Contacto */
 .contact-section {
   padding: 50px 20px;
-  background-color: #ffffff;
   text-align: left;
 }
 
@@ -1312,107 +1311,153 @@ body, html {
     display: none !important; /* Ocultar navbar y footer en móviles */
   }
 
-  .menu-icon {
-    display: block; /* Mostrar el icono de menú */
-    font-size: 24px;
-    cursor: pointer;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1001; /* Asegura que el icono esté en el frente */
-  }
+  /* Icono del menú: siempre fijo y separado del contenido */
+/* Contenedor superior para el menú y logo */
+.menu-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366; /* Fondo azul oscuro */
+  padding: 10px 15px;
+  z-index: 1001;
+  box-sizing: border-box;
+}
 
-  /* Sidebar estilos */
+/* Estilos para el botón de menú */
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+}
+
+/* Estilos para el logo en la parte derecha */
+.menu-logo {
+  height: 40px; /* Ajusta la altura según el tamaño del logo */
+  cursor: pointer;
+}
+
+/* Sidebar estilos */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #575757;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 36px;
+}
+
+/* Ajustes de la versión móvil */
+@media (max-width: 768px) {
   .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+      background-color: #003366;
+      color: #ffffff;
   }
 
   .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: white;
-    display: block;
-    transition: 0.3s;
+      color: #ffffff;
+      padding: 15px 20px;
+      font-size: 1.2rem;
   }
 
   .sidebar a:hover {
-    background-color: #575757;
-  }
-
-  .sidebar .closebtn {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 36px;
-  }
-}
-/* Estilos para la versión móvil */
-@media (max-width: 768px) {
-  /* Cambiar el fondo del sidebar a un color */
-  .sidebar {
-      background-color: #003366; /* Cambia a un fondo azul oscuro */
-      color: #ffffff; /* Texto blanco */
-  }
-
-  /* Estilos para los enlaces dentro del sidebar */
-  .sidebar a {
-      color: #ffffff; /* Texto blanco */
-      padding: 15px 20px; /* Aumenta el espaciado interno */
-      text-decoration: none; /* Sin subrayado */
-      display: block; /* Los enlaces ocupan todo el ancho */
-      font-size: 1.2rem; /* Tamaño del texto */
-  }
-
-  /* Efecto hover en los enlaces del sidebar */
-  .sidebar a:hover {
-      background-color: #ffcc33; /* Cambia el fondo a amarillo claro al pasar el cursor */
-      color: #003366; /* Cambia el texto a azul oscuro */
-  }
-
-  /* Estilos para el icono del menú en dispositivos móviles */
-  .menu-icon {
-      font-size: 2rem; /* Aumenta el tamaño del icono */
-      color: #003366; /* Color del icono */
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      cursor: pointer;
-  }
-
-  /* Estilos para la vista del contenido en la versión móvil */
-  body, html {
-      background-color: #f0f4f8; /* Fondo gris claro */
-  }
-}
-@media (max-width: 768px) {
-  body, html {
-      background-color: #103242; /* Fondo azul claro para dispositivos móviles */
-  }
-
-  .menu-icon {
-      font-size: 2rem;
+      background-color: #ffcc33;
       color: #003366;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      cursor: pointer;
-      z-index: 1000;
-      background-color: #ffffff;
-      padding: 10px;
-      border-radius: 5px;
   }
 
-  .content {
-      padding-top: 80px; /* Espacio suficiente para evitar solapamiento */
+  /* Ajustes para el contenedor superior */
+  .menu-icon-container {
+      padding: 10px;
+      background-color: #003366;
   }
+
+  .menu-logo {
+      height: 40px;
+      margin-right: 10px;
+  }
+
+
+
+  /* Espacio suficiente para evitar solapamientos */
+  .content {
+      padding-top: 80px;
+  }
+
+  :root {
+    --color-amarillo: #FFD700; /* Amarillo dorado */
+    --color-azul-claro: #00AEEF; /* Azul claro */
+    --color-azul-oscuro: #003366; /* Azul oscuro */
+    --color-naranja: #FF4500; /* Naranja o rojo */
+    --color-blanco: #FFFFFF; /* Blanco */
+    --color-gris: #f4f4f4; /* Gris claro */
 }
+
+/* Asegúrate de que el fondo blanco no esté en el contenedor principal */
+.main-content {
+  background: none; /* Sin fondo, se verá el gradiente de fondo */
+  padding: 20px; /* Ajusta el espacio si es necesario */
+}
+
+/* Mantén el fondo blanco solo en las tarjetas */
+.card {
+  background-color: white; /* Fondo blanco solo para las tarjetas */
+  border-radius: 10px; /* Bordes redondeados para las tarjetas */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  padding: 20px; /* Espaciado interno */
+  margin-bottom: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Ajusta el body y html para asegurar el fondo gradiente */
+body, html {
+  background: linear-gradient(45deg, var(--color-amarillo), var(--color-azul-claro), var(--color-azul-oscuro), var(--color-naranja), var(--color-gris));
+  background-size: 400% 400%;
+  animation: colorCycle 20s ease infinite;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+/* Animación para cambiar los colores lentamente */
+@keyframes colorCycle {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+}
+}
+
