@@ -1248,4 +1248,20 @@ body, html {
 }
 }
 }
+.back-button {
+  float: left; /* Alinea el botón a la izquierda */
+  margin-bottom: 20px; /* Espacio debajo del botón */
+  margin-right: 10px; /* Espacio a la derecha del botón, si hay otros elementos */
+  padding: 10px 20px; /* Ajusta el tamaño del botón */
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3; /* Cambia el color al pasar el mouse */
+}
+
 
