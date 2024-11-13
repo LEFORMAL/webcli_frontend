@@ -37,7 +37,7 @@ function loadSidebar() {
     if (usuario) {
         sidebarHtml += `
             <a href="perfil.html">Mi Perfil</a>
-            <a href="solicitudes.html">Mis Solicitudes</a>
+            <a href="ver_solicitudes.html">Mis Solicitudes</a>
             <a href="javascript:void(0)" onclick="logoutUsuario()">Cerrar Sesión</a>
         `;
     } else {
