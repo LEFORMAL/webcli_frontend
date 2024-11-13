@@ -37,6 +37,7 @@ async function cargarSolicitudes() {
         console.error('Error al cargar solicitudes:', error);
     }
 }
+
 // Función para cargar técnicos en el formulario
 async function cargarTecnicos() {
     try {
@@ -52,7 +53,10 @@ async function cargarTecnicos() {
         });
     } catch (error) {
         console.error('Error al cargar técnicos:', error);
-        document.getElementById('message').textContent = 'Error al cargar técnicos';
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            messageElement.textContent = 'Error al cargar técnicos';
+        }
     }
 }
 
@@ -64,6 +68,8 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
     const tecnicoNombre = document.getElementById('tecnico').value; // Nombre completo del técnico
     const fechaRealizacion = document.getElementById('fechaRealizacion').value;
 
+    console.log("Enviando datos:", { solicitudId, tecnicoNombre, fechaRealizacion }); // Depuración
+
     try {
         const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
             method: 'PUT',
@@ -73,26 +79,37 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
             body: JSON.stringify({ solicitudId, tecnicoNombre, fechaRealizacion }) // Enviar nombre completo
         });
 
+        const messageElement = document.getElementById('message');
         if (response.ok) {
-            document.getElementById('message').textContent = 'Técnico asignado con éxito';
+            if (messageElement) {
+                messageElement.textContent = 'Técnico asignado con éxito';
+            }
             document.getElementById('assignTechnicianForm').reset();
             closeModal(); // Cerrar modal después de asignar
         } else {
             const errorText = await response.text();
-            document.getElementById('message').textContent = `Error: ${errorText}`;
+            if (messageElement) {
+                messageElement.textContent = `Error: ${errorText}`;
+            }
         }
     } catch (error) {
         console.error('Error al asignar técnico:', error);
-        document.getElementById('message').textContent = 'Error al asignar técnico';
+        const messageElement = document.getElementById('message');
+        if (messageElement) {
+            messageElement.textContent = 'Error al asignar técnico';
+        }
     }
 });
-
-
 
 // Funciones para abrir y cerrar el modal
 function openModal(solicitudId) {
     document.getElementById('assignTechnicianModal').style.display = 'flex';
-    document.getElementById('selectedSolicitud').value = solicitudId; // Asignar ID de la solicitud al campo oculto
+    const selectedSolicitudElement = document.getElementById('selectedSolicitud');
+    if (selectedSolicitudElement) {
+        selectedSolicitudElement.value = solicitudId; // Asignar ID de la solicitud al campo oculto
+    } else {
+        console.error('Campo oculto selectedSolicitud no encontrado.');
+    }
 }
 
 function closeModal() {

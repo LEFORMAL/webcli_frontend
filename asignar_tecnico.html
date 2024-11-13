@@ -21,25 +21,28 @@
     </section>
 
     <!-- Modal para asignar técnico -->
-    <div id="assignTechnicianModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <h2>Asignar Técnico</h2>
-            <form id="assignTechnicianForm">
-                <input type="hidden" id="selectedSolicitud" name="selectedSolicitud">
+<div id="assignTechnicianModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Asignar Técnico</h2>
+        <div id="message" class="status-message"></div> <!-- Elemento para mostrar mensajes -->
 
-                <label for="tecnico">Seleccionar Técnico:</label>
-                <select id="tecnico" name="tecnico" required>
-                    <!-- Opciones de técnicos serán cargadas dinámicamente -->
-                </select>
+        <form id="assignTechnicianForm">
+            <input type="hidden" id="selectedSolicitud" name="selectedSolicitud">
 
-                <label for="fechaRealizacion">Fecha de Realización:</label>
-                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
+            <label for="tecnico">Seleccionar Técnico:</label>
+            <select id="tecnico" name="tecnico" required>
+                <!-- Opciones de técnicos serán cargadas dinámicamente -->
+            </select>
 
-                <button type="submit" class="btn-primary">Asignar Técnico</button>
-            </form>
-        </div>
+            <label for="fechaRealizacion">Fecha de Realización:</label>
+            <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
+
+            <button type="submit" class="btn-primary">Asignar Técnico</button>
+        </form>
     </div>
+</div>
+
 
     <script src="js/asignar_tecnico.js"></script>
 </body>
