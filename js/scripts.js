@@ -20,15 +20,14 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
-// Cargar el sidebar para la versión móvil
 function loadSidebar() {
-    const usuario = localStorage.getItem('usuario'); // Verifica si el usuario está logueado
-    const logoUrl = "ruta/a/tu/logo.png"; // Asegúrate de reemplazar con la ruta correcta de tu logo
+    const usuario = JSON.parse(localStorage.getItem('usuario')); // Obtén el objeto usuario desde localStorage
+    const logoUrl = "assets/logo.jpeg"; // Ruta del logo (asegúrate de que sea la correcta)
 
     let sidebarHtml = `
         <div class="menu-icon-container">
             <div class="menu-icon" onclick="openSidebar()">☰</div>
-            <img src="${"assets/logo.jpeg"}" alt="Logo" class="menu-logo" onclick="window.location.href='index.html'">
+            <img src="${logoUrl}" alt="Logo" class="menu-logo" onclick="window.location.href='index.html'">
         </div>
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">&times;</a>
@@ -43,14 +42,27 @@ function loadSidebar() {
         sidebarHtml += `
             <a href="perfil.html">Mi Perfil</a>
             <a href="ver_solicitudes.html">Mis Solicitudes</a>
+        `;
+
+        // Opciones adicionales para el administrador
+        if (usuario.user_tipo === 'admin') {
+            sidebarHtml += `
+                <a href="admin_dashboard.html">Panel de Administración</a>
+                <a href="gestionar_usuarios.html">Gestionar Usuarios</a>
+            `;
+        }
+
+        sidebarHtml += `
             <a href="javascript:void(0)" onclick="logoutUsuario()">Cerrar Sesión</a>
         `;
     } else {
+        // Opciones para usuarios no logueados
         sidebarHtml += `
             <a href="login.html">Iniciar Sesión</a>
             <a href="registro.html">Registrarse</a>
         `;
     }
+    
     sidebarHtml += `</div>`;
     document.body.insertAdjacentHTML("beforeend", sidebarHtml);
 }
@@ -62,8 +74,6 @@ function openSidebar() {
 function closeSidebar() {
     document.getElementById("sidebar").style.width = "0";
 }
-
-
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {
