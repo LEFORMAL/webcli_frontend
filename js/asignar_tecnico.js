@@ -37,18 +37,16 @@ async function cargarSolicitudes() {
         console.error('Error al cargar solicitudes:', error);
     }
 }
-
-// Función para cargar técnicos en el formulario del modal
+// Función para cargar técnicos en el formulario
 async function cargarTecnicos() {
     try {
-        const response = await fetch('https://webclibackend-production.up.railway.app/api/tecnicos');
+        const response = await fetch('https://webclibackend-production.up.railway.app/api/tecnicos'); // Endpoint para obtener técnicos
         const tecnicos = await response.json();
 
         const tecnicoSelect = document.getElementById('tecnico');
-        tecnicoSelect.innerHTML = ''; // Limpiar opciones previas
         tecnicos.forEach(tecnico => {
             const option = document.createElement('option');
-            option.value = tecnico.rut;
+            option.value = `${tecnico.nombres} ${tecnico.apellidos}`; // Usar el nombre completo como valor
             option.textContent = `${tecnico.nombres} ${tecnico.apellidos}`;
             tecnicoSelect.appendChild(option);
         });
@@ -58,28 +56,26 @@ async function cargarTecnicos() {
     }
 }
 
-// Manejar el formulario de asignación en el modal
-// Manejar el formulario de asignación en el modal
+// Manejar el formulario de asignación
 document.getElementById('assignTechnicianForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const solicitudId = document.getElementById('selectedSolicitud').value;
-    const tecnicoId = document.getElementById('tecnico').value;
+    const solicitudId = document.getElementById('solicitud').value;
+    const tecnicoNombre = document.getElementById('tecnico').value; // Ahora es el nombre completo
     const fechaRealizacion = document.getElementById('fechaRealizacion').value;
 
     try {
         const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
-            method: 'PUT',  // Cambiar a PUT
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ solicitudId, tecnicoId, fechaRealizacion })
+            body: JSON.stringify({ solicitudId, tecnicoNombre, fechaRealizacion }) // Enviar nombre completo
         });
 
         if (response.ok) {
-            document.getElementById('message').textContent = 'Técnico asignado con éxito y fecha de realización actualizada';
+            document.getElementById('message').textContent = 'Técnico asignado con éxito';
             document.getElementById('assignTechnicianForm').reset();
-            closeModal();  // Asegúrate de que esta función esté definida para cerrar el modal
         } else {
             const errorText = await response.text();
             document.getElementById('message').textContent = `Error: ${errorText}`;
