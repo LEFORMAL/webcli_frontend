@@ -68,7 +68,7 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
     const estado = document.getElementById('estado').value;
 
     try {
-        const response = await fetch('https://webclibackend-production.up.railway.app/api/asignar-tecnico', {
+        const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
