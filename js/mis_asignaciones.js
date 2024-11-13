@@ -1,10 +1,16 @@
+// Cargar asignaciones del técnico al cargar la página
+document.addEventListener('DOMContentLoaded', async function() {
+    await cargarAsignaciones();
+});
+
 // Función para cargar asignaciones del técnico
 async function cargarAsignaciones() {
     try {
-        const tecnico = JSON.parse(localStorage.getItem('usuario')).nombre;
-        console.log("Nombre del técnico enviado en la solicitud:", tecnico); // Depuración
+        const usuario = JSON.parse(localStorage.getItem('usuario')); // Obtener datos del usuario desde localStorage
+        const nombreCompleto = `${usuario.nombres} ${usuario.apellidos}`; // Construir el nombre completo en el formato requerido
+        console.log("Nombre del técnico enviado en la solicitud:", nombreCompleto); // Depuración
 
-        const response = await fetch(`https://webclibackend-production.up.railway.app/api/mis_asignaciones?nombre=${encodeURIComponent(tecnico)}`);
+        const response = await fetch(`https://webclibackend-production.up.railway.app/api/mis_asignaciones?nombre=${encodeURIComponent(nombreCompleto)}`);
         
         if (!response.ok) {
             throw new Error('Error al obtener las asignaciones');
@@ -36,7 +42,7 @@ async function cargarAsignaciones() {
 
         // Verifica si no se encontraron asignaciones
         if (asignaciones.length === 0) {
-            asignacionesList.innerHTML = `<p>No se encontraron asignaciones para el técnico ${tecnico}</p>`;
+            asignacionesList.innerHTML = `<p>No se encontraron asignaciones para el técnico ${nombreCompleto}</p>`;
         }
     } catch (error) {
         console.error('Error al cargar asignaciones:', error);
