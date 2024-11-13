@@ -65,6 +65,9 @@ function loadSidebar() {
     
     sidebarHtml += `</div>`;
     document.body.insertAdjacentHTML("beforeend", sidebarHtml);
+
+    // Añade el evento de clic para cerrar el sidebar al hacer clic fuera de él
+    document.addEventListener("click", handleClickOutsideSidebar);
 }
 
 function openSidebar() {
@@ -74,6 +77,18 @@ function openSidebar() {
 function closeSidebar() {
     document.getElementById("sidebar").style.width = "0";
 }
+
+// Función para manejar el clic fuera del sidebar
+function handleClickOutsideSidebar(event) {
+    const sidebar = document.getElementById("sidebar");
+    const menuIcon = document.querySelector(".menu-icon");
+
+    // Si el clic ocurrió fuera del sidebar y no en el menú icono, cierra el sidebar
+    if (sidebar.style.width === "250px" && !sidebar.contains(event.target) && event.target !== menuIcon) {
+        closeSidebar();
+    }
+}
+
 
 // Función para mostrar u ocultar los botones de sesión según el estado del usuario
 function setNavbarButtonsVisibility() {

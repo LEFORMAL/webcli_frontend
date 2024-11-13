@@ -5,7 +5,6 @@ body {
   padding: 0;
   background-color: #f4f4f4;
 }
-
 /* Header */
 header {
   background-color: #00d6dd;
@@ -14,7 +13,6 @@ header {
   top: 0;
   z-index: 100;
 }
-
 /* Navbar */
 nav {
   display: flex;
@@ -23,7 +21,6 @@ nav {
   background-color: #68c6f1;
   padding: 10px 30px;
 }
-
 nav ul {
   display: flex;
   list-style: none;
@@ -31,17 +28,14 @@ nav ul {
   margin: 0;
   align-items: center;
 }
-
 nav ul li {
   margin: 0 20px;
 }
-
 nav ul li a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
 }
-
 header img.logo {
   max-width: 150px;
   border-radius: 10px;
@@ -49,7 +43,6 @@ header img.logo {
   background-color: white;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 /* Hero Section */
 .centroweb {
   display: flex;
@@ -58,28 +51,23 @@ header img.logo {
   background-color: #ffffff;
   padding: 25px;
 }
-
 .centroweb-content {
   max-width: 50%;
 }
-
 .centroweb h1 {
   color: #003366;
   font-size: 2.5rem;
 }
-
 .centroweb p {
   font-size: 1.2rem;
   color: #333;
 }
-
 .centroweb-image img {
   width: 100%;
   height: auto;
   max-width: 1300px;
   max-height: 500px;
 }
-
 /* Botón Primario */
 .btn-primary {
   padding: 10px 20px;
@@ -88,13 +76,11 @@ header img.logo {
   text-decoration: none;
   border-radius: 5px;
 }
-
 /* Services Section */
 .services {
   padding: 50px 20px;
   background-color: white;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Ajustes para header y navbar */
@@ -102,49 +88,39 @@ header img.logo {
     flex-direction: column;
     padding: 10px;
   }
-
   nav ul {
     flex-direction: column;
     align-items: center;
   }
-
   nav ul li {
     margin: 10px 0;
   }
-
   header img.logo {
     max-width: 120px; /* Ajusta el tamaño del logo */
   }
-
   /* Hero Section en Móvil */
   .centroweb {
     flex-direction: column;
     padding: 20px;
   }
-
   .centroweb-content {
     max-width: 100%;
     text-align: center; /* Centra el texto en pantallas pequeñas */
   }
-
   .centroweb h1 {
     font-size: 2rem; /* Reduce el tamaño del título */
   }
-
   .centroweb p {
     font-size: 1rem; /* Reduce el tamaño del párrafo */
   }
-
   .centroweb-image img {
     max-height: 300px; /* Limita la altura de la imagen */
   }
-
   /* Ajustes para Botón Primario */
   .btn-primary {
     padding: 8px 15px; /* Reduce el padding en pantallas móviles */
     font-size: 0.9rem; /* Ajusta el tamaño de la fuente */
   }
-
   /* Services Section */
   .services {
     padding: 30px 15px; /* Reduce el padding en pantallas móviles */
@@ -156,17 +132,14 @@ header img.logo {
   background-color: white;
   text-align: center;
 }
-
 .services h2 {
   color: #003366;
 }
-
 .service-items {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
 }
-
 .service-item {
   background-color: #ffcc33;
   color: #003366;
@@ -174,30 +147,25 @@ header img.logo {
   border-radius: 10px;
   width: 30%;
 }
-
 /* Accordion (Sección de Servicios) */
 .servicios {
   padding: 50px;
   background-color: #fff;
 }
-
 .servicios h2 {
   text-align: center;
   color: #003366;
   margin-bottom: 20px;
 }
-
 .accordion {
   max-width: 700px;
   margin: 0 auto;
 }
-
 .accordion-item {
   background-color: #f4f4f4;
   border-bottom: 1px solid #ddd;
   padding: 10px 20px;
 }
-
 .accordion-button {
   background-color: #003366;
   color: white;
@@ -207,13 +175,11 @@ header img.logo {
   width: 100%;
   cursor: pointer;
 }
-
 .accordion-button.active,
 .accordion-button:hover {
   background-color: #ffcc33;
   color: #003366;
 }
-
 .accordion-content {
   max-height: 0;
   overflow: hidden;
@@ -221,12 +187,10 @@ header img.logo {
   padding: 0 15px;
   color: #333;
 }
-
 .accordion-content p {
   margin: 0;
   padding: 10px 0;
 }
-
 /* Footer */
 footer {
   position: fixed;
@@ -240,21 +204,18 @@ footer {
   height: 100px;
   box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
-
 footer .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-
 footer .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Sección de Servicios en Móvil */
@@ -262,33 +223,27 @@ footer .row {
     flex-direction: column;
     align-items: center;
   }
-
   .service-item {
     width: 100%;
     margin-bottom: 20px;
   }
-
   /* Acordeón */
   .accordion {
     max-width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
   }
-
   .accordion-button {
     padding: 12px; /* Reduce el padding en móvil */
     font-size: 1rem; /* Ajusta el tamaño de fuente */
   }
-
   .accordion-content {
     padding: 10px; /* Aumenta el padding para legibilidad */
   }
-
   /* Footer en Móvil */
   footer {
     position: relative;
     height: auto;
     padding: 20px;
   }
-
   footer .container,
   footer .row {
     flex-direction: column;
@@ -299,12 +254,10 @@ footer .row {
 footer .col-3, footer .col-6 {
   padding: 10px;
 }
-
 footer .footer-title {
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
-
 footer .instagram-photos img {
   width: 40px;
   height: 40px;
@@ -314,28 +267,22 @@ footer .instagram-photos img {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
-
 footer .instagram-photos img:hover {
   transform: scale(1.1);
 }
-
 footer .m-0 {
   margin: 0;
 }
-
 footer .letrachica {
   font-size: 0.8rem;
 }
-
 footer .footer-link {
   color: #003366;
   text-decoration: none;
 }
-
 footer .footer-link:hover {
   text-decoration: underline;
 }
-
 /* Sección de Información adicional */
 .informacion {
   display: flex;
@@ -348,28 +295,23 @@ footer .footer-link:hover {
   margin-bottom: 10px;
   position: relative;
 }
-
 .info-content h3 {
   color: #003366;
 }
-
 .info-content ul {
   list-style: none;
   padding: 0;
   color: #333;
 }
-
 .info-image {
   position: absolute;
   right: 20px;
 }
-
 .info-image img {
   max-width: 100%;
   height: 175px;
   padding-top: 10px;
 }
-
 /* Nosotros Section */
 .nosotros {
   display: flex;
@@ -379,21 +321,17 @@ footer .footer-link:hover {
   padding: 100px;
   padding-left: 100px;
 }
-
 .nosotros-content {
   max-width: 50%;
 }
-
 .nosotros h1 {
   color: #003366;
   font-size: 3.5rem;
 }
-
 .nosotros p {
   font-size: 1.5rem;
   color: #333;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Footer en Móvil */
@@ -402,67 +340,54 @@ footer .footer-link:hover {
     text-align: center;
     padding: 5px;
   }
-
   footer .instagram-photos img {
     width: 30px;
     height: 30px;
   }
-
   footer .footer-title,
   footer .letrachica {
     font-size: 0.7rem;
   }
-
   /* Información Adicional en Móvil */
   .informacion {
     display: block;
     padding: 50px 10px;
     font-size: 1rem;
   }
-
   .info-image {
     position: static; /* Posicionamiento normal en pantallas pequeñas */
     margin: 10px auto; /* Centra la imagen */
   }
-
   /* Nosotros Section en Móvil */
   .nosotros {
     display: block;
     padding: 50px 10px;
   }
-
   .nosotros h1 {
     font-size: 2rem;
   }
-
   .nosotros p {
     font-size: 1rem;
   }
-
   .nosotros-content {
     max-width: 100%;
   }
 }
-
 @media (max-width: 480px) {
   /* Ajustes adicionales para pantallas muy pequeñas */
   .informacion {
     padding: 30px 5px;
     font-size: 0.9rem;
   }
-
   footer .footer-title {
     font-size: 0.6rem;
   }
-
   footer .letrachica {
     font-size: 0.6rem;
   }
-
   .nosotros h1 {
     font-size: 1.8rem;
   }
-
   .nosotros p {
     font-size: 0.9rem;
   }
@@ -474,7 +399,6 @@ footer .footer-link:hover {
   max-height: 500px;
   border-radius: 25px;
 }
-
 /* Botón de Usuario (Iniciar sesión) */
 .user-button {
   position: absolute;
@@ -493,12 +417,10 @@ footer .footer-link:hover {
   transition: background-color 0.3s ease, transform 0.2s ease;
   z-index: 1000;
 }
-
 .user-button i {
   margin-right: 10px;
   font-size: 20px;
 }
-
 /* Botón de Registro */
 .register-button {
   position: absolute;
@@ -517,32 +439,27 @@ footer .footer-link:hover {
   transition: background-color 0.3s ease, transform 0.2s ease;
   z-index: 1000;
 }
-
 .register-button i {
   margin-right: 10px;
   font-size: 20px;
 }
-
 /* Hover para ambos botones */
 .user-button:hover, .register-button:hover {
   transform: scale(1.05);
 }
 
-.user-button:hover {
+.ser-button:hover {
   background-color: #005599;
 }
-
 .register-button:hover {
   background-color: #1C569B;
 }
-
 /* Sección de Login */
 .login-section {
   padding: 50px 20px;
   background-color: #f4f4f4;
   text-align: center;
 }
-
 .login-container {
   max-width: 600px;
   margin: 0 auto;
@@ -551,31 +468,26 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 .login-title h1 {
   color: #003366;
   font-size: 3rem;
   margin-bottom: 40px;
 }
-
 .login-form {
   width: 100%;
   text-align: left;
 }
-
 .login-form h3 {
   font-size: 1.5rem;
   color: #003366;
   margin-bottom: 20px;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Imagen en Nosotros en Móvil */
   .nosotros-image img {
     max-height: 300px;
   }
-
   /* Botones de Usuario y Registro en Móvil */
   .user-button,
   .register-button {
@@ -585,25 +497,20 @@ footer .footer-link:hover {
     top: 10px;
     right: 10px;
   }
-
   .register-button {
     top: 50px;
   }
-
   /* Login en Móvil */
   .login-container {
     padding: 20px;
   }
-
   .login-title h1 {
     font-size: 2rem;
   }
-
   .login-form h3 {
     font-size: 1.3rem;
   }
 }
-
 @media (max-width: 480px) {
   /* Botones en pantallas muy pequeñas */
   .user-button,
@@ -612,16 +519,13 @@ footer .footer-link:hover {
     font-size: 12px;
     padding: 5px 10px;
   }
-
   /* Formulario de Login en pantallas muy pequeñas */
   .login-container {
     padding: 15px;
   }
-
   .login-title h1 {
     font-size: 1.8rem;
   }
-
   .login-form h3 {
     font-size: 1rem;
   }
@@ -635,18 +539,15 @@ footer .footer-link:hover {
   border-radius: 5px;
   font-size: 1rem;
 }
-
 .login-remember {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
-
 .login-remember input {
   margin-right: 10px;
 }
-
 .forgot-password {
   color: #003366;
   text-decoration: none;
@@ -654,11 +555,9 @@ footer .footer-link:hover {
   margin-bottom: 20px;
   display: inline-block;
 }
-
 .forgot-password:hover {
   text-decoration: underline;
 }
-
 .login-form button {
   background-color: #003366;
   color: white;
@@ -670,18 +569,15 @@ footer .footer-link:hover {
   transition: background-color 0.3s ease;
   width: 100%;
 }
-
 .login-form button:hover {
   background-color: #002244;
 }
-
 /* Sección de Registro */
 .register-section {
   padding: 50px 20px;
   background-color: #f4f4f4;
   text-align: center;
 }
-
 .register-container {
   max-width: 900px;
   margin: 0 auto;
@@ -691,24 +587,20 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 .register-title h1 {
   color: #003366;
   font-size: 3rem;
   margin-bottom: 40px;
 }
-
 .register-form {
   width: 100%;
   text-align: left;
 }
-
 .register-form h3 {
   font-size: 1.5rem;
   color: #003366;
   margin-bottom: 20px;
 }
-
 .register-form input,
 .register-form select {
   width: 100%;
@@ -718,11 +610,9 @@ footer .footer-link:hover {
   border-radius: 5px;
   font-size: 1rem;
 }
-
 .register-form input[type="date"] {
   padding: 10px;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Formulario de Login en Móvil */
@@ -731,37 +621,30 @@ footer .footer-link:hover {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   .forgot-password {
     font-size: 0.8rem;
   }
-
   /* Sección de Registro en Móvil */
   .register-section {
     padding: 30px 15px;
   }
-
   .register-container {
     padding: 20px;
     padding-bottom: 100px;
   }
-
   .register-title h1 {
     font-size: 2rem;
     margin-bottom: 30px;
   }
-
   .register-form h3 {
     font-size: 1.3rem;
   }
-
   .register-form input,
   .register-form select {
     padding: 10px;
     font-size: 0.9rem;
   }
 }
-
 @media (max-width: 480px) {
   /* Formulario de Login en pantallas muy pequeñas */
   .login-form input,
@@ -769,25 +652,20 @@ footer .footer-link:hover {
     padding: 8px;
     font-size: 0.8rem;
   }
-
   .forgot-password {
     font-size: 0.75rem;
   }
-
   /* Registro en pantallas muy pequeñas */
   .register-container {
     padding: 15px;
     padding-bottom: 80px;
   }
-
   .register-title h1 {
     font-size: 1.8rem;
   }
-
   .register-form h3 {
     font-size: 1.1rem;
   }
-
   .register-form input,
   .register-form select {
     padding: 8px;
@@ -806,18 +684,15 @@ footer .footer-link:hover {
   transition: background-color 0.3s ease;
   width: 100%;
 }
-
 .register-form button:hover {
   background-color: #002244;
 }
-
 /* Sección para el formulario de solicitud de servicio */
 .service-request-section {
   padding: 50px 20px;
   background-color: #f4f4f4;
   text-align: center;
 }
-
 .service-request-container {
   max-width: 900px;
   margin: 0 auto;
@@ -826,24 +701,20 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 .service-request-title h1 {
   color: #003366;
   font-size: 3rem;
   margin-bottom: 40px;
 }
-
 .service-request-form {
   width: 100%;
   text-align: left;
 }
-
 .service-request-form h3 {
   font-size: 1.5rem;
   color: #003366;
   margin-bottom: 20px;
 }
-
 .service-request-form input,
 .service-request-form select,
 .service-request-form textarea {
@@ -854,11 +725,9 @@ footer .footer-link:hover {
   border-radius: 5px;
   font-size: 1rem;
 }
-
 .service-request-form textarea {
   resize: none;
 }
-
 .service-request-form button {
   background-color: #003366;
   color: white;
@@ -870,17 +739,14 @@ footer .footer-link:hover {
   transition: background-color 0.3s ease;
   width: 100%;
 }
-
 .service-request-form button:hover {
   background-color: #002244;
 }
-
 /* Sección de Restablecimiento de Contraseña */
 .reset-password-section,
 .reset-password-container {
   text-align: center;
 }
-
 .reset-password-container {
   max-width: 400px;
   padding: 40px;
@@ -889,13 +755,11 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
-
 .reset-password-container h1 {
   color: #003366;
   font-size: 2rem;
   margin-bottom: 20px;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Botón de registro en móvil */
@@ -903,86 +767,70 @@ footer .footer-link:hover {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   /* Formulario de solicitud de servicio en móvil */
   .service-request-section {
     padding: 30px 15px;
   }
-
   .service-request-container {
     padding: 20px;
   }
-
   .service-request-title h1 {
     font-size: 2.5rem;
     margin-bottom: 30px;
   }
-
   .service-request-form h3 {
     font-size: 1.3rem;
   }
-
   .service-request-form input,
   .service-request-form select,
   .service-request-form textarea {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   .service-request-form button {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   /* Restablecimiento de contraseña en móvil */
   .reset-password-container {
     padding: 20px;
     max-width: 90%;
   }
-
   .reset-password-container h1 {
     font-size: 1.8rem;
   }
 }
-
 @media (max-width: 480px) {
   /* Botón de registro en pantallas muy pequeñas */
   .register-form button {
     padding: 8px;
     font-size: 0.8rem;
   }
-
   /* Formulario de solicitud de servicio en pantallas muy pequeñas */
   .service-request-container {
     padding: 15px;
   }
-
   .service-request-title h1 {
     font-size: 2rem;
   }
-
   .service-request-form h3 {
     font-size: 1.1rem;
   }
-
   .service-request-form input,
   .service-request-form select,
   .service-request-form textarea {
     padding: 8px;
     font-size: 0.8rem;
   }
-
   .service-request-form button {
     padding: 8px;
     font-size: 0.8rem;
   }
-
   /* Restablecimiento de contraseña en pantallas muy pequeñas */
   .reset-password-container {
     padding: 15px;
     max-width: 85%;
   }
-
   .reset-password-container h1 {
     font-size: 1.5rem;
   }
@@ -992,14 +840,12 @@ footer .footer-link:hover {
   color: #333;
   font-size: 1rem;
 }
-
 /* Formularios de restablecimiento de contraseña */
 .reset-password-container form {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
-
 .reset-password-container form input[type="email"],
 .reset-password-container form input[type="password"] {
   padding: 12px;
@@ -1008,7 +854,6 @@ footer .footer-link:hover {
   border-radius: 5px;
   font-size: 1rem;
 }
-
 .reset-password-container form button.btn-primary {
   padding: 10px 20px;
   background-color: #003366;
@@ -1019,25 +864,21 @@ footer .footer-link:hover {
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
-
 .reset-password-container form button.btn-primary:hover {
   background-color: #0056b3;
 }
-
 /* Mensaje de estado */
 #status-message {
   margin-top: 15px;
   font-size: 0.9rem;
   text-align: center;
 }
-
 /* Mensaje de error */
 .error-message {
   color: red;
   font-size: 0.9rem;
   margin-bottom: 10px;
 }
-
 .button-separator {
   display: inline-block;
   width: 1px;
@@ -1046,14 +887,12 @@ footer .footer-link:hover {
   margin: 0 10px;
   vertical-align: middle;
 }
-
 /* Estilos para las tarjetas de solicitudes */
 .solicitudes-section {
   padding: 50px 20px;
   background-color: #ffffff;
   text-align: center;
 }
-
 .solicitudes-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -1062,7 +901,6 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .search-input {
   width: calc(100% - 40px);
   padding: 10px;
@@ -1075,7 +913,6 @@ footer .footer-link:hover {
   margin-right: auto;
   display: block;
 }
-
 .solicitud-card {
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -1085,22 +922,18 @@ footer .footer-link:hover {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
-
 .solicitud-card p {
   margin: 10px 0;
   color: #333;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
-
 .solicitud-card p:last-child {
   border-bottom: none;
 }
-
 .solicitud-card p strong {
   color: #003366;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Restablecimiento de contraseña en móvil */
@@ -1109,39 +942,32 @@ footer .footer-link:hover {
     padding: 10px;
     font-size: 0.9rem;
   }
-
   .reset-password-container form button.btn-primary {
     padding: 8px 16px;
     font-size: 0.9rem;
   }
-
   /* Ajustes para la sección de solicitudes */
   .solicitudes-section {
     padding: 30px 15px;
   }
-
   .solicitudes-container {
     padding: 15px;
   }
-
   .search-input {
     width: calc(100% - 20px);
     padding: 8px;
     font-size: 0.9rem;
   }
-
   /* Tarjetas de solicitudes en móvil */
   .solicitud-card {
     padding: 15px;
   }
-
   .solicitud-card p {
     margin: 8px 0;
     font-size: 0.9rem;
     padding-bottom: 8px;
   }
 }
-
 @media (max-width: 480px) {
   /* Restablecimiento de contraseña en pantallas muy pequeñas */
   .reset-password-container form input[type="email"],
@@ -1149,32 +975,26 @@ footer .footer-link:hover {
     padding: 8px;
     font-size: 0.8rem;
   }
-
   .reset-password-container form button.btn-primary {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
-
   /* Ajustes para la sección de solicitudes en pantallas muy pequeñas */
   .solicitudes-section {
     padding: 20px 10px;
   }
-
   .solicitudes-container {
     padding: 10px;
   }
-
   .search-input {
     width: calc(100% - 10px);
     padding: 6px;
     font-size: 0.8rem;
   }
-
   /* Tarjetas de solicitudes en pantallas muy pequeñas */
   .solicitud-card {
     padding: 10px;
   }
-
   .solicitud-card p {
     margin: 6px 0;
     font-size: 0.8rem;
@@ -1186,7 +1006,6 @@ footer .footer-link:hover {
   padding: 50px 20px;
   text-align: left;
 }
-
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -1197,31 +1016,25 @@ footer .footer-link:hover {
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 .contact-info {
   width: 65%;
 }
-
 .contact-info h1 {
   color: #003366;
   font-size: 2.5rem;
   margin-bottom: 20px;
 }
-
 .contact-info p {
   margin: 10px 0;
   color: #333;
 }
-
 .contact-info h3, .contact-info h4 {
   color: #003366;
   margin-top: 20px;
 }
-
 .contact-info p strong {
   color: #003366;
 }
-
 /* Tarjeta Social */
 .social-card {
   width: 30%;
@@ -1232,12 +1045,10 @@ footer .footer-link:hover {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-
 .social-card h3 {
   color: #003366;
   margin-bottom: 20px;
 }
-
 .social-button {
   display: block;
   width: 92%;
@@ -1250,22 +1061,18 @@ footer .footer-link:hover {
   text-decoration: none;
   font-size: 1.2rem;
 }
-
 .social-button i {
   margin-right: 10px;
 }
-
 .social-button:hover {
   background-color: #00509e;
 }
-
 /* Estilos para la página de redirección móvil */
 body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
 /* ----- Responsividad ----- */
 @media (max-width: 768px) {
   /* Ajustes en la sección de contacto en tabletas */
@@ -1273,32 +1080,26 @@ body, html {
     flex-direction: column; /* Cambiar a disposición en columna */
     padding: 15px;
   }
-
   .contact-info, .social-card {
     width: 100%; /* Ocupan el ancho completo en pantallas pequeñas */
     margin-bottom: 20px;
   }
-
   .contact-info h1 {
     font-size: 2rem; /* Reducir tamaño de fuente en tabletas */
   }
-
   .social-button {
     font-size: 1rem; /* Reducir tamaño de fuente en botones sociales */
     padding: 8px;
   }
 }
-
 @media (max-width: 480px) {
   /* Ajustes adicionales para móviles */
   .contact-section {
     padding: 30px 15px; /* Reducir padding en móviles */
   }
-
   .contact-info h1 {
     font-size: 1.8rem; /* Tamaño de fuente más pequeño */
   }
-
   .social-button {
     font-size: 0.9rem;
     padding: 6px;
@@ -1310,7 +1111,6 @@ body, html {
   #footer {
     display: none !important; /* Ocultar navbar y footer en móviles */
   }
-
   /* Icono del menú: siempre fijo y separado del contenido */
 /* Contenedor superior para el menú y logo */
 .menu-icon-container {
@@ -1326,7 +1126,6 @@ body, html {
   z-index: 1001;
   box-sizing: border-box;
 }
-
 /* Estilos para el botón de menú */
 .menu-icon {
   font-size: 24px;
@@ -1335,13 +1134,11 @@ body, html {
   background-color: transparent;
   border: none;
 }
-
 /* Estilos para el logo en la parte derecha */
 .menu-logo {
   height: 40px; /* Ajusta la altura según el tamaño del logo */
   cursor: pointer;
 }
-
 /* Sidebar estilos */
 .sidebar {
   height: 100%;
@@ -1355,7 +1152,6 @@ body, html {
   transition: 0.5s;
   padding-top: 60px;
 }
-
 .sidebar a {
   padding: 10px 15px;
   text-decoration: none;
@@ -1364,49 +1160,40 @@ body, html {
   display: block;
   transition: 0.3s;
 }
-
 .sidebar a:hover {
   background-color: #575757;
 }
-
 .sidebar .closebtn {
   position: absolute;
   top: 10px;
   right: 25px;
   font-size: 36px;
 }
-
 /* Ajustes de la versión móvil */
 @media (max-width: 768px) {
   .sidebar {
       background-color: #003366;
       color: #ffffff;
   }
-
   .sidebar a {
       color: #ffffff;
       padding: 15px 20px;
       font-size: 1.2rem;
   }
-
   .sidebar a:hover {
       background-color: #ffcc33;
       color: #003366;
   }
-
   /* Ajustes para el contenedor superior */
   .menu-icon-container {
       padding: 10px;
-      background-color: #003366;
+      background-color: #68c6f1;
   }
 
   .menu-logo {
       height: 40px;
       margin-right: 10px;
   }
-
-
-
   /* Espacio suficiente para evitar solapamientos */
   .content {
       padding-top: 80px;
@@ -1444,6 +1231,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100vh;
+  padding-top: 20px;
 }
 
 /* Animación para cambiar los colores lentamente */
