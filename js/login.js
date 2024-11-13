@@ -41,7 +41,7 @@ async function loginUsuario(event) {
             // Redirigir según el rol del usuario
             if (result.usuario.user_tipo === 'admin') {
                 alert('Bienvenido, administrador.');
-                window.location.href = 'admin_dashboard.html'; // Vista para administradores
+                window.location.href = 'index.html'; // Vista para administradores
             } else {
                 alert('Login exitoso');
                 window.location.href = 'index.html'; // Vista estándar para usuarios
