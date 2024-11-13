@@ -14,6 +14,10 @@
     <section class="assign-technician-section">
         <div class="assign-technician-container">
             <h1>Lista de Solicitudes</h1>
+            <!-- Botón para ir al historial -->
+            <button onclick="window.location.href='historial_solicitudes.html'" class="btn-primary" style="margin-bottom: 15px;">
+                Ver Historial de Solicitudes Asignadas
+            </button>
             <div id="solicitudes-list" class="solicitudes-list">
                 <!-- Las solicitudes serán generadas dinámicamente -->
             </div>
@@ -21,29 +25,29 @@
     </section>
 
     <!-- Modal para asignar técnico -->
-<div id="assignTechnicianModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button" onclick="closeModal()">&times;</span>
-        <h2>Asignar Técnico</h2>
-        <div id="message" class="status-message"></div> <!-- Elemento para mostrar mensajes -->
+    <div id="assignTechnicianModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Asignar Técnico</h2>
+            <div id="message" class="status-message"></div> <!-- Elemento para mostrar mensajes -->
 
-        <form id="assignTechnicianForm">
-            <input type="hidden" id="selectedSolicitud" name="selectedSolicitud">
+            <form id="assignTechnicianForm">
+                <input type="hidden" id="selectedSolicitud" name="selectedSolicitud">
 
-            <label for="tecnico">Seleccionar Técnico:</label>
-            <select id="tecnico" name="tecnico" required>
-                <!-- Opciones de técnicos serán cargadas dinámicamente -->
-            </select>
+                <label for="tecnico">Seleccionar Técnico:</label>
+                <select id="tecnico" name="tecnico" required>
+                    <!-- Opciones de técnicos serán cargadas dinámicamente -->
+                </select>
 
-            <label for="fechaRealizacion">Fecha de Realización:</label>
-            <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
+                <label for="fechaRealizacion">Fecha de Realización:</label>
+                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
 
-            <button type="submit" class="btn-primary">Asignar Técnico</button>
-        </form>
+                <button type="submit" class="btn-primary">Asignar Técnico</button>
+            </form>
+        </div>
     </div>
-</div>
-
 
     <script src="js/asignar_tecnico.js"></script>
+    <script src="js/scripts.js" defer></script>
 </body>
 </html>
