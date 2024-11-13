@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Técnico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div id="navbar"></div>
+    </header>
+
+    <section class="assign-technician-section">
+        <div class="assign-technician-container">
+            <h1>Asignar Técnico a Solicitud</h1>
+            <div id="message"></div>
+            
+            <form id="assignTechnicianForm">
+                <label for="solicitud">Seleccionar Solicitud:</label>
+                <select id="solicitud" name="solicitud" required>
+                    <!-- Opciones de solicitudes serán cargadas dinámicamente -->
+                </select>
+
+                <label for="tecnico">Seleccionar Técnico:</label>
+                <select id="tecnico" name="tecnico" required>
+                    <!-- Opciones de técnicos serán cargadas dinámicamente -->
+                </select>
+
+                <label for="fechaRealizacion">Fecha de Realización:</label>
+                <input type="date" id="fechaRealizacion" name="fechaRealizacion" required>
+
+                <button type="submit" class="btn-primary">Asignar Técnico</button>
+            </form>
+
+            <button class="btn-primary back-button" onclick="history.back()">Volver</button>
+        </div>
+    </section>
+
+    <script src="js/asignar_tecnico.js"></script>
+</body>
+</html>
