@@ -41,7 +41,7 @@ async function cargarAsignaciones() {
             const guardarBtn = document.createElement('button');
             guardarBtn.textContent = 'Guardar Estado';
             guardarBtn.classList.add('btn-guardar');
-            guardarBtn.addEventListener('click', () => actualizarEstado(asignacion.ID_SOLICITUD, estadoSelect.value));
+            guardarBtn.addEventListener('click', () => actualizarEstado(asignacion.ID_SOLICITUD, estadoSelect.value, asignacionItem));
 
             // Agregar la información y controles a la solicitud
             asignacionItem.innerHTML = `
@@ -69,7 +69,7 @@ async function cargarAsignaciones() {
 }
 
 // Función para actualizar el estado de una solicitud
-async function actualizarEstado(idSolicitud, nuevoEstado) {
+async function actualizarEstado(idSolicitud, nuevoEstado, asignacionItem) {
     try {
         const response = await fetch('https://webclibackend-production.up.railway.app/api/actualizarEstado', {
             method: 'PUT',
@@ -86,10 +86,31 @@ async function actualizarEstado(idSolicitud, nuevoEstado) {
         const data = await response.json();
         alert(data.message); // Mostrar mensaje de éxito
 
-        // Recargar asignaciones para reflejar los cambios
-        await cargarAsignaciones();
+        // Si el estado es "Finalizada", mover la asignación al historial
+        if (nuevoEstado === 'Finalizada') {
+            asignacionItem.remove(); // Eliminar de la lista actual
+            agregarAHistorial(asignacionItem); // Mover al historial
+        }
     } catch (error) {
         console.error('Error al actualizar estado:', error);
         alert('Error al actualizar el estado');
     }
+}
+
+// Función para mover la asignación finalizada al historial
+function agregarAHistorial(asignacionItem) {
+    const historialList = document.getElementById('historial-list');
+    if (!historialList) {
+        // Crear el contenedor de historial si no existe
+        const historialSection = document.createElement('section');
+        historialSection.className = 'solicitudes-section';
+        historialSection.innerHTML = `
+            <h2>Historial de Asignaciones</h2>
+            <div id="historial-list" class="asignaciones-list"></div>
+        `;
+        document.body.appendChild(historialSection);
+    }
+
+    // Añadir la asignación finalizada al historial
+    document.getElementById('historial-list').appendChild(asignacionItem);
 }
