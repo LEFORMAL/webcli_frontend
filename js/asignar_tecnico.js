@@ -30,7 +30,7 @@ async function cargarSolicitudes() {
             const necesitaCompraText = solicitud.NECESITA_COMPRA === 'Y' ? 'Sí' : 'No';
 
             solicitudItem.innerHTML = `
-                <p><strong>Tipo de Solicitud:</strong> ${solicitud.NOMBRE}</p>
+                <p><strong>Nombre Cliente:</strong> ${solicitud.NOMBRE}</p>
                 <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
                 <p><strong>Dirección:</strong> ${solicitud.DIRECCION}</p>
                 <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>

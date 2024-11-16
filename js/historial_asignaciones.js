@@ -27,7 +27,7 @@ async function cargarHistorial() {
             asignacionItem.classList.add('asignacion-item');
 
             asignacionItem.innerHTML = `
-                <p><strong>Tipo de Solicitud:</strong> ${asignacion.NOMBRE}</p>
+                <p><strong>Nombre Cliente:</strong> ${asignacion.NOMBRE}</p>
                 <p><strong>Tipo de Solicitud:</strong> ${asignacion.TIPO_SOLICITUD}</p>
                 <p><strong>Dirección:</strong> ${asignacion.DIRECCION}</p>
                 <p><strong>Marca:</strong> ${asignacion.MARCA_PRODUCTO}</p>
