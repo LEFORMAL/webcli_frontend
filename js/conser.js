@@ -134,6 +134,7 @@ function calcularCostoTotal() {
     }
 
     // 2. Ajustar el costo según el tipo de solicitud
+    let mensaje = "";
     switch (tipoSolicitud.toLowerCase()) {
         case "instalación":
             costoTotal += valorProducto * 0.15 * cantidad;
@@ -144,14 +145,43 @@ function calcularCostoTotal() {
         case "mantenimiento":
             costoTotal += valorProducto * 0.12 * cantidad;
             break;
-        case "reparación":
-            costoTotal = 0;
-            break;
-        default:
+        default: // Para "reparación" y otros
+            costoTotal += valorProducto * 0.5 * cantidad; // Misma lógica de reparación
+            mensaje = "El costo indicado no es el valor total. Será evaluado post visita.";
+            // Forzar el medio de pago a "transferencia"
+            const pagoSelect = document.getElementById('pago');
+            if (pagoSelect) {
+                pagoSelect.value = "transferencia";
+                pagoSelect.disabled = true; // Deshabilitar selección de otros medios de pago
+            }
+
+            // Añadir etiqueta "(Solo Transferencia)" al lado del selector de tipo de solicitud
+            const tipoSolicitudLabel = document.querySelector('label[for="tipo-solicitud"]');
+            if (tipoSolicitudLabel && !document.getElementById('transferenciaNota')) {
+                const transferenciaNota = document.createElement('span');
+                transferenciaNota.id = 'transferenciaNota';
+                transferenciaNota.textContent = " (Solo Transferencia)";
+                transferenciaNota.style.color = 'red';
+                transferenciaNota.style.fontWeight = 'bold';
+                tipoSolicitudLabel.appendChild(transferenciaNota);
+            }
             break;
     }
 
-    // Actualizar el DOM para mostrar el costo total en el nuevo elemento "costoTotal"
+    // Eliminar etiqueta "(Solo Transferencia)" si el tipo de solicitud vuelve a ser permitido
+    if (["instalación", "remoción", "mantenimiento"].includes(tipoSolicitud.toLowerCase())) {
+        const transferenciaNota = document.getElementById('transferenciaNota');
+        if (transferenciaNota) {
+            transferenciaNota.remove();
+        }
+        // Habilitar nuevamente el selector de medio de pago
+        const pagoSelect = document.getElementById('pago');
+        if (pagoSelect) {
+            pagoSelect.disabled = false;
+        }
+    }
+
+    // Actualizar el DOM para mostrar el costo total
     const costoElement = document.getElementById('costoTotal');
     if (costoElement) {
         costoElement.textContent = `$${costoTotal.toFixed(2)}`;
@@ -159,9 +189,26 @@ function calcularCostoTotal() {
         console.error("No se encontró el elemento para mostrar el costo total.");
     }
 
+    // Mostrar el mensaje de aviso si es necesario
+    const mensajeElement = document.getElementById('mensajeAviso');
+    if (mensaje) {
+        if (!mensajeElement) {
+            const nuevoMensaje = document.createElement('p');
+            nuevoMensaje.id = 'mensajeAviso';
+            nuevoMensaje.textContent = mensaje;
+            nuevoMensaje.style.color = 'red';
+            nuevoMensaje.style.fontWeight = 'bold';
+            document.getElementById('solicitudForm').appendChild(nuevoMensaje);
+        } else {
+            mensajeElement.textContent = mensaje; // Actualizar mensaje existente
+        }
+    } else if (mensajeElement) {
+        // Eliminar mensaje si no aplica
+        mensajeElement.remove();
+    }
+
     return costoTotal;
 }
-
 // Precargar los datos del usuario en el formulario
 function precargarDatosUsuario() {
     const usuario = JSON.parse(localStorage.getItem('usuario'));

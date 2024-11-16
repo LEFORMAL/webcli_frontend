@@ -34,7 +34,7 @@ async function cargarSolicitudesConTecnico() {
                 <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
                 <p><strong>Necesita Compra:</strong> ${necesitaCompraText}</p>
                 <p><strong>Técnico Asignado:</strong> ${solicitud.TECNICO_ASIGNADO}</p>
-                <p><strong>Fecha de Realización:</strong> ${solicitud.FECHA_REALIZACION}</p>
+                <p><strong>Estado:</strong> ${solicitud.ESTADO_SOLICITUD}</p>
             `;
             solicitudesHistorial.appendChild(solicitudItem);
         });

@@ -1113,7 +1113,7 @@ select {
     padding-right: 10px;
 }
   .contact-info, .social-card {
-    width: 100%; /* Ocupan el ancho completo en pantallas pequeñas */
+    width: 80%; /* Ocupan el ancho completo en pantallas pequeñas */
     margin-bottom: 20px;
   }
   .contact-info h1 {
