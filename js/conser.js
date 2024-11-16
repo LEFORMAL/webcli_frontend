@@ -146,7 +146,7 @@ function calcularCostoTotal() {
             costoTotal += valorProducto * 0.12 * cantidad;
             break;
         default: // Para "reparación" y otros
-            costoTotal += valorProducto * 0.5 * cantidad; // Misma lógica de reparación
+            costoTotal += valorProducto * 0.05 * cantidad; // Misma lógica de reparación
             mensaje = "El costo indicado no es el valor total. Será evaluado post visita.";
             // Forzar el medio de pago a "transferencia"
             const pagoSelect = document.getElementById('pago');
