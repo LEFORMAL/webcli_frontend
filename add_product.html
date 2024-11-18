@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto - Panel de Administración</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <section class="service-request-section" style="padding-bottom: 150px;">
+        <div class="service-request-container">
+            <div class="service-request-title">
+                <h1>Agregar Producto</h1>
+            </div>
+            <div class="product-request-form">
+                <form id="addProductoForm">
+                    <label for="nombre_marca">Nombre de la Marca:</label>
+                    <input type="text" id="nombre_marca" name="nombre_marca" required placeholder="Ej: Samsung, LG">
+
+                    <label for="modelo_producto">Modelo del Producto:</label>
+                    <input type="text" id="modelo_producto" name="modelo_producto" required placeholder="Ej: AC1234">
+
+                    <label for="valor_producto">Valor del Producto:</label>
+                    <input type="number" id="valor_producto" name="valor_producto" required placeholder="Ej: 500">
+
+                    <button type="submit">Agregar Producto</button>
+                </form>
+
+                <div id="message"></div> <!-- Muestra mensajes de éxito o error -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Enlazar el archivo JavaScript para manejar la lógica del formulario -->
+    <script src="js/add_product.js"></script>
+    <script src="js/scripts.js" defer></script>
+</body>
+</html>

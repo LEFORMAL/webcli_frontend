@@ -51,6 +51,7 @@ function loadSidebar() {
                 <a href="asignar_tecnico.html">Administrar solicitudes</a>
                 <a href="crea_user.html">Crear técnico o gestor</a>
                 <a href="add_service.html">Añadir nuevo servicio</a>
+                <a href="add_product.html">Añadir nuevo producto</a>
             `;
         }
 
