@@ -120,12 +120,15 @@ function renderSolicitudes(lista) {
         const solicitudItem = document.createElement('div');
         solicitudItem.classList.add('solicitud-item');
 
+        // Formatear la fecha para que sea más legible
+        const fechaFormateada = new Date(solicitud.FECHA_CREACION).toLocaleDateString();
+
         const necesitaCompraText = solicitud.NECESITA_COMPRA === 'Y' ? 'Sí' : 'No';
 
         solicitudItem.innerHTML = `
             <p><strong>Nombre Cliente:</strong> ${solicitud.NOMBRE}</p>
             <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
-            <p><strong>Fecha de solicitud:</strong> ${solicitud.FECHA_CREACION}</p>
+            <p><strong>Fecha de solicitud:</strong> ${fechaFormateada}</p>
             <p><strong>Dirección:</strong> ${solicitud.DIRECCION}</p>
             <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>
             <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
@@ -135,6 +138,7 @@ function renderSolicitudes(lista) {
         solicitudesList.appendChild(solicitudItem);
     });
 }
+
 
 // Función para cargar los técnicos disponibles
 async function cargarTecnicos() {
