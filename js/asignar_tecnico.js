@@ -19,12 +19,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     aplicarFiltro.addEventListener('click', () => {
-        const fechaSeleccionada = fechaFiltro.value; // Fecha seleccionada en formato YYYY-MM-DD local
+        const fechaSeleccionada = fechaFiltro.value; // Fecha seleccionada (YYYY-MM-DD)
         const tipoSeleccionado = tipoFiltro.value.toLowerCase();
         const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
     
         const solicitudesFiltradas = solicitudes.filter(solicitud => {
-            const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toLocaleDateString('en-CA'); // Convertir a YYYY-MM-DD local
+            // Normalizar fecha de la solicitud
+            const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0]; // Convertir a YYYY-MM-DD
     
             const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
             const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     
         renderSolicitudes(solicitudesFiltradas);
     });
+    
     
     
 
@@ -72,16 +74,16 @@ async function cargarSolicitudes() {
 }
 
 function llenarFiltrosDinamicos(solicitudes) {
-    // Obtener fechas únicas en formato YYYY-MM-DD local
+    // Obtener fechas únicas en formato YYYY-MM-DD
     const fechasUnicas = [...new Set(solicitudes.map(s => {
         const fecha = new Date(s.FECHA_CREACION);
-        return fecha.toLocaleDateString('en-CA'); // Formato YYYY-MM-DD
+        return fecha.toISOString().split('T')[0]; // Normalizar fecha al formato YYYY-MM-DD
     }))];
 
     fechasUnicas.forEach(fecha => {
         const option = document.createElement('option');
-        option.value = fecha; // Fecha en formato local YYYY-MM-DD
-        option.textContent = new Date(fecha).toLocaleDateString(); // Mostrar fecha en formato legible
+        option.value = fecha; // Fecha normalizada
+        option.textContent = new Date(fecha).toLocaleDateString(); // Mostrar fecha legible
         document.getElementById('fechaFiltro').appendChild(option);
     });
 
@@ -94,6 +96,7 @@ function llenarFiltrosDinamicos(solicitudes) {
         document.getElementById('tipoFiltro').appendChild(option);
     });
 }
+
 
 
 
