@@ -67,14 +67,14 @@ async function cargarSolicitudes() {
     }
 }
 
-// Función para llenar los filtros dinámicos
 function llenarFiltrosDinamicos(solicitudes) {
-    // Obtener fechas únicas
-    const fechasUnicas = [...new Set(solicitudes.map(s => s.FECHA_CREACION))];
+    // Procesar y normalizar las fechas
+    const fechasUnicas = [...new Set(solicitudes.map(s => new Date(s.FECHA_CREACION).toISOString().split('T')[0]))];
+
     fechasUnicas.forEach(fecha => {
         const option = document.createElement('option');
-        option.value = fecha;
-        option.textContent = new Date(fecha).toLocaleDateString();
+        option.value = fecha; // Fecha en formato ISO (YYYY-MM-DD)
+        option.textContent = new Date(fecha).toLocaleDateString(); // Mostrar fecha en formato legible
         document.getElementById('fechaFiltro').appendChild(option);
     });
 
@@ -87,6 +87,25 @@ function llenarFiltrosDinamicos(solicitudes) {
         document.getElementById('tipoFiltro').appendChild(option);
     });
 }
+
+// Filtro con normalización de fechas
+aplicarFiltro.addEventListener('click', () => {
+    const fechaSeleccionada = fechaFiltro.value; // Fecha en formato ISO (YYYY-MM-DD)
+    const tipoSeleccionado = tipoFiltro.value.toLowerCase();
+    const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
+
+    const solicitudesFiltradas = solicitudes.filter(solicitud => {
+        const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0]; // Normalizar fecha
+        const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
+        const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
+        const coincideNombre = !nombreSeleccionado || solicitud.NOMBRE.toLowerCase().includes(nombreSeleccionado);
+
+        return coincideFecha && coincideTipo && coincideNombre;
+    });
+
+    renderSolicitudes(solicitudesFiltradas);
+});
+
 
 // Función para renderizar las solicitudes en la lista
 function renderSolicitudes(lista) {
