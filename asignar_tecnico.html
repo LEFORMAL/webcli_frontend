@@ -18,6 +18,33 @@
             <button onclick="window.location.href='historial_solicitudes.html'" class="btn-primary" style="margin-bottom: 15px;">
                 Ver Historial de Solicitudes Asignadas
             </button>
+
+            <!-- Botón para mostrar/ocultar filtros -->
+            <button id="toggleFilter" class="btn-primary" style="margin-bottom: 15px;">
+                Filtrar Solicitudes
+            </button>
+
+            <!-- Contenedor de filtros -->
+            <div id="filterContainer" class="filter-container" style="display: none;">
+                <label for="fechaFiltro">Fecha de Creación:</label>
+                <select id="fechaFiltro">
+                    <option value="">Todas</option>
+                    <!-- Opciones dinámicas -->
+                </select>
+
+                <label for="tipoFiltro">Tipo de Solicitud:</label>
+                <select id="tipoFiltro">
+                    <option value="">Todos</option>
+                    <!-- Opciones dinámicas -->
+                </select>
+
+                <label for="nombreFiltro">Nombre del Cliente:</label>
+                <input type="text" id="nombreFiltro" placeholder="Buscar por nombre...">
+
+                <button id="aplicarFiltro" class="btn-primary">Aplicar Filtro</button>
+                <button id="limpiarFiltro" class="btn-secondary">Limpiar Filtro</button>
+            </div>
+
             <div id="solicitudes-list" class="solicitudes-list">
                 <!-- Las solicitudes serán generadas dinámicamente -->
             </div>
