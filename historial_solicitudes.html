@@ -1,29 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial de Solicitudes Asignadas</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <header>
-        <div id="navbar"></div>
-    </header>
+<section class="solicitudes-section" style="padding-bottom: 150px;">
+    <div class="solicitudes-container">
+        <h1>Historial de Solicitudes Asignadas</h1>
+        <button onclick="window.location.href='asignar_tecnico.html'" class="btn-primary" style="margin-bottom: 15px;">
+            Volver a asignar técnicos
+        </button>
 
-    <section class="solicitudes-section" style="padding-bottom: 150px;">
-        <div class="solicitudes-container">
-            <h1>Historial de Solicitudes Asignadas</h1>
-            <button onclick="window.location.href='asignar_tecnico.html'" class="btn-primary" style="margin-bottom: 15px;">
-                Volver a asignar técnicos
-            </button>
-            <div id="solicitudes-historial" class="solicitudes-list">
-                <!-- Las solicitudes asignadas serán generadas dinámicamente -->
-            </div>
+        <!-- Botón para mostrar/ocultar filtros -->
+        <button id="toggleFilterHistorial" class="btn-primary" style="margin-bottom: 15px;">
+            Filtrar Solicitudes
+        </button>
+
+        <!-- Contenedor de filtros -->
+        <div id="filterContainerHistorial" class="filter-container" style="display: none;">
+            <label for="fechaFiltroHistorial">Fecha de Creación:</label>
+            <select id="fechaFiltroHistorial">
+                <option value="">Todas</option>
+            </select>
+
+            <label for="tipoFiltroHistorial">Tipo de Solicitud:</label>
+            <select id="tipoFiltroHistorial">
+                <option value="">Todos</option>
+            </select>
+
+            <label for="nombreFiltroHistorial">Nombre del Cliente:</label>
+            <input type="text" id="nombreFiltroHistorial" placeholder="Buscar por nombre...">
+
+            <button id="aplicarFiltroHistorial" class="btn-primary">Aplicar Filtro</button>
+            <button id="limpiarFiltroHistorial" class="btn-primary">Limpiar Filtro</button>
         </div>
-    </section>
 
-    <script src="js/historial_solicitudes.js"></script>
-    <script src="js/scripts.js" defer></script>
-</body>
-</html>
+        <div id="solicitudes-historial" class="solicitudes-list">
+            <!-- Las solicitudes asignadas serán generadas dinámicamente -->
+        </div>
+    </div>
+</section>
