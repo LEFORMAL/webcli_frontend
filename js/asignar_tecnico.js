@@ -125,6 +125,7 @@ function renderSolicitudes(lista) {
         solicitudItem.innerHTML = `
             <p><strong>Nombre Cliente:</strong> ${solicitud.NOMBRE}</p>
             <p><strong>Tipo de Solicitud:</strong> ${solicitud.TIPO_SOLICITUD}</p>
+            <p><strong>Fecha de solicitud:</strong> ${solicitud.FECHA_CREACION}</p>
             <p><strong>Dirección:</strong> ${solicitud.DIRECCION}</p>
             <p><strong>Marca:</strong> ${solicitud.MARCA_PRODUCTO}</p>
             <p><strong>Modelo:</strong> ${solicitud.MODELO_PRODUCTO}</p>
