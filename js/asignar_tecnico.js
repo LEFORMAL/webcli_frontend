@@ -24,11 +24,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
     
         const solicitudesFiltradas = solicitudes.filter(solicitud => {
-            // Normalizar la fecha de la solicitud estrictamente al día (local)
-            const fechaSolicitud = new Date(solicitud.FECHA_CREACION);
-            const fechaNormalizada = new Date(fechaSolicitud.getFullYear(), fechaSolicitud.getMonth(), fechaSolicitud.getDate()).toISOString().split('T')[0];
+            // Normalizar fecha de la solicitud
+            const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0]; // Convertir a YYYY-MM-DD
     
-            const coincideFecha = !fechaSeleccionada || fechaNormalizada === fechaSeleccionada;
+            const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
             const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
             const coincideNombre = !nombreSeleccionado || solicitud.NOMBRE.toLowerCase().includes(nombreSeleccionado);
     
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     
         renderSolicitudes(solicitudesFiltradas);
     });
-    
     
     
     
