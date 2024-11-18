@@ -19,20 +19,24 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     aplicarFiltro.addEventListener('click', () => {
-        const fechaSeleccionada = fechaFiltro.value;
+        const fechaSeleccionada = fechaFiltro.value; // Fecha seleccionada en formato YYYY-MM-DD
         const tipoSeleccionado = tipoFiltro.value.toLowerCase();
         const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
-
+    
         const solicitudesFiltradas = solicitudes.filter(solicitud => {
-            const coincideFecha = !fechaSeleccionada || solicitud.FECHA_CREACION === fechaSeleccionada;
+            // Convertir la fecha de la solicitud al mismo formato YYYY-MM-DD
+            const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0];
+            
+            const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
             const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
             const coincideNombre = !nombreSeleccionado || solicitud.NOMBRE.toLowerCase().includes(nombreSeleccionado);
-
+    
             return coincideFecha && coincideTipo && coincideNombre;
         });
-
+    
         renderSolicitudes(solicitudesFiltradas);
     });
+    
 
     limpiarFiltro.addEventListener('click', () => {
         fechaFiltro.value = '';
@@ -68,9 +72,8 @@ async function cargarSolicitudes() {
 }
 
 function llenarFiltrosDinamicos(solicitudes) {
-    // Procesar y normalizar las fechas
+    // Obtener fechas únicas en formato YYYY-MM-DD
     const fechasUnicas = [...new Set(solicitudes.map(s => new Date(s.FECHA_CREACION).toISOString().split('T')[0]))];
-
     fechasUnicas.forEach(fecha => {
         const option = document.createElement('option');
         option.value = fecha; // Fecha en formato ISO (YYYY-MM-DD)
@@ -87,6 +90,7 @@ function llenarFiltrosDinamicos(solicitudes) {
         document.getElementById('tipoFiltro').appendChild(option);
     });
 }
+
 
 // Filtro con normalización de fechas
 aplicarFiltro.addEventListener('click', () => {
