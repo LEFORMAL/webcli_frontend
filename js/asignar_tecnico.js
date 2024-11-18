@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     aplicarFiltro.addEventListener('click', () => {
         const fechaSeleccionada = fechaFiltro.value;
         const tipoSeleccionado = tipoFiltro.value.toLowerCase();
-        const nombreSeleccionado = nombreFiltro.value.toLowerCase();
+        const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
 
         const solicitudesFiltradas = solicitudes.filter(solicitud => {
             const coincideFecha = !fechaSeleccionada || solicitud.FECHA_CREACION === fechaSeleccionada;
@@ -65,9 +65,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function llenarFiltrosDinamicos(solicitudes) {
+        // Obtener fechas únicas
         const fechasUnicas = [...new Set(solicitudes.map(s => s.FECHA_CREACION))];
-        const tiposUnicos = [...new Set(solicitudes.map(s => s.TIPO_SOLICITUD.toLowerCase()))];
-
         fechasUnicas.forEach(fecha => {
             const option = document.createElement('option');
             option.value = fecha;
@@ -75,6 +74,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             fechaFiltro.appendChild(option);
         });
 
+        // Obtener tipos únicos
+        const tiposUnicos = [...new Set(solicitudes.map(s => s.TIPO_SOLICITUD.toLowerCase()))];
         tiposUnicos.forEach(tipo => {
             const option = document.createElement('option');
             option.value = tipo;
@@ -108,13 +109,13 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     async function cargarTecnicos() {
         try {
-            const response = await fetch('https://webclibackend-production.up.railway.app/api/tecnicos'); // Endpoint para obtener técnicos
+            const response = await fetch('https://webclibackend-production.up.railway.app/api/tecnicos');
             const tecnicos = await response.json();
 
             const tecnicoSelect = document.getElementById('tecnico');
             tecnicos.forEach(tecnico => {
                 const option = document.createElement('option');
-                option.value = `${tecnico.nombres} ${tecnico.apellidos}`; // Usar el nombre completo como valor
+                option.value = `${tecnico.nombres} ${tecnico.apellidos}`;
                 option.textContent = `${tecnico.nombres} ${tecnico.apellidos}`;
                 tecnicoSelect.appendChild(option);
             });
@@ -172,9 +173,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('assignTechnicianModal').style.display = 'flex';
         const selectedSolicitudElement = document.getElementById('selectedSolicitud');
         if (selectedSolicitudElement) {
-            selectedSolicitudElement.value = solicitudId; // Asignar ID de la solicitud al campo oculto
-        } else {
-            console.error('Campo oculto selectedSolicitud no encontrado.');
+            selectedSolicitudElement.value = solicitudId;
         }
     }
 
