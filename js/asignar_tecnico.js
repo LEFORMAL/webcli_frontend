@@ -1,6 +1,14 @@
 // Inicializar variable global para solicitudes
 let solicitudes = [];
 
+// Función para normalizar fechas al formato YYYY-MM-DD ajustando la zona horaria
+function normalizarFecha(fecha) {
+    const date = new Date(fecha);
+    return new Date(date.getTime() - date.getTimezoneOffset() * 60000) // Ajuste de zona horaria
+        .toISOString()
+        .split('T')[0]; // Formato YYYY-MM-DD
+}
+
 // Cargar solicitudes y técnicos al cargar la página
 document.addEventListener('DOMContentLoaded', async function () {
     await cargarSolicitudes();
@@ -25,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     
         const solicitudesFiltradas = solicitudes.filter(solicitud => {
             // Normalizar fecha de la solicitud
-            const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0]; // Convertir a YYYY-MM-DD
+            const fechaSolicitud = normalizarFecha(solicitud.FECHA_CREACION); // Convertir a YYYY-MM-DD
     
             const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
             const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
@@ -37,9 +45,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         renderSolicitudes(solicitudesFiltradas);
     });
     
-    
-    
-
     limpiarFiltro.addEventListener('click', () => {
         fechaFiltro.value = '';
         tipoFiltro.value = '';
@@ -75,10 +80,7 @@ async function cargarSolicitudes() {
 
 function llenarFiltrosDinamicos(solicitudes) {
     // Obtener fechas únicas en formato YYYY-MM-DD
-    const fechasUnicas = [...new Set(solicitudes.map(s => {
-        const fecha = new Date(s.FECHA_CREACION);
-        return fecha.toISOString().split('T')[0]; // Normalizar fecha al formato YYYY-MM-DD
-    }))];
+    const fechasUnicas = [...new Set(solicitudes.map(s => normalizarFecha(s.FECHA_CREACION)))];
 
     fechasUnicas.forEach(fecha => {
         const option = document.createElement('option');
@@ -97,9 +99,6 @@ function llenarFiltrosDinamicos(solicitudes) {
     });
 }
 
-
-
-
 // Filtro con normalización de fechas
 aplicarFiltro.addEventListener('click', () => {
     const fechaSeleccionada = fechaFiltro.value; // Fecha en formato ISO (YYYY-MM-DD)
@@ -107,7 +106,7 @@ aplicarFiltro.addEventListener('click', () => {
     const nombreSeleccionado = nombreFiltro.value.trim().toLowerCase();
 
     const solicitudesFiltradas = solicitudes.filter(solicitud => {
-        const fechaSolicitud = new Date(solicitud.FECHA_CREACION).toISOString().split('T')[0]; // Normalizar fecha
+        const fechaSolicitud = normalizarFecha(solicitud.FECHA_CREACION); // Normalizar fecha
         const coincideFecha = !fechaSeleccionada || fechaSolicitud === fechaSeleccionada;
         const coincideTipo = !tipoSeleccionado || solicitud.TIPO_SOLICITUD.toLowerCase() === tipoSeleccionado;
         const coincideNombre = !nombreSeleccionado || solicitud.NOMBRE.toLowerCase().includes(nombreSeleccionado);
@@ -117,7 +116,6 @@ aplicarFiltro.addEventListener('click', () => {
 
     renderSolicitudes(solicitudesFiltradas);
 });
-
 
 // Función para renderizar las solicitudes en la lista
 function renderSolicitudes(lista) {
@@ -146,7 +144,6 @@ function renderSolicitudes(lista) {
         solicitudesList.appendChild(solicitudItem);
     });
 }
-
 
 // Función para cargar los técnicos disponibles
 async function cargarTecnicos() {
