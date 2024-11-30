@@ -44,6 +44,7 @@ async function cargarAsignaciones() {
             guardarBtn.addEventListener('click', () => actualizarEstado(asignacion.ID_SOLICITUD, estadoSelect.value, asignacionItem));
 
             const fechareali = new Date(asignacion.FECHA_REALIZACION).toLocaleDateString();
+            
 
             // Agregar la información y controles a la solicitud
             asignacionItem.innerHTML = `
