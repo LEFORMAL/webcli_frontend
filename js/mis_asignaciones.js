@@ -43,14 +43,12 @@ async function cargarAsignaciones() {
             guardarBtn.classList.add('btn-guardar');
             guardarBtn.addEventListener('click', () => actualizarEstado(asignacion.ID_SOLICITUD, estadoSelect.value, asignacionItem));
 
-            const fechareali = new Date(asignacion.FECHA_REALIZACION).toLocaleDateString();
-            
 
             // Agregar la información y controles a la solicitud
             asignacionItem.innerHTML = `
                 <p><strong>Nombre Cliente:</strong> ${asignacion.NOMBRE}</p>
                 <p><strong>Tipo de Solicitud:</strong> ${asignacion.TIPO_SOLICITUD}</p>
-                <p><strong>Fecha de realización:</strong> ${fechareali}</p>
+                <p><strong>Fecha de realización:</strong> ${asignacion.FECHA_REALIZACION}</p>
                 <p><strong>Dirección:</strong> ${asignacion.DIRECCION}</p>
                 <p><strong>Marca:</strong> ${asignacion.MARCA_PRODUCTO}</p>
                 <p><strong>Modelo:</strong> ${asignacion.MODELO_PRODUCTO}</p>
