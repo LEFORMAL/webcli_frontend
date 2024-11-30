@@ -181,3 +181,47 @@ function closeModal() {
 function capitalizeWords(str) {
     return str.replace(/\b\w/g, char => char.toUpperCase());
 }
+// Añadir eventListener al formulario del modal para asignar técnico
+document.getElementById('assignTechnicianForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+
+    // Obtener los datos del formulario
+    const selectedSolicitud = document.getElementById('selectedSolicitud').value; // ID de la solicitud
+    const tecnico = document.getElementById('tecnico').value; // Nombre del técnico
+    const fechaRealizacion = document.getElementById('fechaRealizacion').value; // Fecha seleccionada
+
+    try {
+        // Enviar los datos al backend para asignar el técnico
+        const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
+            method: 'PUT', // Método coincide con el backend
+            headers: {
+                'Content-Type': 'application/json', // Tipo de contenido JSON
+            },
+            body: JSON.stringify({
+                solicitudId: selectedSolicitud,
+                tecnicoNombre: tecnico, // Cambiado a tecnicoNombre para coincidir con el backend
+                fechaRealizacion: fechaRealizacion,
+            }),
+        });
+
+        // Verificar la respuesta del servidor
+        if (!response.ok) {
+            throw new Error('Error al asignar técnico.');
+        }
+
+        const result = await response.json();
+        console.log('Técnico asignado exitosamente:', result);
+
+        // Mostrar mensaje de éxito en el modal
+        document.getElementById('message').textContent = '¡Técnico asignado exitosamente!';
+        closeModal(); // Cerrar el modal
+
+        // Recargar la lista de solicitudes para reflejar los cambios
+        await cargarSolicitudes();
+    } catch (error) {
+        console.error('Error al asignar técnico:', error);
+
+        // Mostrar mensaje de error en el modal
+        document.getElementById('message').textContent = 'Error al asignar técnico. Por favor, intente nuevamente.';
+    }
+});
