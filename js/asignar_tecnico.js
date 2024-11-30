@@ -166,16 +166,34 @@ async function cargarTecnicos() {
 // Función para abrir el modal
 function openModal(solicitudId) {
     document.getElementById('assignTechnicianModal').style.display = 'flex';
+
     const selectedSolicitudElement = document.getElementById('selectedSolicitud');
     if (selectedSolicitudElement) {
-        selectedSolicitudElement.value = solicitudId;
+        selectedSolicitudElement.value = solicitudId; // Asignar el ID de la solicitud al campo oculto
+    }
+
+    // Limpiar mensajes previos en el modal
+    document.getElementById('message').textContent = '';
+
+    // Si necesitas mostrar información adicional de la solicitud en el modal, puedes agregarlo aquí.
+    const solicitud = solicitudes.find(s => s.ID_SOLICITUD === solicitudId); // Buscar la solicitud seleccionada
+    if (solicitud) {
+        console.log('Abriendo modal para la solicitud:', solicitud); // Debug opcional
     }
 }
+
 
 // Función para cerrar el modal
 function closeModal() {
     document.getElementById('assignTechnicianModal').style.display = 'none';
+
+    // Limpiar el formulario del modal
+    document.getElementById('assignTechnicianForm').reset();
+
+    // Limpiar mensajes y datos
+    document.getElementById('message').textContent = '';
 }
+
 
 // Función para capitalizar palabras
 function capitalizeWords(str) {
@@ -183,28 +201,25 @@ function capitalizeWords(str) {
 }
 // Añadir eventListener al formulario del modal para asignar técnico
 document.getElementById('assignTechnicianForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evitar el comportamiento predeterminado del formulario
+    e.preventDefault();
 
-    // Obtener los datos del formulario
-    const selectedSolicitud = document.getElementById('selectedSolicitud').value; // ID de la solicitud
-    const tecnico = document.getElementById('tecnico').value; // Nombre del técnico
-    const fechaRealizacion = document.getElementById('fechaRealizacion').value; // Fecha seleccionada
+    const selectedSolicitud = document.getElementById('selectedSolicitud').value;
+    const tecnico = document.getElementById('tecnico').value;
+    const fechaRealizacion = document.getElementById('fechaRealizacion').value;
 
     try {
-        // Enviar los datos al backend para asignar el técnico
         const response = await fetch('https://webclibackend-production.up.railway.app/api/solicitud/asignar', {
-            method: 'PUT', // Método coincide con el backend
+            method: 'PUT',
             headers: {
-                'Content-Type': 'application/json', // Tipo de contenido JSON
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 solicitudId: selectedSolicitud,
-                tecnicoNombre: tecnico, // Cambiado a tecnicoNombre para coincidir con el backend
+                tecnicoNombre: tecnico,
                 fechaRealizacion: fechaRealizacion,
             }),
         });
 
-        // Verificar la respuesta del servidor
         if (!response.ok) {
             throw new Error('Error al asignar técnico.');
         }
@@ -212,16 +227,18 @@ document.getElementById('assignTechnicianForm').addEventListener('submit', async
         const result = await response.json();
         console.log('Técnico asignado exitosamente:', result);
 
-        // Mostrar mensaje de éxito en el modal
         document.getElementById('message').textContent = '¡Técnico asignado exitosamente!';
-        closeModal(); // Cerrar el modal
 
-        // Recargar la lista de solicitudes para reflejar los cambios
-        await cargarSolicitudes();
+        // Actualizar la lista de solicitudes en la página
+        await cargarSolicitudes(); // Refrescar la lista completa
+
+        // Opcional: Desmarcar o quitar la solicitud asignada de la lista directamente
+        solicitudes = solicitudes.filter(solicitud => solicitud.ID_SOLICITUD !== selectedSolicitud);
+
+        closeModal(); // Cerrar el modal
     } catch (error) {
         console.error('Error al asignar técnico:', error);
-
-        // Mostrar mensaje de error en el modal
         document.getElementById('message').textContent = 'Error al asignar técnico. Por favor, intente nuevamente.';
     }
 });
+
